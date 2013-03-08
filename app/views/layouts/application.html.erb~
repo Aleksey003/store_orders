@@ -8,7 +8,11 @@
 </head>
 <body>
 
+
+<div><%= render "./layouts/menu" %></div>
 <%= yield %>
-<% dubug params %>
+
+<% debug params if Rails.env.development? %>
+<% debug session[:user_id] if Rails.env.development? %>
 </body>
 </html>

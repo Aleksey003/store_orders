@@ -20,12 +20,6 @@
   <%= @user.discount %>
 
 </p>
-<p>
-  <b>Parent:</b>
-  <%= @user.parent.name %>
-
-</p>
-
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

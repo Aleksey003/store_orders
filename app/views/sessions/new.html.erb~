@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<p id = 'notice'> <%= notice %> </p>
 <%= form_tag do %>
 	<fieldset>
 	<legend> Logins please! </legend>
