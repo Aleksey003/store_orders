@@ -29,7 +29,24 @@
   </div>
   <div class="field">
 
-    <%= f.file_field :assets %>
+  <%= f.fields_for :assets, :html => { :multipart => true } do |asset_fields| %>
+               <% if asset_fields.object.new_record? %>
+                   <P><%= asset_fields.file_field :data %> </P>
+               <% end %>
+           <% end %>
+
+
+  <% f.fields_for :assets do |asset| %>
+          <% unless asset.object.new_record? %>
+
+                        <%= link_to( image_tag(asset.object.data.url(:thumb)), asset.object.data.url(:original) ) %>
+
+
+
+          <% end %>
+
+     <% end %>
+
   </div>
   <div class="actions">
     <%= f.submit %>
