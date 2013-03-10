@@ -1,0 +1,23 @@
+<h1>Listing product_states</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @product_states.each do |product_state| %>
+  <tr>
+    <td><%= product_state.name %></td>
+    <td><%= link_to 'Show', product_state %></td>
+    <td><%= link_to 'Edit', edit_product_state_path(product_state) %></td>
+    <td><%= link_to 'Destroy', product_state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Product state', new_product_state_path %>

@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :password_digest
       t.string :email
       t.float :discount
-			t.string  :logo
+			t.attachment :logo
 			t.boolean :get_news
 			t.string :adress
 			t.string  :phone

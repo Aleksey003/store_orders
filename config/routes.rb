@@ -1,5 +1,11 @@
 StoreOrders::Application.routes.draw do
 
+  resources :products
+
+  resources :product_states
+
+  resources :product_categories
+
   resources :posts
 
 	controller :sessions do

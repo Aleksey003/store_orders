@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration
       t.float :discount
 			t.string  :logo
 			t.boolean :get_news
-			t.adress :adress
+			t.string :adress
 			t.string  :phone
 			t.integer :ban_days
 			t.boolean :use_customers

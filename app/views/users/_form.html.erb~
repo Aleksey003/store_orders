@@ -20,7 +20,7 @@
   </div>
    <div class="field">
     <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password %>
+    <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
     <%= f.label :email %><br />
@@ -29,6 +29,10 @@
   <div class="field">
     <%= f.label :discount %><br />
     <%= f.text_field :discount %>
+  </div>
+	<div class="field">
+    <%= f.label :logo %><br />
+    <%= f.file_field :logo %>
   </div>
 
 

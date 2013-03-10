@@ -1,6 +1,11 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+
+  <%= image_tg @user.logo.url %>
+
+</p>
+<p>
   <b>Name:</b>
   <%= @user.name %>
 </p>

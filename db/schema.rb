@@ -11,7 +11,51 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130308230018) do
+ActiveRecord::Schema.define(:version => 20130309163243) do
+
+  create_table "assets", :force => true do |t|
+    t.string   "caption"
+    t.integer  "product_id"
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "assets", ["product_id"], :name => "index_assets_on_product_id"
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
+
+  create_table "product_categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "product_states", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "products", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.integer  "product_state_id"
+    t.integer  "product_category_id"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "user_state", :force => true do |t|
     t.string   "name"
@@ -24,7 +68,10 @@ ActiveRecord::Schema.define(:version => 20130308230018) do
     t.string   "password_digest"
     t.string   "email"
     t.float    "discount"
-    t.string   "logo"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.boolean  "get_news"
     t.string   "adress"
     t.string   "phone"
@@ -32,8 +79,8 @@ ActiveRecord::Schema.define(:version => 20130308230018) do
     t.boolean  "use_customers"
     t.integer  "user_state_id"
     t.integer  "user_id"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
 end
