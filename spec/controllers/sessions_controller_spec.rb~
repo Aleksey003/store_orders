@@ -2,23 +2,23 @@ require 'spec_helper'
 
 describe SessionsController do
 
-  describe "GET 'new'" do
+  describe "GET 'login'" do
     it "should be successful" do
-      get 'new'
+      get '/login'
       response.should be_success
     end
   end
 
-  describe "POST 'create'" do
+  describe "POST 'login'" do
     it "should be successful" do
-      post 'create'
+      post '/logit'
       response.should be_success
     end
   end
 
-  describe "GET 'destroy'" do
+  describe "DELETE 'destroy'" do
     it "should be successful" do
-      get 'destroy'
+      delete 'logout'
       response.should be_success
     end
   end

@@ -6,5 +6,5 @@
 
 <% unless session[:user_id] == nil %>
 <%= link_to "Out", :logout, method: :delete %>
-<%= "Current user #{User.find(session[:user_id]).name}"  %>
+<%= "Current user #{current_user.name}"  %>
 <% end %>

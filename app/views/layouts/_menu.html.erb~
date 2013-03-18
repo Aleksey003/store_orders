@@ -3,7 +3,8 @@
 <%= link_to "Category product", product_categories_path %>
 <%= link_to "Posts", posts_path %>
 <%= link_to "State product", product_states_path %>
+
 <% unless session[:user_id] == nil %>
 <%= link_to "Out", :logout, method: :delete %>
-<%= "Current user #{User.find(session[:user_id]).name}"  %>
+<%= "Current user #{current_user.name}"  %>
 <% end %>

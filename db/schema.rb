@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130309163243) do
+ActiveRecord::Schema.define(:version => 20130318195438) do
 
   create_table "assets", :force => true do |t|
     t.string   "caption"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20130309163243) do
     t.integer  "user_id"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.string   "role"
   end
 
 end

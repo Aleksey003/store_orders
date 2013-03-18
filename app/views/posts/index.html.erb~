@@ -21,7 +21,7 @@
 		<% end %>
 		<% if can? :delete, Post %>
 	    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		<% end %>
+
   </tr>
 <% end %>
 </table>

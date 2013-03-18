@@ -34,6 +34,10 @@
     <%= f.label :logo %><br />
     <%= f.file_field :logo %>
   </div>
+	<div class="field">
+    <%= f.label :role %><br />
+    <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
+  </div>
 
 
   <div class="actions">

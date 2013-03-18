@@ -31,6 +31,7 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
+    cancan (1.6.9)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -129,6 +130,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby
+  cancan
   coffee-rails (~> 3.2.1)
   jquery-rails
   paperclip (~> 3.0)
