@@ -14,7 +14,7 @@
   <tr>
     <td><%= post.title %></td>
     <td><%= post.body %></td>
-    <td><%= post.user %></td>
+    <td><%= post.user.name if post.user %></td>
     <td><%= link_to 'Show', post %></td>
     <% if can? :update, Post %>
 			<td><%= link_to 'Edit', edit_post_path(post) %></td>
@@ -27,5 +27,5 @@
 </table>
 
 <br />
-
+<%= will_paginate @posts %>
 	<%= link_to 'New Post', new_post_path if can? :create, Post  %>

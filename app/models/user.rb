@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
 	has_many :children, class_name: "User"
 
   validates :email, presence: true, uniqueness: true
-	validates :email, :logo, :name, presence: true
+	validates :email,  :name, presence: true
 
   has_secure_password
 	has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "50x50>" }
