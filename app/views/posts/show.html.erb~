@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title post:</b>
+  <%= @post.title %>
+</p>
+
+
+<div class="content">
+<div id="page_content" class="mercury-region" data-type="editable">
+    <%= raw @post.body %>
+</div>
+</div>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

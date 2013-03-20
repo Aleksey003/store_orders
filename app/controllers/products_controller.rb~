@@ -1,9 +1,13 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
+  load_and_authorize_resource
   def index
-    @products = Product.all
-
+		if params[:category_id].nil?
+	    @products = Product.paginate(page: params[:page])
+		else
+			@products = Product.where(product_category_id: params[:category_id]).paginate(page: params[:page]).includes(:product_state)
+		end
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
