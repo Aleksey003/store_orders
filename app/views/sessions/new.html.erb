@@ -1,18 +1,13 @@
-<p id="notice"><%= notice %></p>
-<%= form_tag do %>
-	<fieldset>
-	<legend> Logins please! </legend>
-	<div>
+
+	<p id="notice"><%= notice %></p>
+	<%= form_tag  do %>
+	 <h2 class="form-signin-heading">Please sign in</h2>
 	<%= label_tag :email %>
-	<%= text_field_tag :email, params[:email] %>
-	</div>
-	<div>
+	<%= text_field_tag :email, params[:email], class:'input-block-level' %>
+	
 	<%= label_tag :password %>
-	<%= password_field_tag :password, params[:password] %>
-	</div>
-	<%= submit_tag "Login" %>
+	<%= password_field_tag :password, params[:password], class:'input-block-level' %>
+	
+	<%= submit_tag "Login", class:'btn btn-large btn-primary' %>
+	<% end %>
 
-	</fielsset>
-
-
-<% end %>
