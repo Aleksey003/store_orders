@@ -11,7 +11,7 @@ group :development do
 	gem 'sqlite3'
 end
 gem 'bcrypt-ruby'
-
+gem 'twitter-bootstrap-rails'
 group :test, :development do
 	gem 'rspec-rails'
 end
@@ -30,7 +30,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
-  gem 'twitter-bootstrap-rails'
+  
   gem "less-rails"
   gem "therubyracer"
 end
