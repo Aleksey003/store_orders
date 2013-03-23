@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem "will_paginate", "~> 3.0.4"
 gem "paperclip", "~> 3.0"
 gem "cancan"
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -14,9 +14,14 @@ gem 'bcrypt-ruby'
 group :test, :development do
 	gem 'rspec-rails'
 end
+
+group :production do
+  gem 'pg'
+end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
