@@ -12,6 +12,8 @@ group :development do
 end
 gem 'bcrypt-ruby'
 gem 'twitter-bootstrap-rails'
+gem "less-rails"
+gem "therubyracer"
 group :test, :development do
 	gem 'rspec-rails'
 end
@@ -31,8 +33,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   
-  gem "less-rails"
-  gem "therubyracer"
+ 
 end
 
 gem 'jquery-rails'
