@@ -1,17 +1,15 @@
-<h1>Listing users</h1>
+<h3>Users:</h3>
 <% if notice %>
 <p id="notice"><%= notice %>
 <% end %>
-<table>
+<table class="table table-striped">
   <tr>
  		<th>Logo</th>
     <th>Name</th>
     <th>Email</th>
     <th>Discount</th>
     <th>Parent</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Actions</th>  
   </tr>
 
 <% @users.each do |user| %>
@@ -21,9 +19,10 @@
     <td><%= user.email %></td>
     <td><%= user.discount %></td>
     <td><%= user.parent.name if !user.parent.nil? %></td>
-    <td><%= link_to 'Show', user %></td>
-    <td><%= link_to 'Edit', edit_user_path(user) %></td>
-    <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to "<i class='icon-zoom-in'></i>".html_safe, user %>
+    <%= link_to "<i class='icon-edit'></i>".html_safe %>
+    <%= link_to "<i class='icon-remove'></i>".html_safe, user, method: :delete, data: { confirm: 'Are you sure?' }%>
+  </td>
   </tr>
 <% end %>
 </table>
