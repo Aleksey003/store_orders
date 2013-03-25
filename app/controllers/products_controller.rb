@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   def index
 		if params[:category_id].nil?
 	    @products = Product.paginate(page: params[:page]).includes(:product_state,:product_category)
-		else unless  params[:all].nil?
+		elsif  !params[:all].nil?
       @products.all
     else 
     	@products = Product.where(product_category_id: params[:category_id]).paginate(page: params[:page]).includes(:product_state)
