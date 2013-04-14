@@ -7,9 +7,14 @@
             	   <%= image_tag(product.assets.first.data.url(:thumb)) unless product.assets.first.nil? %>
                     <h3><%= product.title %></h3>
                     <p>$ 100</p>
-                   
+                    <% if can? :update, product %>
 					<%= link_to 'Edit', edit_product_path(product), class: "btn btn-mini btn-inverse" %>
-                    <%= link_to 'Destroy', product, method: :delete, confirm: "Are you sure?", class: "btn btn-mini btn-danger" %>               
+                    <% end %>
+                    <% if can? :delete, product %>
+                    <%= link_to 'Destroy', product, method: :delete, confirm: "Are you sure?", class: "btn btn-mini btn-danger" %>
+                    <% end %>
+                    </br>
+                    <%= link_to 'Add to cart', line_items_path(product_id: product), method: :post, class: 'btn' %>              
                 </div>
             <% end %>
         </li>

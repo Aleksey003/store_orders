@@ -1,7 +1,16 @@
 sudo apt-get install imagemagick
 sudo apt-get install libmagick9-dev [deprecated]
 sudo gem install rmagick
+sudo apt-get install postgresql postgresql-client postgresql-server-dev-all libpq-dev
 
+##############################################################
+therubyracer
+sudo apt-get install g++
+
+Just to be sure, I also recommend:
+
+sudo apt-get install build-essential
+#################################################################
 
 
 == Welcome to Rails

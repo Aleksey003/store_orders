@@ -148,15 +148,17 @@ DEPENDENCIES
   bcrypt-ruby
   cancan
   coffee-rails (~> 3.2.1)
+  execjs
   jquery-rails
   less-rails
+  libv8
   paperclip (~> 3.0)
   pg
   rails (= 3.2.11)
   rspec-rails
   sass-rails (~> 3.2.3)
   sqlite3
-  therubyracer
+  therubyracer (~> 0.11.1)
   twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   will_paginate (~> 3.0.4)

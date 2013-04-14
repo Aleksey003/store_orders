@@ -6,4 +6,14 @@ class Product < ActiveRecord::Base
 	accepts_nested_attributes_for :assets, :allow_destroy => true
 	self.per_page = 12
 
+	before_destroy :check_references_by_line_items
+
+	def check_references_by_items
+		if line_items.empty?
+			return true
+		else
+			errors.add(:base, 'there is references in cart')
+			return false
+		end
+	end
 end
