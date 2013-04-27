@@ -5,6 +5,8 @@ gem "paperclip", "~> 3.0"
 gem "cancan"
 gem 'rails', '3.2.11'
 
+gem 'savon', "~> 2.2.0"
+
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development do
@@ -41,7 +43,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

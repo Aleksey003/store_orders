@@ -1,12 +1,17 @@
 StoreOrders::Application.routes.draw do
 
+  resources :orders
+
+
   resources :line_items
 
 
   resources :carts
 
 
-  resources :products
+  resources :products do 
+    get :who_bought, on: :member
+  end
 
   resources :product_states
 

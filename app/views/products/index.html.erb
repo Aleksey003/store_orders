@@ -14,7 +14,7 @@
                     <%= link_to 'Destroy', product, method: :delete, confirm: "Are you sure?", class: "btn btn-mini btn-danger" %>
                     <% end %>
                     </br>
-                    <%= link_to 'Add to cart', line_items_path(product_id: product), method: :post, class: 'btn' %>              
+                    <%= link_to 'Add to cart', line_items_path(product_id: product), method: :post, class: 'btn', remote: true %>              
                 </div>
             <% end %>
         </li>

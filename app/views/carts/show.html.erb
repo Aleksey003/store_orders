@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
+<%= render @cart %>
 
 
-<%= link_to 'Edit', edit_cart_path(@cart) %> |
-<%= link_to 'Back', carts_path %>
+<%= link_to 'Edit', edit_cart_path(@cart), class:'btn' %> |
+<%= link_to 'Back', carts_path, class:'btn' %>

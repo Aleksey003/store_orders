@@ -1,0 +1,9 @@
+<% if line_item == @current_item %>
+	<tr id='current_item'>
+<% else %> 
+	<tr>
+<% end %>	
+	<td><%= link_to line_item.product.title.to_s, product_path(line_item.product) %></td>
+	<td><%= line_item.quantity %></td>
+	<td><%= line_item.quantity * line_item.product.price %></td>
+</tr>

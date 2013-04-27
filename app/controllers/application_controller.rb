@@ -11,13 +11,10 @@ class ApplicationController < ActionController::Base
     cart
   end 
 
-
 	rescue_from CanCan::AccessDenied do |exception|
-
   	redirect_to :login, notice: exception.message
 	end
-
-
+  
   def current_user
     @current_user ||= User.find_by_id(session[:user_id])
   end

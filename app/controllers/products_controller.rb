@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
     else 
     	@products = Product.where(product_category_id: params[:category_id]).paginate(page: params[:page]).includes(:product_state)
 		end
+    @cart = current_cart
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
@@ -23,9 +24,16 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find(params[:id])
 
+    if params[:show_quantity]    
+      @product_quantity = @product.get_quantity
+    else
+      @product_quantity = nil
+    end
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @product }
+      format.js
     end
   end
 
@@ -88,5 +96,12 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url }
       format.json { head :no_content }
     end
+  end
+
+  def who_bought
+    @product = Product.find(params[:id])
+    respond_to do |format|
+      format.atom
+    end  
   end
 end
