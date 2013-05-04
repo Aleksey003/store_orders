@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
+  load_and_authorize_resource
   def index
     @orders = Order.paginate(page: params[:page]).order('created_at')
 
@@ -29,7 +30,7 @@ class OrdersController < ApplicationController
       redirect_to :back, notice: "Your cart is empty"
       return
     else
-      @order = Order.new
+      @order = Order.new(email: current_user.email, order_date: Time.now )
       @order.add_line_items_from_cart(@cart)
       respond_to do |format|
         format.html # new.html.erb
@@ -46,8 +47,8 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(params[:order])
-    @order.user  = current_user if current_user
+    @user = current_user
+    @order = @user.build_order(params[:order])    
     OrderMail.received(@order).deliver
     respond_to do |format|
       if @order.save

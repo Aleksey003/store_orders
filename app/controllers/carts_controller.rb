@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   # GET /carts
   # GET /carts.json
+  load_and_authorize_resource
   def index
     @carts = Cart.all
 
@@ -45,7 +46,8 @@ class CartsController < ApplicationController
   # POST /carts
   # POST /carts.json
   def create
-    @cart = Cart.new(params[:cart])
+    @user = current_user
+    @cart = @user.build_cart(params[:cart])
 
     respond_to do |format|
       if @cart.save
@@ -81,7 +83,7 @@ class CartsController < ApplicationController
     @cart.destroy
     session[:cart_id] = nil
     respond_to do |format|
-      format.html { redirect_to carts_url }
+      format.html { redirect_to root_path }
       format.json { head :no_content }
     end
   end

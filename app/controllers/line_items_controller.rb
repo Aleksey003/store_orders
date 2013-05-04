@@ -1,6 +1,7 @@
 class LineItemsController < ApplicationController
   # GET /line_items
   # GET /line_items.json
+  load_and_authorize_resource
   def index
     @line_items = LineItem.all
 
@@ -41,7 +42,8 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     @cart = current_cart    
-    @line_item = @cart.add_product(params[:product_id])    
+    @line_item = @cart.add_product(params[:product_id])
+    @line_item.user = current_user    
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to @cart, notice: 'Line item was successfully created.' }

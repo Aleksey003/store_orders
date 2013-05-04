@@ -1,6 +1,7 @@
 class ProductStatesController < ApplicationController
   # GET /product_states
   # GET /product_states.json
+  load_and_authorize_resource
   def index
     @product_states = ProductState.all
 

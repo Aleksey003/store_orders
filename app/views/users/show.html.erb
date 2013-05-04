@@ -17,7 +17,7 @@
 </p>
 <p>
 	<b>Parent:</b>
-	<%= @user.parent.name %>
+	<%= @user.parent.name unless @user.parent.nil? %>
 </p>
 
 <p>

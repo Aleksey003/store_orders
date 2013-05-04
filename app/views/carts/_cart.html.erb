@@ -1,8 +1,8 @@
 <table class='table table-bordered table-hover'>
 	<tr class='info'>
-		<td> Product </td>
-		<td> Quantity </td>
-		<td> Summ </td>
+		<td><%= t(".Product") %> </td>
+		<td><%= t(".Quantity") %> </td>
+		<td><%= t(".Summ") %></td>
 	</tr>
 	<tbody>
 	<%= render(cart.line_items) %>
@@ -12,5 +12,5 @@
 	</tr>
 </tbody>
 </table>
-<%= link_to "Empty cart", cart, method: :delete, confirm: "Are you sure?", class:'btn' %>
-<%= link_to "Checkout", new_order_path, class:'btn' %>
+<%= link_to t(".Empty_сart"), cart, method: :delete, confirm: "Are you sure?", class:'btn' %>
+<%= link_to t(".Checkout"), new_order_path, class:'btn' %>

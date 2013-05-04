@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+	
     attr_accessible :description, :product_category, :product_state, :title, :assets, :assets_attributes, :product_state_id, :product_category_id
 	belongs_to :product_category
 	belongs_to :product_state
@@ -7,8 +8,8 @@ class Product < ActiveRecord::Base
 	accepts_nested_attributes_for :assets, :allow_destroy => true
 	self.per_page = 12
 
-	validate :product_category, presente: true
-
+	validates :product_category, presence: true
+	validates :title, presence: true
 	before_destroy :check_references_by_line_items
 
 	def check_references_by_items

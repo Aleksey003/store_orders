@@ -1,33 +1,30 @@
 StoreOrders::Application.routes.draw do
 
-  resources :orders
+  
+  root to:  "products#index"
+  scope '(:locale)' do
+    resources :orders
+    resources :line_items
+    resources :carts
+    resources :product_states
+    resources :product_categories
+    resources :posts
+    devise_for :users
+    resources :users
 
-
-  resources :line_items
-
-
-  resources :carts
-
-
-  resources :products do 
-    get :who_bought, on: :member
+    resources :products do 
+      get :who_bought, on: :member
+    end
+    devise_scope :user do
+      get "/login" => "devise/sessions#new"
+      delete "logout" => "devise/sessions#destroy"    
+    end
   end
+  
 
-  resources :product_states
+	get 'admin' => 'admin#index' 
+	
 
-  resources :product_categories
-
-  resources :posts
-
-	controller :sessions do
-		get 'login' => :new
-		post 'login' => :create
-		delete 'logout' =>:destroy
-	end
-	get 'admin' => 'admin#index'
-
-  resources :users
-	root :to => 'sessions#new'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

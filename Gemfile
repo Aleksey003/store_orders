@@ -6,6 +6,9 @@ gem "cancan"
 gem 'rails', '3.2.11'
 
 gem 'savon', "~> 2.2.0"
+gem 'devise'
+
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -13,7 +16,7 @@ group :development do
 	gem 'sqlite3'	
 end
 
-gem 'bcrypt-ruby'
+#gem 'bcrypt-ruby'
 gem 'twitter-bootstrap-rails'
 gem 'libv8', :platforms => :ruby
 gem 'therubyracer', '~> 0.11.1' 

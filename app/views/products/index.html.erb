@@ -1,4 +1,4 @@
-<h1>Products</h1>
+<h1><%= t(".Products") %></h1>
 <ul class="thumbnails">
     <% @products.each do |product| %>
         <li class='span3'>
@@ -12,9 +12,8 @@
                     <% end %>
                     <% if can? :delete, product %>
                     <%= link_to 'Destroy', product, method: :delete, confirm: "Are you sure?", class: "btn btn-mini btn-danger" %>
-                    <% end %>
-                    </br>
-                    <%= link_to 'Add to cart', line_items_path(product_id: product), method: :post, class: 'btn', remote: true %>              
+                    <% end %>                    
+                    <%= link_to t('.Add_to_cart'), line_items_path(product_id: product), method: :post, class: 'btn', remote: true %>              
                 </div>
             <% end %>
         </li>

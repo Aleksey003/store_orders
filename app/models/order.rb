@@ -1,6 +1,7 @@
 class Order < ActiveRecord::Base
   attr_accessible :comment, :order_date, :email, :user
   validates :email, :user, presence: true
+  validates :order_date, presence: true
   has_many :line_items, dependent: :destroy
   belongs_to :user  
   self.per_page = 20
