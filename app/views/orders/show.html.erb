@@ -1,15 +1,9 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Date:</b>
-  <%= @order.order_date %>
-</p>
-
-<p>
+  <%= @order.order_date.strftime("%B %d, %Y") %>
   <b>User:</b>
   <%= @order.user.name %>
 </p>
-
 <p>
   <b>Comments:</b>
   <%= @order.comment %>
@@ -18,8 +12,9 @@
 <p>
   <b>Email:</b>
   <%= @order.email %>
+  <b>Status: <%= @order.status %>
 </p>
 
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Edit', edit_order_path(@order), class:'btn btn-mini' %> |
+<%= link_to 'Back', orders_path, class:'btn btn-mini' %>

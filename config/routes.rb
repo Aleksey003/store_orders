@@ -21,7 +21,7 @@ StoreOrders::Application.routes.draw do
     end
   end
   
-
+  resources :assets
 	get 'admin' => 'admin#index' 
 	
 

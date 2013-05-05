@@ -6,7 +6,7 @@
                 <div class='thumbnail'>              
             	   <%= image_tag(product.assets.first.data.url(:thumb)) unless product.assets.first.nil? %>
                     <h3><%= product.title %></h3>
-                    <p>$ 100</p>
+                    <p>UAN <%= product.price %></p>
                     <% if can? :update, product %>
 					<%= link_to 'Edit', edit_product_path(product), class: "btn btn-mini btn-inverse" %>
                     <% end %>

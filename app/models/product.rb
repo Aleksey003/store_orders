@@ -10,6 +10,7 @@ class Product < ActiveRecord::Base
 
 	validates :product_category, presence: true
 	validates :title, presence: true
+
 	before_destroy :check_references_by_line_items
 
 	def check_references_by_items
@@ -32,15 +33,4 @@ class Product < ActiveRecord::Base
 		hash_responce[:return]
 	end
 
-	#def get_quantitys()
-	#	client  = Savon.client do 
-			# wsdl "http://95.158.61.35:8888/InfoBase2/ws/webservice?wsdl"
-	#		basic_auth ["service", "service"]
-	#		convert_request_keys_to :camelcase
-	#	end
-#
-#		responce = client.call(:get_quantity_products)
-#		quantity = responce[:return]
-
-#	end
 end

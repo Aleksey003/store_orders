@@ -35,10 +35,17 @@
     <td> Summ </td>
   </tr>
   <tbody>
-  <%= render(@order.line_items) %>
+  <% if !@order.line_items.empty? %>
+   <% total_price = 0 %>
+    <%= render(@order.line_items) %>
+    <% total_price = @order.total_price %>
+  <% elsif (@cart != nil) %>
+    <%= render(@cart.line_items) %>
+    <% total_price = @cart.total_price %>
+  <% end %>
   <tr>
     <td colspan='2'>Total:</td>
-    <td><%= @order.total_price %></td>
+    <td><%= total_price %></td>
   </tr>
 </tbody>
 </table>

@@ -30,8 +30,7 @@ class OrdersController < ApplicationController
       redirect_to :back, notice: "Your cart is empty"
       return
     else
-      @order = Order.new(email: current_user.email, order_date: Time.now )
-      @order.add_line_items_from_cart(@cart)
+      @order = Order.new(email: current_user.email, order_date: Time.now )      
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @order }
@@ -48,10 +47,14 @@ class OrdersController < ApplicationController
   # POST /orders.json
   def create
     @user = current_user
-    @order = @user.build_order(params[:order])    
-    OrderMail.received(@order).deliver
+    @order = @user.orders.build(params[:order])
+    @order.add_line_items_from_cart(current_cart)
+    @order.status = 'new'   
+    
     respond_to do |format|
       if @order.save
+        OrderMail.received(@order).deliver
+        Cart.destroy(session[:cart_id])
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }
       else

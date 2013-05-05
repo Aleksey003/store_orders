@@ -17,7 +17,7 @@ class Ability
             can :create, Cart
             can :create, LineItem
             can :manage, Order do |order|
-                order.user_id = user.id
+                order.user_id = user.id && order.status = 'new'
             end
             can :manage, Cart do |cart|
                 cart.user_id = user.id

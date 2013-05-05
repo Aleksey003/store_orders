@@ -1,29 +1,35 @@
-<p id="notice"><%= notice %></p>
 <h1><%= t('.listing_orders') %></h1>
 
-<table>
-  <tr>
+<table class='table table-bordered table-hover'>
+  <tr class='info'>
+    <th><%= t('.number') %></th>
     <th><%= t('.date') %></th>
-    <th><%= t('.user') %></th>
-    <th><%= t('.comments') %></th>
+    <th><%= t('.status') %></th>      
+    <th><%= t('.user') %></th>    
     <th>Email</th>
+    <th><%= t('.comments') %></th>
     <th></th>
   </tr>
-
+<tbody>
 <% @orders.each do |order| %>
   <tr>
-    <td><%= order.order_date %></td>
-    <td><%= order.user.name unless order.user.nil? %></td>
-    <td><%= order.comment %></td>
+    <td><%= order.id %></td>
+    <td><%= order.order_date.strftime("%B %d, %Y") %></td>
+    <td><%= order.status %></td>
+    <td><%= order.user.name unless order.user.nil? %></td>    
     <td><%= order.email %></td>
-    <td><%= link_to 'Show', order %>
-    <%= link_to 'Edit', edit_order_path(order) %>
-    <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= order.comment %></td>
+    <td>
+    <%= link_to 'Show', order, class:'btn btn-mini' %>
+    <% if can? :update, order %>
+      <%= link_to 'Edit', edit_order_path(order), class:'btn btn-mini' %>
+    <% end %>
+    <% if can? :destroy, order %>
+      <%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-mini' %>
+    <% end %>
+    </td>
   </tr>
 <% end %>
+</tbody>
 </table>
-
-
-
-
 <p><%= will_paginate @orders %></p>
