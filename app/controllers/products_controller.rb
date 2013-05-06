@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    @product = Product.find(params[:id])
+    @product = Product.includes(:assets).find(params[:id])
 
     if params[:show_quantity]    
       @product_quantity = @product.get_quantity
