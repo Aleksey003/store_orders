@@ -1,14 +1,19 @@
 <h1>Listing carts</h1>
 
-<table>
+<table class='table table-bordered table-hover'>
   <tr>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Create</th>
+    <th>Last update</th>
+    <th>User</th>
+    <th>Total</th>
   </tr>
 
 <% @carts.each do |cart| %>
   <tr>
+    <td><%= cart.created_at.strftime("%B %d, %Y, %H:%M") %></td>
+    <td><%= cart.updated_at.strftime("%B %d, %Y, %H:%M") %></td>
+    <td><%= cart.user.name %></td>
+    <td><%= cart.total_price %></td>
     <td><%= link_to 'Show', cart %></td>
     <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
     <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>

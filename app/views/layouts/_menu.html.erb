@@ -1,25 +1,21 @@
 <div class='navbar-inner'>    
     <ul class="nav">
-        <li><%= link_to t('.home'), root_path %></li>
-        <li><%= link_to t('.products'), products_path %></li>
-        <li><%= link_to t('.posts'), posts_path %></li>                
-    	<li><%= link_to t('.orders'), orders_path %></li>
-        <% if can? :update, ProductCategory %>
-        	<li><%= link_to t('.category_product'), product_categories_path %></li>
-        <% end %>
-        <% if can? :update, ProductState %>
-        	<li><%= link_to t('.state_product'), product_states_path %></li>
-        <% end %>
-        <% if can? :update, User %>
-        	<li><%= link_to t('.users'), users_path %></li>
-        <% end %>        
+        <li><%= link_to "<i class='icon-home'></i>".html_safe+t('.home'), root_path %></li>
+        <li><%= link_to "<i class='icon-gift'></i>".html_safe+t('.products'), products_path %></li>
+        <li><%= link_to "<i class='icon-pencil'></i>".html_safe+t('.posts'), posts_path %></li>                
+    	<li><%= link_to "<i class='icon-briefcase'></i>".html_safe+t('.orders'), orders_path %></li>
+        <li><%= link_to "<i class='icon-shopping-cart'></i>".html_safe+t('.cart'), carts_path %></li>
+        <li><%= link_to "<i class='icon-folder-open'></i>".html_safe+t('.category_product'), product_categories_path if can? :update, ProductCategory%></li>
+        <li><%= link_to t('.state_product'), product_states_path if can? :update, ProductState%></li>
+        <li><%= link_to "<i class='icon-user'></i>".html_safe+t('.users'), users_path if can? :update, User%></li>
+                
         
     </ul>
 <div class="pull-right">
 	<ul class='nav'>
 		<% if user_signed_in? %>
-			<li><%= link_to t(".User") + ": #{current_user.name}", current_user %></li>
-			<li><%= link_to t(".Logout"), destroy_user_session_path, method: :delete %></li>
+			<li><%= link_to "<i class='icon-user'></i>".html_safe + ": #{current_user.name}", current_user %></li>
+			<li><%= link_to "<i class='icon-off'></i>".html_safe+t(".Logout"), destroy_user_session_path, method: :delete %></li>
 		<% else %>
 			<li><%= link_to t(".Login"), new_user_session_path %></li>
 		<% end %>

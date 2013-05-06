@@ -1,4 +1,6 @@
-<h4><%= t(".Categories") %></h4>  	
+<ul class='breadcrumb'>
+	<li><%= t(".Categories") %></li>
+</ul>
 <ul class='nav nav-tabs nav-stacked'>
 <% ProductCategory.all.each do |category| %>
     <li><%= link_to "#{category.name}", products_path(category_id: category) %></li>

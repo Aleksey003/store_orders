@@ -7,7 +7,7 @@ gem 'rails', '3.2.11'
 
 gem 'savon', "~> 2.2.0"
 gem 'devise'
-
+gem 'debugger'
 
 
 # Bundle edge Rails instead:

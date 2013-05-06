@@ -2,20 +2,21 @@
 <ul class="thumbnails">
     <% @products.each do |product| %>
         <li class='span3'>
-            <%= link_to  product do %>
-                <div class='thumbnail'>              
-            	   <%= image_tag(product.assets.first.data.url(:thumb)) unless product.assets.first.nil? %>
+            <div class='thumbnail'>
+                <%= link_to  product do %>                             
+            	   <%= image_tag(product.assets.first.data.url(:medium)) unless product.assets.first.nil? %>
+                <% end %>   
                     <h3><%= product.title %></h3>
                     <p>UAN <%= product.price %></p>
                     <% if can? :update, product %>
-					<%= link_to 'Edit', edit_product_path(product), class: "btn btn-mini btn-inverse" %>
+					<%= link_to 'Edit', edit_product_path(product), class: "btn btn-link" %>
                     <% end %>
                     <% if can? :delete, product %>
-                    <%= link_to 'Destroy', product, method: :delete, confirm: "Are you sure?", class: "btn btn-mini btn-danger" %>
+                    <%= link_to 'Destroy', product, method: :delete, confirm: "Are you sure?", class: "btn btn-link" %>
                     <% end %>                    
-                    <%= link_to t('.Add_to_cart'), line_items_path(product_id: product), method: :post, class: 'btn', remote: true %>              
-                </div>
-            <% end %>
+                    <%= link_to t('.Add_to_cart'), line_items_path(product_id: product), method: :post, class: 'btn btn-primary', remote: true %>              
+            </div>
+            
         </li>
     <% end %>
 <ul>

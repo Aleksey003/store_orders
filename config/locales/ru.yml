@@ -25,7 +25,7 @@ ru:
   products:
     index:
       Products: "Товары"
-      Add_to_cart: "Добавить в корзину"
+      Add_to_cart: "В корзину"
   carts:
     cart:
       Summ: "Сумма"

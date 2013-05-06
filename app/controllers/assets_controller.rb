@@ -1,6 +1,10 @@
 class AssetsController < ApplicationController
 	def index
- 		@assets = Asset.all
+		if params[:product_id].nil?
+ 			@assets = Asset.all
+ 		else
+ 			@assets = Asset.where(product_id: params[:product_id])
+ 		end
  		respond_to do |format|
  			format.html
  			format.json {render json: @assets.map{|asset| asset.to_jq_upload}}
