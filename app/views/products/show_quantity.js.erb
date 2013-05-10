@@ -1,0 +1,3 @@
+<%  @product_quantity.each do |q| %>
+	$("#quantity<%= j q[:id] %>").addClass("label").html( "Quantity: <%= j q[:quantity] %>");
+<% end %>

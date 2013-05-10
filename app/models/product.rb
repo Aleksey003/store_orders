@@ -32,5 +32,23 @@ class Product < ActiveRecord::Base
 		hash_responce = response.to_hash[:get_quantity_product_response]
 		hash_responce[:return]
 	end
+	def self.get_quantitys(params)
+		 #Product.first.get_quantitys({:'sam:Id' =>[115, 187, 14] })
+
+		namespaces = {
+ 		 "xmlns:Sam" => "http://www.sample-package.org",
+ 		 "xmlns:Uri" => "http://www.uri.com"
+		}
+		client  = Savon.client do 
+			wsdl "http://95.158.61.35:8888/InfoBase2/ws/webservice?wsdl"
+			basic_auth ["service", "service"]
+			convert_request_keys_to :camelcase
+			namespaces namespaces
+		end		
+		response = client.call(:get_quantity_products, message: { :'uri:Products' => {:'sam:Id'=>params} })
+		hash_responce = response.to_hash[:get_quantity_products_response]
+		hash_responce[:return][:product_quantity_line]
+		
+	end
 
 end

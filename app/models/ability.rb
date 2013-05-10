@@ -7,10 +7,12 @@ class Ability
             can :manage, :all
         elsif user.moderator?
             can :read, :all
+
             can :manege, Post do |post|
                 post.iser_id = user.id
             end
         elsif user.customer?
+            can :show_quantity, Product
             can :read, Product
             can :read, Post            
             can :create, Order

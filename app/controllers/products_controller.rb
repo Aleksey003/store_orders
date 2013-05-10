@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   # GET /products.json
   load_and_authorize_resource
   def index
+
 		if params[:category_id].nil?
 	    @products = Product.paginate(page: params[:page]).includes(:product_state,:product_category)
 		elsif  !params[:all].nil?
@@ -11,10 +12,12 @@ class ProductsController < ApplicationController
     	@products = Product.where(product_category_id: params[:category_id]).paginate(page: params[:page]).includes(:product_state)
 		end
     @cart = current_cart
+   
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @products }
       format.xml  { render xml:  @products }
+      format.js
 
     end
   end
@@ -102,4 +105,17 @@ class ProductsController < ApplicationController
       format.atom
     end  
   end
+
+  def show_quantity
+      
+      
+      if params[:products]
+        
+        @product_quantity = Product.get_quantitys(params[:products])
+          respond_to do |format|
+          format.js 
+        end
+      end
+  end
+
 end

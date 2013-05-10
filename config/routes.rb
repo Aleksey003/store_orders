@@ -14,7 +14,9 @@ StoreOrders::Application.routes.draw do
 
     resources :products do 
       get :who_bought, on: :member
+      get :show_quantity, on: :collection   
     end
+    
     devise_scope :user do
       get "/login" => "devise/sessions#new"
       delete "logout" => "devise/sessions#destroy"    
