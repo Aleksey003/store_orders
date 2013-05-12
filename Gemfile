@@ -7,8 +7,7 @@ gem 'rails', '3.2.11'
 
 gem 'savon', "~> 2.2.0"
 gem 'devise'
-gem 'debugger'
-
+gem 'ancestry'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -25,6 +24,7 @@ gem 'execjs'
 
 group :test, :development do
 	gem 'rspec-rails'
+	gem 'debugger'
 end
 
 group :production do

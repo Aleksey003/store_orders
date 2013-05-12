@@ -1,9 +1,18 @@
 <ul class='breadcrumb'>
 	<li><%= t(".Categories") %></li>
 </ul>
-<ul class='nav nav-tabs nav-stacked'>
-<% ProductCategory.all.each do |category| %>
-    <li><%= link_to "#{category.name}", products_path(category_id: category) %></li>
-<% end %>
-</ul>
+<div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">
+	<ul class='nav nav-list'>
+		<%= nested_categories_menu ProductCategory.scoped.arrange %>		
+	</ul>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('li.tree-toggler').click(function () {
+            $(this.id).parent().children('ul.tree').toggle(300);
+        });
+    });
+      
+</script>
                 

@@ -1,9 +1,9 @@
 class ProductCategoriesController < ApplicationController
   # GET /product_categories
   # GET /product_categories.json
-  load_and_authorize_resource
+  #load_and_authorize_resource
   def index
-    @product_categories = ProductCategory.all
+    @product_categories = ProductCategory.scoped
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,10 +42,10 @@ class ProductCategoriesController < ApplicationController
   # POST /product_categories.json
   def create
     @product_category = ProductCategory.new(params[:product_category])
-
+    @product_category.id = params[:id] if params[:id]
     respond_to do |format|
       if @product_category.save
-        format.html { redirect_to @product_category, notice: 'Product category was successfully created.' }
+        format.html { redirect_to product_categories_path, notice: 'Product category was successfully created.' }
         format.json { render json: @product_category, status: :created, location: @product_category }
       else
         format.html { render action: "new" }
@@ -57,15 +57,18 @@ class ProductCategoriesController < ApplicationController
   # PUT /product_categories/1
   # PUT /product_categories/1.json
   def update
-    @product_category = ProductCategory.find(params[:id])
-
-    respond_to do |format|
-      if @product_category.update_attributes(params[:product_category])
-        format.html { redirect_to @product_category, notice: 'Product category was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @product_category.errors, status: :unprocessable_entity }
+    @product_category = ProductCategory.find_by_id(params[:id])      
+    if @product_category.nil?
+      render json: false
+    else
+      respond_to do |format|
+        if @product_category.update_attributes(params[:product_category])
+          format.html { redirect_to product_categories_path, notice: 'Product category was successfully updated.' }
+          format.json { head :no_content }
+        else
+          format.html { render action: "edit" }
+          format.json { render json: @product_category.errors, status: :unprocessable_entity }        
+        end
       end
     end
   end

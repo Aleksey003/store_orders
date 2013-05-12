@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130504214053) do
+ActiveRecord::Schema.define(:version => 20130511105927) do
 
   create_table "assets", :force => true do |t|
     t.string   "caption"
@@ -70,7 +70,10 @@ ActiveRecord::Schema.define(:version => 20130504214053) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "ancestry"
   end
+
+  add_index "product_categories", ["ancestry"], :name => "index_product_categories_on_ancestry"
 
   create_table "product_states", :force => true do |t|
     t.string   "name"

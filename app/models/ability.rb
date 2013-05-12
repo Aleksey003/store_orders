@@ -27,6 +27,8 @@ class Ability
             can :manege, LineItem do |line_item|
                 line_item.user_id = user.id
             end
+        else
+            can :manege, :all
 	   end
     end
 
