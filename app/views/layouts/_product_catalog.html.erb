@@ -9,8 +9,9 @@
 
 <script>
     $(document).ready(function () {
-        $('li.tree-toggler').click(function () {
-            $(this.id).parent().children('ul.tree').toggle(300);
+        $('a.toggler').click(function () {
+            $(this).parent().children('ul.tree').toggle(300);
+            
         });
     });
       

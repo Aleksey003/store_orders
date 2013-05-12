@@ -1,5 +1,5 @@
 <% if product_category_menu.has_children? %>
-	<a href='#'><i class="icon-plus"></i><%= product_category_menu.name	%></a>  
+	<a href='#' class ='toggler'><i class="icon-plus "></i><%= product_category_menu.name	%></a>  
 <% else %>
 	<%= link_to "#{product_category_menu.name}".html_safe, products_path(category_id: product_category_menu)  %>
 <% end %>
