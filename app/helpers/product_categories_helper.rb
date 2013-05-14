@@ -5,7 +5,7 @@ module ProductCategoriesHelper
     	if sub_categories == {}
     		content_tag(:li, render(categorie))
     	else    	
-      		content_tag(:li, content_tag(:li,render(categorie), class:"tree-toggler nav-header")) + content_tag(:ul, nested_categories(sub_categories), class:"nav nav-list tree")
+      		content_tag(:li, content_tag(:li,render(categorie), class:"tree-toggler nav-header")+ content_tag(:ul, nested_categories(sub_categories)))
       end 
     end.join.html_safe
   end
