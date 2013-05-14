@@ -1,6 +1,6 @@
-<h1>Editing product_state</h1>
+<h1><%= t(:edit_product_state) %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @product_state %> |
-<%= link_to 'Back', product_states_path %>
+<%= link_to t(:show), @product_state, class:'btn' %> |
+<%= link_to  t(:back), product_states_path, class:'btn'%>

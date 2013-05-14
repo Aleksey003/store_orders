@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
-  #load_and_authorize_resource
+  load_and_authorize_resource
   def index
 
 		if params[:category_id].nil?

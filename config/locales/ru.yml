@@ -4,6 +4,7 @@ ru:
   edit: "изменить"
   show: "показать"
   back: "назад"
+  new: Новый
   destroy: "удалить"
   cart: "Корзина"
   product_category: "Категория продукта"
@@ -23,6 +24,12 @@ ru:
   role: Роль
   save: Сохранить
   editing_user: Редактирование пользователя
+  list_state_product: Список статусов
+  edit_product_state: Редактировать категории
+  total: Итог
+  created: Создан
+  last_update: Последнее обновление
+  user: Пользователь
   layouts:
     menu:
       home: "На главную"

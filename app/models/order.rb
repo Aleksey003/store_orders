@@ -30,7 +30,7 @@ class Order < ActiveRecord::Base
   private
   
   def check_and_post_order
-    debugger
+    
     if status == 'new'
       responce = post_order
       if responce

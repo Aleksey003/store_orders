@@ -3,6 +3,11 @@ sudo apt-get install libmagick9-dev [deprecated]
 sudo gem install rmagick
 sudo apt-get install postgresql postgresql-client postgresql-server-dev-all libpq-dev
 
+#################### reset id pg #########################
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
+
 ##############################################################
 therubyracer
 sudo apt-get install g++

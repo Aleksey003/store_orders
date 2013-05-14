@@ -2,10 +2,11 @@
 
 <table class='table table-bordered table-hover'>
   <tr>
-    <th>Create</th>
-    <th>Last update</th>
-    <th>User</th>
-    <th>Total</th>
+    <th><%= t(:created) %></th>
+    <th><%= t(:last_update) %></th>
+    <th><%= t(:user) %></th>
+    <th><%= t(:total) %></th>
+    <th><%= t(:actions) %></th>
   </tr>
 
 <% @carts.each do |cart| %>
@@ -14,13 +15,11 @@
     <td><%= cart.updated_at.strftime("%B %d, %Y, %H:%M") %></td>
     <td><%= cart.user.name %></td>
     <td><%= cart.total_price %></td>
-    <td><%= link_to 'Show', cart %></td>
-    <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-    <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', cart,class:'btn btn-small' %>
+    <%= link_to t(:edit), edit_cart_path(cart),class:'btn btn-small' %>
+    <%= link_to t(:destroy), cart, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-small' %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
 
-<%= link_to 'New Cart', new_cart_path %>
