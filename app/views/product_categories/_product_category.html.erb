@@ -1,4 +1,11 @@
+<% if product_category.has_children? %>
+	<a href='#' class ='toggler'><i class="icon-plus "></i>
+		<span class="label"><%= product_category.name	%></span></a>  
+<% else %>
+	<%= product_category.name %>
+<% end %>
+<%= link_to "<i class='icon-pencil'></i>".html_safe, edit_product_category_path(product_category) %>
+<%= link_to "<i class='icon-remove'></i>".html_safe, product_category_path(product_category), method: :delete, data: { confirm: 'Are you sure?' } %>
 
-111<%= product_category.name %>
 
  

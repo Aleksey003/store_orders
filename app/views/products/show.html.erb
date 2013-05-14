@@ -17,21 +17,21 @@
 		</div>
 	</div>
 	<div class='span5'>
-		<p><strong class="label label-info">Price:<%=@product.price%></strong></p>
+		<p><strong class="label label-info"><%= t(:price) %> <%= @product.price%></strong></p>
 		<p>
-  			<b>Product state:</b>
+  			<b><%= t(:product_state) %>:</b>
   			<%= @product.product_state.name unless @product.product_state.nil? %></br>
-  			<b>Product category:</b>
+  			<b><%= t(:product_category) %>:</b>
   			<%= @product.product_category.name %>
 		</p>
 		<p><span id='product_quantity' > </span></p></br>
-		<%= link_to 'Show quantity', product_path(@product, show_quantity: true), remote: true, class: 'btn btn-small btn-info' %>
+		<%= link_to t(:show_quantity), product_path(@product, show_quantity: true), remote: true, class: 'btn btn-small btn-info' %>
 	</div>
 </div>
 <div class="tabbable">
 	<ul class="nav nav-tabs">
-    	<li class="active"><a href="#tab1" data-toggle="tab">Description</a></li>
-    	<li><a href="#tab2" data-toggle="tab">Related products</a></li>
+    	<li class="active"><a href="#tab1" data-toggle="tab"><%= t(:description) %></a></li>
+    	<li><a href="#tab2" data-toggle="tab"><%= t(:related_products) %></a></li>
   	</ul>
   	<div class="tab-content">
     	<div class="tab-pane active" id="tab1">

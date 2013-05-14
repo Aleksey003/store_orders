@@ -1,4 +1,28 @@
 ru:
+  NewProduct: "Новый товар"
+  show_quantity: "Показать количество"
+  edit: "изменить"
+  show: "показать"
+  back: "назад"
+  destroy: "удалить"
+  cart: "Корзина"
+  product_category: "Категория продукта"
+  product_state: "Статус продукта"
+  price: "Цена"
+  description: "Описание"
+  related_products: "Связанные товары"
+  users: Пользователи
+  logo: Логотип
+  name: Имя
+  discount: Скидка
+  parent: Родитель
+  actions: Действия
+  new_user: Новый пользователь
+  password: Пароль
+  password_confirmation: Повторите пароль
+  role: Роль
+  save: Сохранить
+  editing_user: Редактирование пользователя
   layouts:
     menu:
       home: "На главную"

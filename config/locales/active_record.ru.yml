@@ -1,0 +1,9 @@
+ru:
+  activerecord:
+    models:
+      user: пользователь
+    attributes:
+      user:
+      	name: имя
+      	logo: логотип
+      	discount: скидка

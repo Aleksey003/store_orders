@@ -36,3 +36,8 @@
 line-height: 20px;
 color: #ffffff;
 }
+
+ul.product_categoty
+{
+    list-style-type: none;
+}

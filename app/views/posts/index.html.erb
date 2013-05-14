@@ -1,5 +1,3 @@
-
-
 <table>
 <% @posts.each do |post| %>
   <tr>
@@ -19,4 +17,4 @@
 
 <br />
 <%= will_paginate @posts %>
-	<%= link_to 'New Post', new_post_path if can? :create, Post  %>
+

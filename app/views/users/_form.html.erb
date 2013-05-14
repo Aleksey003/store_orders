@@ -11,36 +11,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= t :name %></br>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
+    <%= t :password %></br>
     <%= f.password_field :password %>
   </div>
    <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= t :password_confirmation %></br>
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= t :email %></br>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :discount %><br />
+    <%= t :discount %></br>
     <%= f.text_field :discount %>
   </div>
 	<div class="field">
-    <%= f.label :logo %><br />
+    <%= t :logo %>
     <%= f.file_field :logo %>
   </div>
 	<div class="field">
-    <%= f.label :role %><br />
+    <%= t :role %></br>
     <%= f.collection_select :role, User::ROLES, :to_s, :humanize %>
   </div>
 
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t :save %>
   </div>
 <% end %>

@@ -9,7 +9,7 @@ StoreOrders::Application.routes.draw do
     resources :product_states
     resources :product_categories
     resources :posts
-    devise_for :users
+    devise_for :users, :controllers => {:sessions => "sessions"}
     resources :users
 
     resources :products do 

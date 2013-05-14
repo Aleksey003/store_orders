@@ -1,15 +1,15 @@
-<h3>Users:</h3>
+<h3><%= t(:users) %></h3>
 <% if notice %>
 <p id="notice"><%= notice %>
 <% end %>
 <table class="table table-striped">
   <tr>
- 		<th>Logo</th>
-    <th>Name</th>
-    <th>Email</th>
-    <th>Discount</th>
-    <th>Parent</th>
-    <th>Actions</th>  
+ 		<th><%= t(:logo) %></th>
+    <th><%= t(:name) %></th>
+    <th>Email %></th>
+    <th><%= t(:discount) %></th>
+    <th><%= t(:parent) %></th>
+    <th><%= t(:actions) %></th>  
   </tr>
 
 <% @users.each do |user| %>
@@ -29,4 +29,4 @@
 
 <br />
 
-<%= link_to 'New User', new_user_path,:class => 'btn btn-primary' %>
+<%= link_to t('new_user'), new_user_path,:class => 'btn btn-primary' %>
