@@ -7,12 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <div class='navbar navbar-inverse'>      
-         <%= render "./layouts/menu" %>
+    <div class='container'>
+      <!-- header -->
+      <div class='row'>
+        <div class='span4 logo'>
+          <h1> Shopping cart </h1>
+        </div>
+        <div class='span8'>
+          <div class="pull-right current_user">            
+              <% if user_signed_in? %>
+                <%= link_to "<i class='icon-user'></i>".html_safe + ": #{current_user.name}", current_user %>
+                <%= link_to "<i class='icon-off'></i>".html_safe+t(".Logout"), destroy_user_session_path, method: :delete %>
+              <% else %>
+                <%= link_to t(".Login"), new_user_session_path %>
+              <% end %>            
+          </div>
+        </div>        
+      </div>
+      <!-- end header -->
 
-    </div>
-
-    <div class='container'> 
+      <!-- nav -->
+      <div class='row'>
+        <div class='span12'>
+          <div class='navbar navbar-inverse'>      
+            <%= render "./layouts/menu" %>
+          </div>
+        </div>
+      </div>
+      <!-- end nav --> 
+    
         <div class='row'>
             <div class='span3'>
               <div id='cart'>
@@ -21,6 +44,9 @@
                 <%= render "./layouts/product_catalog" %>
             </div>
             <div class='span9'>
+              <ul class='breadcrumb'>
+                <li></li>
+              </ul>
               <p id="notice"><%= notice %></p>
               <%= yield %>    
             </div>    

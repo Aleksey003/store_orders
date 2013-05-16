@@ -17,6 +17,7 @@ end
 
 #gem 'bcrypt-ruby'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-wysihtml5-rails'
 gem 'libv8', :platforms => :ruby
 gem 'therubyracer', '~> 0.11.1' 
 gem "less-rails"

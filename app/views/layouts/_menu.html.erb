@@ -11,16 +11,6 @@
                 
         
     </ul>
-<div class="pull-right">
-	<ul class='nav'>
-		<% if user_signed_in? %>
-			<li><%= link_to "<i class='icon-user'></i>".html_safe + ": #{current_user.name}", current_user %></li>
-			<li><%= link_to "<i class='icon-off'></i>".html_safe+t(".Logout"), destroy_user_session_path, method: :delete %></li>
-		<% else %>
-			<li><%= link_to t(".Login"), new_user_session_path %></li>
-		<% end %>
-	</ul>
-</div>
 </div>
                     
 
