@@ -1,31 +1,15 @@
-<h1>Listing posts</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
 <% @posts.each do |post| %>
-  <tr>
-    <td><%= post.title %></td>
-    <td><%= post.body %></td>
-    <td><%= post.user %></td>
-    <td><%= link_to 'Show', post %></td>
-    <% if can? :update, Post %>
-			<td><%= link_to 'Edit', edit_post_path(post) %></td>
-		<% end %>
-		<% if can? :delete, Post %>
-	    <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-		<% end %>
-  </tr>
+	<hr>
+	<p><h3><%= link_to post.title.html_safe, post %></h3></p>
+	<%= truncate(post.body, :length => 350).html_safe %>
+	<p><%= post.user.name if post.user %></p>
+	<div>
+	<%= link_to t(:edit), edit_post_path(post), class:'btn btn-link' if can? :update, Post %>
+	<%= link_to t(:destroy), post, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-link'  if can? :delete, Post%></td>
+	</div>
 <% end %>
-</table>
 
-<br />
+<br/>
 <%= will_paginate @posts %>
-	<%= link_to 'New Post', new_post_path if can? :create, Post  %>
+<%= link_to t(:new), new_post_path, class:'btn btn-success' %>

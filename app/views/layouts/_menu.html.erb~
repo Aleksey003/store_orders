@@ -8,5 +8,7 @@
         <li><%= link_to "<i class='icon-folder-open'></i>".html_safe+t('.category_product'), product_categories_path if can? :update, ProductCategory%></li>
         <li><%= link_to t('.state_product'), product_states_path if can? :update, ProductState%></li>
         <li><%= link_to "<i class='icon-user'></i>".html_safe+t('.users'), users_path if can? :update, User%></li>
+
+
     </ul>
 </div>

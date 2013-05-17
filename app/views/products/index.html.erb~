@@ -16,7 +16,6 @@
 								<div class='span3'>
 										<%= link_to  product do %>
 									 		<h3><%= truncate(product.title, length: 20) %></h3>
-									 	<% end %>
 									 <%= product.description %>
 								</div>
 								<div class='span3'>

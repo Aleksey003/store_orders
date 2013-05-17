@@ -1,22 +1,40 @@
 source 'https://rubygems.org'
 
-
+gem "will_paginate", "~> 3.0.4"
 gem "paperclip", "~> 3.0"
 gem "cancan"
-gem 'rails', '3.2.8'
+gem 'rails', '3.2.11'
+
+gem 'savon', "~> 2.2.0"
+gem 'devise'
+gem 'ancestry'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
+group :development do
+	gem 'sqlite3'	
+end
 
-gem 'sqlite3'
-gem 'bcrypt-ruby'
+#gem 'bcrypt-ruby'
+gem 'twitter-bootstrap-rails'
+gem 'bootstrap-wysihtml5-rails'
+gem 'libv8', :platforms => :ruby
+gem 'therubyracer', '~> 0.11.1' 
+gem "less-rails"
+gem 'execjs'
 
 group :test, :development do
 	gem 'rspec-rails'
+	gem 'debugger'
+end
+
+group :production do
+  gem 'pg'  
 end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
@@ -24,10 +42,13 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+ 
+ 
 end
 
 gem 'jquery-rails'
-
+gem 'jquery-ui-rails'
+gem 'jquery-fileupload-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

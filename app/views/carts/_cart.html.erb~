@@ -11,7 +11,7 @@
 
 	<%= render(cart.line_items) %>
 	<tr>
-		<td colspan='2'><%= t :total %></td>
+		<td colspan='2'><%= t :total:</td>
 		<td><%= cart.total_price %></td>
 	</tr>
 </tbody>

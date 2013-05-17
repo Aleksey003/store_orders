@@ -1,4 +1,4 @@
-<h3><%= t(:product_categories) %>:</h3>
+<h3><%= t(:product_categories):</h3>
 <ul class='product_categoty'>
   <%= nested_categories @product_categories.arrange %>
 </ul>

@@ -2,4 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to t(:back), product_categories_path %>
+<%= link_to 'Back', product_categories_path %>

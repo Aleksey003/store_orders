@@ -1,16 +1,17 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
-  <b>Title post:</b>
-  <%= @post.title %>
+  <h1><%= @post.title %></h1>
+</p>
+
+<p>
+  <%= @post.body.html_safe %>
+</p>
+
+<p>
+  <%= @post.user.name if @post.user %>
 </p>
 
 
-<div class="content">
-<div id="page_content" class="mercury-region" data-type="editable">
-    <%= raw @post.body %>
-</div>
-</div>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+<%= link_to t(:edit), edit_post_path(@post), class:'btn'  %> |
+<%= link_to t(:back), posts_path class:'btn'%>

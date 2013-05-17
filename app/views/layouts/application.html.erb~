@@ -26,6 +26,10 @@
     					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   					</div>
 					</div>
+
+
+
+
         <div class='span4'>
           <div class="pull-right current_user">
               <% if user_signed_in? %>

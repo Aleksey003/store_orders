@@ -16,7 +16,7 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= t(:parent) %><br />
+    <%= t(:perent) %><br />
     <%= f.collection_select :parent_id, ProductCategory.order(:name), :id, :name, include_blank: true %>
   </div>
   <div class="actions">

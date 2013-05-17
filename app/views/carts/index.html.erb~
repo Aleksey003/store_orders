@@ -15,9 +15,11 @@
     <td><%= cart.updated_at.strftime("%B %d, %Y, %H:%M") %></td>
     <td><%= cart.user.name %></td>
     <td><%= cart.total_price %></td>
-    <td><%= link_to t(:show), cart,class:'btn btn-small' %>
+    <td><%= link_to 'Show', cart,class:'btn btn-small' %>
     <%= link_to t(:edit), edit_cart_path(cart),class:'btn btn-small' %>
     <%= link_to t(:destroy), cart, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-small' %></td>
   </tr>
 <% end %>
 </table>
+
+

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
   layout :layout_by_resource
   before_filter :set_i18n_locale_from_params
-
+  before_filter :current_cart
   protect_from_forgery
 
   def set_i18n_locale_from_params
@@ -15,18 +15,19 @@ class ApplicationController < ActionController::Base
       end
     end
   end
+  def current_cart
+    @current_cart = Cart.find(session[:cart_id])
+  rescue ActiveRecord::RecordNotFound
+    @current_cart = current_user.carts.create
+    session[:cart_id] = @current_cart.id
+    @current_cart
+  end
 
   def default_url_options
     {locale: I18n.locale}
   end
 
-  def current_cart
-    Cart.find(session[:cart_id])
-  rescue ActiveRecord::RecordNotFound    
-    cart = current_user.carts.create
-    session[:cart_id] = cart.id
-    cart
-  end 
+
 
 	rescue_from CanCan::AccessDenied do |exception|
   	redirect_to new_user_session_path, notice: exception.message
@@ -38,6 +39,6 @@ class ApplicationController < ActionController::Base
     else
       "application"
     end
-  end 
-  
+  end
+
 end

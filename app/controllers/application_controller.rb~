@@ -1,17 +1,44 @@
 class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
+  layout :layout_by_resource
+  before_filter :set_i18n_locale_from_params
+  before_filter :current_cart
   protect_from_forgery
-	rescue_from CanCan::AccessDenied do |exception|
 
-  	redirect_to :login, notice: exception.message
+  def set_i18n_locale_from_params
+    if params[:locale]
+      if I18n.available_locales.include?(params[:locale].to_sym)
+        I18n.locale = params[:locale]
+      else
+        flash.now[:notice] = "#{params[:locale]} translation not avaible"
+        logger.error flash.now[:notice]
+      end
+    end
+  end
+  def current_cart
+    @current_cart = Cart.find(session[:cart_id])
+  rescue ActiveRecord::RecordNotFound
+    @current_cart = current_user.carts.create
+    session[:cart_id] = @current_cart.id
+    @current_cart
+  end
+
+  def default_url_options
+    {locale: I18n.locale}
+  end
+
+
+
+	rescue_from CanCan::AccessDenied do |exception|
+  	redirect_to new_user_session_path, notice: exception.message
 	end
 
-
-  def current_user
-    @current_user ||= User.find_by_id(session[:user])
+  def layout_by_resource
+    if devise_controller?
+      "application_login"
+    else
+      "application"
+    end
   end
 
-  def logged_in?
-    current_user != nil
-  end
 end

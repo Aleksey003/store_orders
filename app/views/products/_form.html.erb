@@ -11,8 +11,8 @@
     </div>
   <% end %>
 
-  <div class="field">    
-    <%= f.text_field :title, class: "span6", placeholder: :title %>    
+  <div class="field">
+    <%= f.text_field :title, class: "span6", placeholder: :title %>
   </div>
   <div class="field">
     <%= f.text_area :description, rows:10 , class: 'span6', placeholder: :description %>
@@ -23,9 +23,9 @@
   <div class="field">
     <%= f.label :product_category %><%= f.select  :product_category_id,  ProductCategory.all.collect{|s| [s.name, s.id]}, {:prompt=>true}  %>
   </div>
- 
+
   <div class="actions">
-    <%= f.submit 'Save', class:'btn btn-success' %>
+    <%= f.submit t(:save), class:'btn btn-success' %>
   </div>
 <% end %>
 
@@ -143,11 +143,11 @@
   $(function () {
       // Initialize the jQuery File Upload widget:
       $('#fileupload').fileupload();
-      // 
+      //
       // Load existing files:
       // "http://localhost:3000/assets?locale=ru"
       $.getJSON($('#fileupload').prop('action') , function (files) {
-        var fu = $('#fileupload').data('blueimpFileupload'), 
+        var fu = $('#fileupload').data('blueimpFileupload'),
           template;
         fu._adjustMaxNumberOfFiles(-files.length);
         console.log(files);

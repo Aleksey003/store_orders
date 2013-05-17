@@ -1,0 +1,34 @@
+<div class='span9 offset3'>
+    <h1><%= t(".Products") %></h1>
+    <p><%= link_to t(:show_quantity), show_quantity_products_path(products:@products.map(&:id)), class: 'btn btn-primary', remote: true %></br></p>
+</div>
+
+<ul class="thumbnails">
+    <% @products.each do |product| %>
+        <li class='span3'>
+            <div class='thumbnail'>
+                <%= link_to  product, class:'title-link' do %>
+                	<h3><%= truncate(product.title, length: 20) %></h3>
+            	  	<%= image_tag(product.assets.first.data.url(:medium)) unless product.assets.first.nil? %>
+                <% end %>
+
+                <p>UAN <%= product.price %></p>
+                <p>PLU: <%= product.id %></p>
+                <p id=<%="quantity#{product.id}" %>></p></br>
+								<%= link_to t(:edit), edit_product_path(product), class: "btn btn-link" if can? :update, product %>
+
+                <% if can? :delete, product %>
+        	        <%= link_to t(:destroy), product, method: :delete, confirm: "Are you sure?", class: "btn btn-link" %>
+                <% end %>
+                <p><%= link_to t('.Add_to_cart'), line_items_path(product_id: product), method: :post, class: 'btn btn-primary', remote: true %></p>
+            </div>
+
+        </li>
+    <% end %>
+<ul>
+<div class='span9 offset3'>
+    <%= will_paginate @products %>
+    <%= link_to t(:NewProduct), new_product_path, class:'btn btn-success' if can? :create, Product %>
+
+
+</div>

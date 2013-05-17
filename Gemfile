@@ -12,14 +12,14 @@ gem 'ancestry'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development do
-	gem 'sqlite3'	
+	gem 'sqlite3'
 end
 
 #gem 'bcrypt-ruby'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-wysihtml5-rails'
 gem 'libv8', :platforms => :ruby
-gem 'therubyracer', '~> 0.11.1' 
+gem 'therubyracer', '~> 0.11.1'
 gem "less-rails"
 gem 'execjs'
 
@@ -29,7 +29,7 @@ group :test, :development do
 end
 
 group :production do
-  gem 'pg'  
+  #gem 'pg'
 end
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,8 +42,8 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
- 
- 
+
+
 end
 
 gem 'jquery-rails'
