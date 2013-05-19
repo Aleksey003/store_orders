@@ -6,7 +6,7 @@
     <th><%= t(:last_update) %></th>
     <th><%= t(:user) %></th>
     <th><%= t(:total) %></th>
-    <th><%= t(:actions) %></th>
+    <th></th>
   </tr>
 
 <% @carts.each do |cart| %>
@@ -15,9 +15,9 @@
     <td><%= cart.updated_at.strftime("%B %d, %Y, %H:%M") %></td>
     <td><%= cart.user.name %></td>
     <td><%= cart.total_price %></td>
-    <td><%= link_to t(:show), cart,class:'btn btn-small' %>
-    <%= link_to t(:edit), edit_cart_path(cart),class:'btn btn-small' %>
-    <%= link_to t(:destroy), cart, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-small' %></td>
+    <td><%= link_to "<i class='icon-zoom-in'></i>".html_safe, cart,class:'btn btn-mini' %>
+    <%= link_to "<i class='icon-edit'></i>".html_safe, edit_cart_path(cart),class:'btn btn-mini' %>
+    <%= link_to "<i class='icon-remove'></i>".html_safe, cart, method: :delete, data: { confirm: 'Are you sure?' },class:'btn btn-mini' %></td>
   </tr>
 <% end %>
 </table>

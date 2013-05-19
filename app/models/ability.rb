@@ -12,24 +12,31 @@ class Ability
                 post.iser_id = user.id
             end
         elsif user.customer?
+
             can :show_quantity, Product
             can :read, Product
-            can :read, Post            
-            can :create, Order
-            can :create, Cart
+            can :read, Post 
             can :create, LineItem
-            can :manage, Order do |order|
-                order.user_id = user.id && order.status = 'new'
-            end
-            can :manage, Cart do |cart|
-                cart.user_id = user.id
+
+            can :create, Order
+            can :read, Order, :user_id => user.id 
+                        
+            can :manage, Order, :user_id => user.id
+                
+            can :create, Cart
+            can :read, Cart, :user_id => user.id
+            can :manage, Cart, :user_id => user.id
+            
+            can :create, LineItem
+            can :read, LineItem do |line_item|
+                line_item.user_id = user.id
             end
             can :manege, LineItem do |line_item|
                 line_item.user_id = user.id
             end
-        else
-            can :manege, :all
-	   end
+        end
+            
+	   
     end
 
     # Define abilities for the passed in user here. For example:

@@ -3,7 +3,7 @@ class CartsController < ApplicationController
   # GET /carts.json
   load_and_authorize_resource
   def index
-    @carts = Cart.all
+    @carts = Cart.accessible_by(current_ability).paginate(page: params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

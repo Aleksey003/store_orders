@@ -18,9 +18,13 @@ class ApplicationController < ActionController::Base
   def current_cart
     @current_cart = Cart.find(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
-    @current_cart = current_user.carts.create
-    session[:cart_id] = @current_cart.id
-    @current_cart
+    if current_user.nil?
+      nil
+    else
+      @current_cart = current_user.carts.create
+      session[:cart_id] = @current_cart.id
+      @current_cart
+    end
   end
 
   def default_url_options
@@ -30,7 +34,7 @@ class ApplicationController < ActionController::Base
 
 
 	rescue_from CanCan::AccessDenied do |exception|
-  	redirect_to new_user_session_path, notice: exception.message
+  	redirect_to new_user_session_path, notice: "You are not authorized to access this page"
 	end
 
   def layout_by_resource

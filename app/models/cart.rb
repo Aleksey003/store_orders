@@ -2,6 +2,7 @@ class Cart < ActiveRecord::Base
   # attr_accessible :title, :body
   has_many :line_items, dependent: :destroy
   belongs_to :user
+  self.per_page = 20
   def add_product(product_id)
   	current_line = line_items.find_by_product_id(product_id)
   	if current_line
@@ -15,5 +16,9 @@ class Cart < ActiveRecord::Base
 
   def total_price
     line_items.to_a.sum {|item| item.quantity * item.price}
+  end
+
+  def total_quantity
+    line_items.to_a.sum {|item| item.quantity}
   end
 end

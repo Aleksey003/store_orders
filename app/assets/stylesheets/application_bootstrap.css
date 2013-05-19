@@ -8,12 +8,14 @@
   }
 
   .current_user{
-    margin: 10px;
+    float: right;
+    padding-top: 20px;
     font-size: 14px;
     color: rgb(216, 209, 209) ;
   }
   .current_user a {
   color: #1b1b1b ;
+
   }
 	.ui-dialog .ui-dialog-title {
 		float: left;

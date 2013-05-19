@@ -6,7 +6,7 @@ class Product < ActiveRecord::Base
 	has_many :assets, dependent: :destroy
 	has_many :orders, through: :line_items
 	accepts_nested_attributes_for :assets, :allow_destroy => true
-	self.per_page = 12
+	self.per_page = 5
 
 	validates :product_category, presence: true
 	validates :title, presence: true

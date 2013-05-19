@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   # GET /orders.json
   load_and_authorize_resource
   def index
-    @orders = Order.paginate(page: params[:page]).order('created_at')
+    @orders = Order.accessible_by(current_ability).paginate(page: params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

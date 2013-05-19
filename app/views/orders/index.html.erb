@@ -22,9 +22,9 @@
     <td><%= order.email %></td>
     <td><%= order.comment %></td>
     <td>
-    	<%= link_to :show, order, class:'btn btn-mini' %>
-    	<%= link_to :edit, edit_order_path(order), class:'btn btn-mini' if can? :update, order %>
-    	<%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-mini' if can? :destroy, order %>
+    	<%= link_to "<i class='icon-zoom-in'></i>".html_safe, order, class:'btn btn-mini' %>
+    	<%= link_to "<i class='icon-edit'></i>".html_safe, edit_order_path(order), class:'btn btn-mini' if can? :update, order %>
+    	<%= link_to "<i class='icon-remove'></i>".html_safe, order, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-mini' if can? :destroy, order %>
     </td>
   </tr>
 <% end %>

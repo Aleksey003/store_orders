@@ -30,13 +30,15 @@ ru:
   created: Создан
   last_update: Последнее обновление
   user: Пользователь
-  number_order: Номер документа
+  number_order: №
   date_order:   Дата
   comments:  Комментарий
   status: Статус
   title: Название
   product_categories: Категории продуктов
   parent: Родитель
+  create: Создать
+  order_date: Дата
 
 
   layouts:

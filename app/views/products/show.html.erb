@@ -3,7 +3,7 @@
 	<div class='span4'>
 		<div id="myCarousel" class="carousel slide">
 			<div class="carousel-inner">
-				<% @product.assets.each do |assets| %>
+				<% @product_assets.each do |assets| %>
     				<div class="item">
     					<%= image_tag(assets.data.url(:medium))%>
     					<div class='carousel-caption'>

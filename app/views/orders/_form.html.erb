@@ -12,17 +12,17 @@
     </div>
   <% end %>
    <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t(:create), class:'btn btn-success' %>
   </div>
   <div class="field">
     <%= t(:order_date) %>
-    <%= f.text_field :order_date %>
-    <%= f.label :email %>
+    <%= f.text_field :order_date %></br>
+    Email
     <%= f.text_field :email %>
   </div>
    <div class="field">
-    <%= f.label :comment %><br />
-    <%= f.text_field :comment %>
+    <%= t(:comments)  %><br />
+    <%= f.text_field :comment, class: "span9" %>
   </div>
  
 <% end %>
