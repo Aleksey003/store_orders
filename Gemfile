@@ -8,6 +8,7 @@ gem 'rails', '3.2.11'
 gem 'savon', "~> 2.2.0"
 gem 'devise'
 gem 'ancestry'
+gem 'paperclip-dropbox'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

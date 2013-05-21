@@ -36,7 +36,7 @@
     <span class="btn btn-success fileinput-button">
       <i class="icon-plus icon-white"></i>
       <span>Add files...</span>
-      <%= f.file_field :data %>
+      <%= f.file_field :data, multiple: true, name: 'asset[data]'%>
       <%= f.hidden_field :product_id, value: @product.id %>
     </span>
     <button type="submit" class="btn btn-primary start">
@@ -142,7 +142,8 @@
 <script type="text/javascript" charset="utf-8">
   $(function () {
       // Initialize the jQuery File Upload widget:
-      $('#fileupload').fileupload();
+      $('#fileupload').fileupload(
+        {paramName: 'asset[data]'});
       //
       // Load existing files:
       // "http://localhost:3000/assets?locale=ru"
