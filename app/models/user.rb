@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   :storage => :dropbox,
     :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",    
     :dropbox_options => {
-      :path => proc { |style| "#{style}/#{id}_#{avatar.original_filename}" }
+      :path => proc { |style| "#{style}/#{id}_#{logo.original_filename}" }
     }
 
   def	method_missing method_name, *arg

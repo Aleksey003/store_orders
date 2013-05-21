@@ -3,7 +3,12 @@ class Asset < ActiveRecord::Base
   attr_accessible :caption, :data, :product_id
   has_attached_file :data, :styles => { 
     :medium => "300x300>",
-    :thumb => "50x50>"}
+    :thumb => "50x50>"},
+    :storage => :dropbox,
+    :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",    
+    :dropbox_options => {
+      :path => proc { |style| "product/#{style}/#{id}_#{data.original_filename}" }
+    }
    
   #
   include Rails.application.routes.url_helpers
