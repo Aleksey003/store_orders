@@ -7,70 +7,55 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <div class='container'>
+    <div id='wrapper'>
       <!-- header -->
-      <div class='row'>
+      <div id='header'>
 
-        <div class='span4 logo'>
+        <div id='page-title'>
           <h1> Shopping cart </h1>
         </div>
 
-        <div class='span4'>
-        	<a href="#myModal" role="button" data-toggle="modal">
-            <h4><%= t(:shopping_cart) %> <i class="icon-shopping-cart"></i></h4>
-          </a>
-          <p><span id="cart_total_quantity"><%= @current_cart.total_quantity if @current_cart %></span> item(s) - UAN  
-            <span id="cart_total_price"><%= @current_cart.total_price if @current_cart %></span> </p>
-
-					<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
- 				 		<div class="modal-header">
-    					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
- 				 		</div>
-  					<div id='cart' class="modal-body">
-   						<%= render @current_cart %>
-  					</div>
-  					<div class="modal-footer">
-    					<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-  					</div>
-					</div>
+        <!-- nav -->
+        <div id='main-nav'>        
+          <%= render "./layouts/menu" %>         
         </div>
-        <div class='span4'>
-          <div class="current_user">
-            <% if user_signed_in? %>
+        <p id='utility'>
+          <span class="customer">
+              <% if user_signed_in? %>
               <%= link_to "<i class='icon-user'></i>".html_safe + ": #{current_user.name}", current_user %>
               <%= link_to "<i class='icon-off'></i> ".html_safe+t(".Logout"), destroy_user_session_path, method: :delete %>
             <% else %>
                <%= link_to t(".Login"), new_user_session_path %>
-            <% end %>
-          </div>
-        </div>
+            <% end %>       
+          </span>
+          <a class="cart" href="/cart">
+            <span><i>0 items </i> <b>$0.00</b></span>
+          </a>
+        </p>
       </div>
+        <!-- end nav -->
+
+        
       <!-- end header -->
 
-      <!-- nav -->
-      <div class='row'>
-        <div class='span12'>
-          <div class='navbar navbar-inverse'>
-            <%= render "./layouts/menu" %>
-          </div>
-        </div>
-      </div>
-      <!-- end nav -->
+     
 
-        <div class='row'>
-            <div class='span3'>
+        <div id='content'>
+          <div id='sub'>
+            <div class='sidebar'>
               <%= render "./layouts/product_catalog" %>
             </div>
-            <div class='span9'>
-              <ul class='breadcrumb'>
-                <li></li>
-              </ul>
+            <div class='main'>              
               <p id="notice"><%= notice %></p>
               <%= yield %>
             </div>
-		</div>
+          </div>  
+		    </div>
 
-<% debug params if Rails.env.development? %>
-<% debug session[:user_id] if Rails.env.development? %>
+    <div id='footer-wrapper'>
+    </div>
+
+<%= debug params if Rails.env.development? %>
+<%= debug session[:user_id] if Rails.env.development? %>
 </body>
 </html>

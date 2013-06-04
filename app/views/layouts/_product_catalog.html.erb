@@ -1,11 +1,9 @@
-<ul class='breadcrumb'>
-	<li><%= t(".Categories") %></li>
-</ul>
-<div style="overflow-y: scroll; overflow-x: hidden; height: 500px;">
-	<ul class='nav nav-list'>
+<h2><%= t(".Categories") %></h2>
+
+<ul class='nav nav-list'>
 		<%= nested_categories_menu ProductCategory.scoped.arrange %>
-	</ul>
-</div>
+</ul>
+
 
 
 

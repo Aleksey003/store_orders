@@ -2,7 +2,7 @@ class Ability
   include CanCan::Ability
 
     def initialize(user)
-  	    user ||= User.new
+  	    user ||= User.new(role:'guest')
 	    if user.admin?
             can :manage, :all
         elsif user.moderator?
@@ -34,6 +34,32 @@ class Ability
             can :manege, LineItem do |line_item|
                 line_item.user_id = user.id
             end
+
+        elsif user.guest?
+
+            can :show_quantity, Product
+            can :read, Product
+            can :read, Post 
+            can :create, LineItem
+            can :read, ProductCategory
+
+            can :create, Order
+            can :read, Order, :user_id => user.id 
+                        
+            can :manage, Order, :user_id => user.id
+                
+            can :create, Cart
+            can :read, Cart, :user_id => user.id
+            can :manage, Cart, :user_id => user.id
+            
+            can :create, LineItem
+            can :read, LineItem do |line_item|
+                line_item.user_id = user.id
+            end
+            can :manege, LineItem do |line_item|
+                line_item.user_id = user.id
+            end
+            
         end
             
 	   

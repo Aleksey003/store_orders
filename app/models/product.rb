@@ -12,6 +12,11 @@ class Product < ActiveRecord::Base
 	validates :title, presence: true
 
 	before_destroy :check_references_by_line_items
+	before_save :default_attr
+
+	def default_attr
+		self.price ||= 0
+	end
 
 	def check_references_by_items
 		if line_items.empty?
