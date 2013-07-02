@@ -12,18 +12,18 @@
       <div id='header'>
 
         <div id='page-title'>
-          <h1> Shopping cart </h1>
+          <h1><%= link_to 'Shopping cart', root_path %></h1>
         </div>
 
         <!-- nav -->
-        <div id='main-nav'>        
+                
           <%= render "./layouts/menu" %>         
-        </div>
+        
         <p id='utility'>
           <span class="customer">
               <% if user_signed_in? %>
-              <%= link_to "<i class='icon-user'></i>".html_safe + ": #{current_user.name}", current_user %>
-              <%= link_to "<i class='icon-off'></i> ".html_safe+t(".Logout"), destroy_user_session_path, method: :delete %>
+              <%= link_to "#{current_user.name}", current_user %>
+              <%= link_to t(".Logout"), destroy_user_session_path, method: :delete %>
             <% else %>
                <%= link_to t(".Login"), new_user_session_path %>
             <% end %>       
@@ -54,6 +54,60 @@
 
     <div id='footer-wrapper'>
     </div>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+  /*-------------------------------------------    
+      On State
+  -------------------------------------------*/
+$('#main-nav li').each(function() {
+  var href = $(this).find('a').attr('href');
+  if (href === window.location.pathname) {
+    $(this).addClass('on');
+  }
+});
+
+  /*-------------------------------------------    
+      Grey Initial Values
+  -------------------------------------------*/
+  var filled = $('input.filled');
+    
+  if(filled.length > 0){
+    for(var i = 0; i < filled.length; i++){
+              
+      $(filled[i]).addClass('empty');
+      filled[i].initialValue = filled[i].value;
+      
+      filled[i].onclick = filled[i].onfocus = function(){
+        $(this).removeClass('empty');
+        $(this).addClass('filled');
+        if(this.value == this.initialValue){
+          this.value= '';
+        }
+      }
+      
+      filled[i].onblur = function(){
+        if(this.value == this.initialValue || this.value == ''){
+          $(this).addClass('empty');
+          $(this).removeClass('filled');
+          this.value = this.initialValue;
+        }else{
+          $(this).addClass('empty');
+          $(this).removeClass('filled');
+        }
+      }
+    }
+  }
+  
+  else
+  {
+    return; 
+  }
+  
+});
+
+</script>
 
 <%= debug params if Rails.env.development? %>
 <%= debug session[:user_id] if Rails.env.development? %>

@@ -7,15 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class='container'>
-    <div class="row">
-      <div class="span4 offset4">
+  <div id='wrapper'>
+    <div id='content'>
+      <div id='template'>
+        <div id='customer'>      
         <p id="notice"><%= notice %></p>
         <%= yield %>
+        </div>
       </div>
     </div>           
   </div>
-<%= debug params if Rails.env.development? %>
-<%= debug session[:user_id] if Rails.env.development? %>
+<% debug params if Rails.env.development? %>
+<% debug session[:user_id] if Rails.env.development? %>
 </body>
 </html>

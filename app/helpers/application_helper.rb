@@ -3,7 +3,7 @@ module ApplicationHelper
 	def current_or_guest_user
     	if current_user
       		if session[:guest_user_id]
-        		logging_in
+        		#logging_in login user and destroy guest
         		guest_user.destroy
         		session[:guest_user_id]=nil      
       		end

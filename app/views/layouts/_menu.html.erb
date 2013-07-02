@@ -1,14 +1,28 @@
 
+   
     <ol id='main-nav' >
-        <li><%= link_to "<i class='icon-home'></i>".html_safe+t('.home'), root_path %></li>
+        
         <li><%= link_to "<i class='icon-gift'></i>".html_safe+t('.products'), products_path %></li>
         <li><%= link_to "<i class='icon-pencil'></i>".html_safe+t('.posts'), posts_path %></li>
-    		<li><%= link_to "<i class='icon-briefcase'></i>".html_safe+t('.orders'), orders_path %></li>
-        <% if current_or_guest_user.admin? or current_or_guest_user.moderator? %>    
-        <li><%= link_to "<i class='icon-shopping-cart'></i>".html_safe+t(:cart), carts_path %></li>
-        <% end %>
-        <li><%= link_to "<i class='icon-folder-open'></i>".html_safe+t('.category_product'), product_categories_path if can? :update, ProductCategory%></li>
-        <li><%= link_to t('.state_product'), product_states_path if can? :update, ProductState%></li>
-        <li><%= link_to "<i class='icon-user'></i>".html_safe+t('.users'), users_path if can? :update, User%></li>
+    	<li><%= link_to "<i class='icon-briefcase'></i>".html_safe+t('.orders'), orders_path %></li>
+        
+        <% if current_or_guest_user.admin? or current_or_guest_user.moderator? %> 
+        <li class='with-dropdown'>
+            <a title="" href="#">Catalog</a>
+
+            <ul>                
+                <li><%= link_to "<i class='icon-shopping-cart'></i>".html_safe+t(:cart), carts_path %></li>
+                <li><%= link_to "<i class='icon-folder-open'></i>".html_safe+t('.category_product'), product_categories_path if can? :update, ProductCategory%></li>
+                <li><%= link_to t('.state_product'), product_states_path if can? :update, ProductState%></li>
+                <li><%= link_to t('.users'), users_path if can? :update, User%></li>
+            </ul>
+        </li>
+        <% end %> 
+     
     </ol>
+
+
+
+
+
 
