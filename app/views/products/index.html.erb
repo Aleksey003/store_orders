@@ -1,39 +1,37 @@
-<div class='span9 offset3'>
-    <h1><%= t(".Products") %></h1>
+
+
+
+    <h2><%= t(".Products") %></h2>
+    <% if false %>
     <p><%= link_to t(:show_quantity), show_quantity_products_path(products:@products.map(&:id)), class: 'btn btn-primary', remote: true %></br></p>
-</div>
-
-<ul class="thumbnails">
-    <% @products.each do |product| %>
-        <li class='span9'>
-            <div class='thumbnail'>
-            	<div class='row'>
-								<div class='span2'>
-								 	<%= link_to  product do %>
-										<%= image_tag(product.assets.first.data.url(:medium)) unless product.assets.first.nil? %>
-									<% end %>
-								</div>
-								<div class='span3'>
-										<%= link_to  product do %>
-									 		<h3><%= truncate(product.title, length: 20) %></h3>
-									 	<% end %>
-									 <%= product.description %>
-								</div>
-								<div class='span3'>
-									 <p>UAN <%= product.price %></p>
-									 <p>PLU: <%= product.id %></p>
-									 <p id=<%="quantity#{product.id}" %>></p>
-									 <p><%= link_to t('.Add_to_cart'), line_items_path(product_id: product), method: :post, class: 'btn btn-primary', remote: true %></p></br>
-									 <%= link_to t(:edit), edit_product_path(product), class: "btn btn-link" if can? :update, product %>
-									 <%= link_to t(:destroy), product, method: :delete, confirm: "Are you sure?", class: "btn btn-link"  if can? :delete, product %>
-								</div>
-            	</div>
-            </div>
-        </li>
     <% end %>
-<ul>
 
-<div class='span9 offset3'>
-    <%= will_paginate @products %>
-    <%= link_to t(:NewProduct), new_product_path, class:'btn btn-success' if can? :create, Product %>
-</div>
+
+    	<% @products.each do |product| %>
+    		<div class='item'>        		
+				
+				<p class="product-name">				
+				<%= link_to  product do %>
+					<%= image_tag(product.assets.first.data.url(:medium)) unless product.assets.first.nil? %>
+					 <%= product.title %>
+				<% end %>
+				</p>		
+								
+				<p>UAN <%= product.price %> PLU: <%= product.id %> </p>
+				
+				<p id=<%="quantity#{product.id}" %>></p>
+				<p class='act'>
+					<%= link_to t('.Add_to_cart'), line_items_path(product_id: product), method: :post, class: 'cta', remote: true %>
+				</p>				
+			</div>	                   
+    	<% end %>
+    	<div class='new_btn'>
+    		<p><%= link_to t(:NewProduct), new_product_path, class:'btn btn-success' if can? :create, Product %></p>
+    		<%= will_paginate @products %>	
+    	</div>
+
+    
+	
+	
+    
+

@@ -10,50 +10,53 @@
     <div id='wrapper'>
       <!-- header -->
       <div id='header'>
-
         <div id='page-title'>
           <h1><%= link_to 'Shopping cart', root_path %></h1>
         </div>
-
-        <!-- nav -->
-                
-          <%= render "./layouts/menu" %>         
-        
+        <!-- nav -->                
+        <%= render "./layouts/menu" %>        
         <p id='utility'>
           <span class="customer">
-              <% if user_signed_in? %>
-              <%= link_to "#{current_user.name}", current_user %>
-              <%= link_to t(".Logout"), destroy_user_session_path, method: :delete %>
+            <% if user_signed_in? %>
+              <%= link_to "<i class='icon-user'></i>#{current_user.name}".html_safe, current_user %>
+              <%= link_to "<i class='icon-on-off'></i>".html_safe, destroy_user_session_path, method: :delete %>
             <% else %>
                <%= link_to t(".Login"), new_user_session_path %>
             <% end %>       
           </span>
-          <a class="cart" href="/cart">
-            <span><i>0 items </i> <b>$0.00</b></span>
-          </a>
-        </p>
-      </div>
+          <%= link_to (current_cart), class: 'cart' do %> 
+            <span><i id="cart_total_quantity"> <%= @current_cart.total_quantity if @current_cart %> </i>
+             <b id="cart_total_price"> <%= @current_cart.total_price if @current_cart %> </b></span>
+          <% end %>
+        </p>      
         <!-- end nav -->
-
-        
+      </div>        
       <!-- end header -->
 
      
-
-        <div id='content'>
-          <div id='sub'>
+      <!-- content -->
+      <div id='content'>          
             <div class='sidebar'>
               <%= render "./layouts/product_catalog" %>
             </div>
-            <div class='main'>              
-              <p id="notice"><%= notice %></p>
+            <div class='main'>            
+              <% if notice %> <p id="notice"><%= notice %></p> <% end %>
               <%= yield %>
-            </div>
-          </div>  
-		    </div>
-
-    <div id='footer-wrapper'>
+            </div>         
+      </div>
+      <!-- end content -->
     </div>
+    <!-- footer -->
+    <div id='footer-wrapper'>
+      <div id='footer'>        
+          <p>Контакты тел</p>
+          <p>Контакты тел</p>
+          <p>Контакты тел</p>
+          <p>Контакты тел</p>
+          <p>Контакты тел</p>        
+      </div>  
+    </div>
+    <!-- end footer -->
 
 <script type="text/javascript">
 $(document).ready(function()
@@ -109,7 +112,7 @@ $('#main-nav li').each(function() {
 
 </script>
 
-<%= debug params if Rails.env.development? %>
-<%= debug session[:user_id] if Rails.env.development? %>
+<% debug params if Rails.env.development? %>
+<% debug session[:user_id] if Rails.env.development? %>
 </body>
 </html>

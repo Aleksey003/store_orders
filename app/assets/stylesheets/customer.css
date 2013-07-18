@@ -72,6 +72,9 @@ a.btn {
     padding: 4px 8px;
     text-shadow: 0 1px 1px #FFFFFF;
 }
+a.btn-mini {    
+    padding: 0px 2px;    
+}
 .action_bottom {
     border-top: 1px solid #EDEDED;
     margin-top: 20px;

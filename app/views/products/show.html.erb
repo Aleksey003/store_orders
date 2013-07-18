@@ -1,52 +1,91 @@
-<p><h1><%= @product.title %></h1></p>
-<div class='row'>
-	<div class='span4'>
-		<div id="myCarousel" class="carousel slide">
-			<div class="carousel-inner">
-				<% @product_assets.each do |assets| %>
-    				<div class="item">
-    					<%= image_tag(assets.data.url(:medium))%>
-    					<div class='carousel-caption'>
-    						<h5><%= @product.title %></h5>
-    					</div>
-    				</div>
-    			<% end %>
-  			</div>
-  			<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-  			<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-		</div>
-	</div>
-	<div class='span5'>
-		<p><strong class="label label-info"><%= t(:price) %> <%= @product.price%></strong></p>
-		<p>
-  			<b><%= t(:product_state) %>:</b>
-  			<%= @product.product_state.name unless @product.product_state.nil? %></br>
-  			<b><%= t(:product_category) %>:</b>
-  			<%= @product.product_category.name %>
-		</p>
-		<p><span id='product_quantity' > </span></p></br>
-		<%= link_to t(:show_quantity), product_path(@product, show_quantity: true), remote: true, class: 'btn btn-small btn-info' %>
-	</div>
-</div>
-<div class="tabbable">
-	<ul class="nav nav-tabs">
-    	<li class="active"><a href="#tab1" data-toggle="tab"><%= t(:description) %></a></li>
-    	<li><a href="#tab2" data-toggle="tab"><%= t(:related_products) %></a></li>
-  	</ul>
-  	<div class="tab-content">
-    	<div class="tab-pane active" id="tab1">
-      		<p><%= @product.description %></p>
-    	</div>
-    	<div class="tab-pane" id="tab2">
-      		<p>Related products...</p>
-    	</div>
-  	</div>
-</div>
+<div class="product-container">  
+  <div class="product-detail">
 
+    <h2><%= @product.title %></h2>
+    <p class="sale"> sale</p>
+    <p class="brand"><%= @product.product_category.name %></p>
+    
 
-<%= link_to t(:edit), edit_product_path(@product), class: 'btn' if can? :update, @product%> |
+    <div class="product-mid">
+      <p class="price"><span><%= @product.price%></span></p>
+      <p>
+        <b><%= t(:product_state) %>:</b>
+        <%= @product.product_state.name unless @product.product_state.nil? %></br>
+        <p><span id='product_quantity' > </span></p></br>    
+      </p>
+      <p class='stock'></p>
+      <p class='act'>
+        <%= form_tag ({controller:'line_items', action:'create'} ) do %>
+          <%= text_field_tag :quantity %>
+          <%= hidden_field_tag  :product_id, @product.id %>  </br>       
+          <%= submit_tag "Update", class: 'cta' %>
+        <% end %>  
+        <% if false %>
+        <%= link_to t('.Add_to_cart'), line_items_path(product_id: @product), method: :post, class: 'cta', remote: true %>
+        <% end %>
+      </p>
+    </div>
+
+    <ul class="share-list">
+      <li><%= link_to t(:show_quantity), product_path(@product, show_quantity: true), remote: true, class: 'btn' %></li>      
+      <li><%= link_to "<li>#{t(:edit)}</li>".html_safe, edit_product_path(@product),  class: 'btn' if can? :update, @product %></li>
+    </ul>
+
 <%= link_to t(:back), products_path, class: 'btn' %> |
+  </div>
+
+
+  <div id="product-gallery">
+    <div id="slides">
+      <% @product_assets.each do |assets| %>          
+        <div class="slide"><%= image_tag(assets.data.url(:medium), size: "300x300") %></div>
+      <% end %>
+    </div>
+    <div id="menu">
+      <ul class="slide-list">
+        <li class="fbar">&nbsp;</li>
+        <% @product_assets.each do |assets| %>
+          <li class="menuItem"> <a href=""> <%= image_tag(assets.data.url(:thumb), class:"menu-image") %> </a></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>    
+    
+  
+</div>
 
 <script type="text/javascript">
-	$('.carousel').carousel({interval: 8000})
-</script>
+
+  var totWidth = 0;
+  var positions = new Array();
+
+  $('#slides .slide').each (function(i)
+  {
+          positions[i] = totWidth;
+          totWidth += $(this).width();
+
+          if (!$(this).width())
+          {
+                  alert("Please, fill in width & height for all your images!");
+                  return false;
+          }
+  });
+
+  $('#slides').width(totWidth);
+  /* Change the  cotnainer div's width to the exacr width of all the slides combined  */
+
+  $('#menu ul li a').click(function(e){
+          /* On a thumbnail click*/
+          $('li.menuItem').removeClass('act').addClass('inact');
+          $(this).parent().addClass('act');
+
+          var pos = $(this).parent().prevAll('.menuItem').length;
+          $('#slides').stop().animate({marginLeft: -positions[pos]+'px'}, 450);
+
+          e.preventDefault();
+  });
+  $('#menu ul li.menuItem:first').addClass('act').siblings().addClass('inact');
+
+  </script>
+
+

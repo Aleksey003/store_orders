@@ -1,21 +1,24 @@
-<ul class='breadcrumb'>
-	<li><%= t(:cart) %></li>
-</ul>
-<table class='table table-bordered table-hover'>
-	<tr class='info'>
-		<td><%= t(".Product") %> </td>
-		<td><%= t(".Quantity") %> </td>
-		<td><%= t(".Summ") %></td>
-	</tr>
+<h2>Корзиина</h2>
+<table id = 'cartform' class='table-list'>
+	<thead>
+		<tr>
+			<th><%= t(".Product") %></th>
+			<th><%= t(".Quantity") %></th>
+			<th>Цена</th>
+			<th><%= t(".Summ") %></th>
+		</tr>
+	</thead>	
 	<tbody>
-
-	<%= render(cart.line_items) %>
-	<tr>
-		<td><%= t :total %></td>
-		<td><%= cart.total_quantity %></td>
-		<td><%= cart.total_price %></td>
-	</tr>
-</tbody>
+		<%= render(cart.line_items) %>	
+		<tr>		
+			<td><%= t :total %></td>
+			<td><%= cart.total_quantity %></td>
+			<td  colspan="2"><%= cart.total_price %></td>
+		</tr>
+	</tbody>
 </table>
-<%= link_to t(".Empty_сart"), cart, method: :delete, confirm: "Are you sure?", class:'btn btn-primary' %>
-<%= link_to t(".Checkout"), new_order_path, class:'btn btn-success' %>
+<div id='checkout'>
+	<p class='act'><%= link_to 'Оформить', new_order_path, class:'cta' %></p>
+	<p class='cta-clear'><%= link_to t(".Empty_сart"), cart, method: :delete, confirm: "Are you sure?", class:"btn-mini" %></p>	
+</div>
+

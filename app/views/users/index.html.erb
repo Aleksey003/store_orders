@@ -2,15 +2,17 @@
 <% if notice %>
 <p id="notice"><%= notice %>
 <% end %>
-<table class="table table-striped">
-  <tr>
- 		<th><%= t(:logo) %></th>
-    <th><%= t(:name) %></th>
-    <th>Email %></th>
-    <th><%= t(:discount) %></th>
-    <th><%= t(:parent) %></th>
-    <th><%= t(:actions) %></th>  
-  </tr>
+<table class="table-list">
+  <thead>
+    <tr>
+   		<th><%= t(:logo) %></th>
+      <th><%= t(:name) %></th>
+      <th>Email %></th>
+      <th><%= t(:discount) %></th>
+      <th><%= t(:parent) %></th>
+      <th><%= t(:actions) %></th>  
+    </tr>
+  </thead> 
 
 <% @users.each do |user| %>
   <tr>

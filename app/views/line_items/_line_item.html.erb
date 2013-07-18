@@ -2,8 +2,14 @@
 	<tr id='current_item'>
 <% else %> 
 	<tr>
-<% end %>	
-	<td><%= link_to line_item.product.title.to_s, product_path(line_item.product) %></td>
-	<td><%= line_item.quantity %></td>
-	<td><%= line_item.quantity * line_item.product.price %></td>
+<% end %>
+	<td class='cart-details'>
+		<h3><%= link_to  product_path(line_item.product)  do  %>
+				<span class='cart-image'><%= image_tag(line_item.product.assets.first.data.url(:thumb)) unless line_item.product.assets.first.nil? %></span>
+				<%= line_item.product.title %>
+			<% end %></h3>
+	</td>
+	<td class='updater act'><%= line_item.quantity %></td>
+	<td class='cart-price'><%= line_item.product.price %></td>
+	<td class='total'><%= line_item.quantity * line_item.product.price %></td>
 </tr>

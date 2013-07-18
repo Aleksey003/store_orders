@@ -12,20 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= f.text_field :title, class: "span6", placeholder: :title %>
+    <%= f.text_field :title, class: 'field', placeholder: :title %>
   </div>
   <div class="field">
-    <%= f.text_area :description, rows:10 , class: 'span6', placeholder: :description %>
+    <%= f.text_area :description, rows:10 , class: 'field', placeholder: :description %>
   </div>
   <div class="field">
-    <%= f.label :product_state %><%= f.select :product_state_id, ProductState.all.collect{|s| [s.name, s.id]}, {:prompt=>true} %>
+    
+    <%= f.select :product_state_id, ProductState.all.collect{|s| [s.name, s.id]}, {:prompt=>true} %>
   </div>
+  
   <div class="field">
-    <%= f.label :product_category %><%= f.select  :product_category_id,  ProductCategory.all.collect{|s| [s.name, s.id]}, {:prompt=>true}  %>
+    <%= f.select  :product_category_id,  ProductCategory.all.collect{|s| [s.name, s.id]}, {:prompt=>true}  %>
   </div>
 
   <div class="actions">
-    <%= f.submit t(:save), class:'btn btn-success' %>
+    <%= f.submit t(:save), class:'btn' %>
   </div>
 <% end %>
 

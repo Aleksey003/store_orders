@@ -1,21 +1,15 @@
 <h1><%= t(:list_state_product) %></h1>
 
-<table class='table table-bordered table-hover'>
-  <tr class='info'>
-    <th><%= t(:name) %></th>
-    <th><%= t(:actions) %></th>    
-  </tr>
 
-<% @product_states.each do |product_state| %>
-  <tr>
-    <td><%= product_state.name %></td>
-    <td>
-    <%= link_to 'Edit', edit_product_state_path(product_state), class:'btn btn-small' %>
-    <%= link_to 'Destroy', product_state, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-small' %></td>
-  </tr>
-<% end %>
-</table>
+<ol>
+  <% @product_states.each do |product_state| %>
+    <li>
+      <%= product_state.name %>      
+      <%= link_to "<i class='icon-edit'></i>".html_safe, edit_product_state_path(product_state), class:'btn btn-mini' %>
+      <%= link_to "<i class='icon-remove'></i>".html_safe, product_state, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-mini' %>
+    </li>
+  <% end %>
+</ol>
 
 <br />
-
 <%= link_to t(:new), new_product_state_path, class:'btn' %>
