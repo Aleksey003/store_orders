@@ -1,7 +1,7 @@
 
 
 
-    <h2><%= t(".Products") %></h2>
+    <h2 class="brdr-btm"><%= t(".Products") %></h2>
     <% if false %>
     <p><%= link_to t(:show_quantity), show_quantity_products_path(products:@products.map(&:id)), class: 'btn btn-primary', remote: true %></br></p>
     <% end %>
@@ -13,7 +13,7 @@
 				<p class="product-name">				
 				<%= link_to  product do %>
 					<%= image_tag(product.assets.first.data.url(:medium)) unless product.assets.first.nil? %>
-					 <%= product.title %>
+					 <%= truncate(product.title, length: 22) %>
 				<% end %>
 				</p>		
 								
@@ -25,9 +25,11 @@
 				</p>				
 			</div>	                   
     	<% end %>
-    	<div class='new_btn'>
-    		<p><%= link_to t(:NewProduct), new_product_path, class:'btn btn-success' if can? :create, Product %></p>
-    		<%= will_paginate @products %>	
+
+    	<%= will_paginate @products %>
+    	
+    	<div class='btn-bottom'>
+    		<p><%= link_to t(:NewProduct), new_product_path, class:'btn' if can? :create, Product %></p>    			
     	</div>
 
     

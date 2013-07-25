@@ -10,11 +10,13 @@
     <div id='wrapper'>
       <!-- header -->
       <div id='header'>
+        
+        <!-- nav --> 
         <div id='page-title'>
-          <h1><%= link_to 'Shopping cart', root_path %></h1>
+          <h1><%= link_to '<strong>Shopping cart</strong>'.html_safe, root_path %></h1>
         </div>
-        <!-- nav -->                
-        <%= render "./layouts/menu" %>        
+        <%= render "./layouts/menu" %>                
+               
         <p id='utility'>
           <span class="customer">
             <% if user_signed_in? %>
@@ -28,34 +30,37 @@
             <span><i id="cart_total_quantity"> <%= @current_cart.total_quantity if @current_cart %> </i>
              <b id="cart_total_price"> <%= @current_cart.total_price if @current_cart %> </b></span>
           <% end %>
-        </p>      
+        </p> 
+            
         <!-- end nav -->
       </div>        
       <!-- end header -->
 
      
-      <!-- content -->
-      <div id='content'>          
-            <div class='sidebar'>
-              <%= render "./layouts/product_catalog" %>
-            </div>
-            <div class='main'>            
-              <% if notice %> <p id="notice"><%= notice %></p> <% end %>
-              <%= yield %>
-            </div>         
+      <!-- middle -->
+      <div id='middle'>       
+            
+            <div id='container'>
+              <div id='content'>
+                <% if notice %> <p id="notice"><%= notice %></p> <% end %>
+                <%= yield %>
+              </div>
+            </div>  
+
+            <aside  id='sideLeft'>
+              <div class='sidebar'>
+                <%= render "./layouts/product_catalog" %>
+              </div>
+            </aside>       
       </div>
       <!-- end content -->
     </div>
     <!-- footer -->
-    <div id='footer-wrapper'>
-      <div id='footer'>        
-          <p>Контакты тел</p>
-          <p>Контакты тел</p>
-          <p>Контакты тел</p>
-          <p>Контакты тел</p>
-          <p>Контакты тел</p>        
-      </div>  
-    </div>
+    
+    <div id='footer-wrapper'>        
+        <%= render "./layouts/footer" %>      
+    </div>  
+    
     <!-- end footer -->
 
 <script type="text/javascript">
