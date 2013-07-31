@@ -1,33 +1,35 @@
-<div class="template_header">
-<h2 class="title"><%= t(".sign_in") %></h2>
-</div>
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {id:'customer_login'}) do |f| %>
-	
- 
-	<div class='clearfix large_form'> 
-		<%= f.label :email %>
-		<%= f.email_field :email, :autofocus => true, class: 'large' %> 
+<div id="customer">
+	<div class="template_header">
+	<h2 class="title"><%= t(".sign_in") %></h2>
 	</div>
-	
-	<div class='clearfix large_form'>
-		<%= f.label :password %>
-		<%= f.password_field :password, class: 'large' %>
-	
-	<div id="forgot_password">
-		<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  			<%= link_to t(".Forgot_your_password?"), new_password_path(resource_name) %><br />
-		<% end -%>
-	</div>
-	</div>
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {id:'customer_login'}) do |f| %>
+		
+	 
+		<div class='clearfix large_form'> 
+			<%= f.label :email, class:'login' %>
+			<%= f.email_field :email, :autofocus => true, class: 'large' %> 
+		</div>
+		
+		<div id='input_password' class='clearfix large_form'>
+			<%= f.label :password, class:'login' %>
+			<%= f.password_field :password, class: 'large' %>
+		
+		<div id="forgot_password">
+			<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
+	  			<%= link_to t(".Forgot_your_password?"), new_password_path(resource_name) %><br />
+			<% end -%>
+		</div>
+		</div>
 
-  <% if devise_mapping.rememberable? -%>
-    <%= f.check_box :remember_me %><%=t(".remember_me") %>
-  <% end -%>
+	  <% if devise_mapping.rememberable? -%>
+	    <%= f.check_box :remember_me %><%=t(".remember_me") %>
+	  <% end -%>
 
-	<div class="action_bottom">
-  		<%= f.submit t(".sign_in") , class:'sing_in-btn' %>
-  		<span class='note'></span>
-	</div>
-<% end %>
+		<div class="action_bottom">
+	  		<%= f.submit t(".sign_in") , class:'btn' %>
+	  		<span class='note'></span>
+		</div>
+	<% end %>
+</div>	
 
 

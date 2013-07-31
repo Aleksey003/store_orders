@@ -1,15 +1,8 @@
-<h3><%= t(:product_categories) %>:</h3>
+<h2 class="brdr-btm"><%= t(:product_categories) %></h2>
 <ul class='product_categoty'>
-  <%= nested_categories @product_categories.arrange %>
+  <%= nested_categories @product_categories %>
 </ul>
+<div class='btn-bottom'>
+	<%= link_to t(:new), new_product_category_path,:class => 'btn' %>
+</div>	
 
-<br />
-
-<%= link_to t(:new), new_product_category_path,:class => 'btn btn-primary' %>
-<script>
-    $(document).ready(function () {
-        $('li.tree-toggler').click(function () {
-            $(this).parent().children('ul.tree').toggle(300);
-        });
-    });
-</script>

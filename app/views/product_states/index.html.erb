@@ -1,4 +1,4 @@
-<h1><%= t(:list_state_product) %></h1>
+<h2 class="brdr-btm"><%= t(:list_state_product) %></h2>
 
 
 <ol>
@@ -10,6 +10,6 @@
     </li>
   <% end %>
 </ol>
-
-<br />
-<%= link_to t(:new), new_product_state_path, class:'btn' %>
+<div class="btn-bottom">
+	<%= link_to t(:new), new_product_state_path, class:'btn' %>
+</div>	

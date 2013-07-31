@@ -12,7 +12,7 @@ class Order < ActiveRecord::Base
 
   self.per_page = 20
 
-  before_save :check_and_post_order
+  #before_save :check_and_post_order
   
  
   def add_line_items_from_cart(cart)

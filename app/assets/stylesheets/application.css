@@ -11,6 +11,5 @@
  *= require_self
  *= require_tree .
  *= require jquery.ui.datepicker
- *= require jquery.fileupload-ui
- *= require bootstrap-wysihtml5
+ *= require jquery.fileupload-ui 
  */

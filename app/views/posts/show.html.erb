@@ -12,6 +12,7 @@
   <%= @post.user.name if @post.user %>
 </p>
 
-
-<%= link_to t(:edit), edit_post_path(@post), class:'btn'  %> |
-<%= link_to t(:back), posts_path, class:'btn'%>
+<div class='btn-bottom'>
+	<%= link_to t(:edit), edit_post_path(@post), class:'btn' if can? :update, Post %>
+	<%= link_to t(:back), posts_path, class:'btn'%>
+</div>

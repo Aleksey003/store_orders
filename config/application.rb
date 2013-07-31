@@ -11,6 +11,7 @@ end
 
 module StoreOrders
   class Application < Rails::Application
+    #config.autoload_paths += %W(#{config.root}/app/models/ckeditor)
      config.assets.initialize_on_precompile = false
      config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     # Settings in config/environments/* take precedence over those specified here.

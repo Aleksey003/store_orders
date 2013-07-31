@@ -1,6 +1,7 @@
-<h1><%= t(:editing_user) %></h1>
-
+<h2 class="brdr-btm"><%= t(:editing_user) %></h2>
 <%= render 'form' %>
+<div class="btn-bottom">
+	<%= link_to t(:show) , @user, class:'btn' %>
+	<%= link_to t(:back) , users_path, class:'btn' %>
+</div>
 
-<%= link_to t(:show) , @user, class:'btn' %> |
-<%= link_to t(:back) , users_path, class:'btn' %>

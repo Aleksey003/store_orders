@@ -4,8 +4,10 @@ module ApplicationHelper
     	if current_user
       		if session[:guest_user_id]
         		#logging_in login user and destroy guest
+            replace_user_cart
         		guest_user.destroy
-        		session[:guest_user_id]=nil      
+        		session[:guest_user_id]=nil  
+
       		end
       		current_user
     	else
@@ -37,6 +39,18 @@ module ApplicationHelper
       session[:cart_id] = @current_cart.id
       @current_cart
     end
+  end
+
+  def replace_user_cart
+    cart = current_cart
+    user = current_user
+    cart.user = user
+    cart.line_items.each do |line_item|
+      line_item.user = user
+      line_item.save
+    end
+    cart.save
+
   end
 
 end

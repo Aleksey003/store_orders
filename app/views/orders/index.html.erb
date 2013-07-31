@@ -1,5 +1,5 @@
 
-<h1><%= t('.listing_orders') %></h1>
+<h2 class="brdr-btm"><%= t('.listing_orders') %></h2>
 
 <table class='table-list'>
     <thead>
@@ -33,5 +33,7 @@
 <% end %>
 </tbody>
 </table>
-<p><%= will_paginate @orders %></p>
+<div class="btn-bottom">
+    <%= will_paginate @orders %>
+</div>
 

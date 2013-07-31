@@ -47,7 +47,7 @@ class LineItemsController < ApplicationController
       else
         @line_item = @cart.add_product(params[:product_id], params[:quantity]) 
       end
-    @line_item.user = current_user    
+    @line_item.user = current_or_guest_user    
     respond_to do |format|
       if @line_item.save
         format.html { redirect_to @cart, notice: 'Line item was successfully created.' }

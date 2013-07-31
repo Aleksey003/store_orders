@@ -3,23 +3,7 @@
       <% @product_assets.each do |assets| %>          
         <%= image_tag(assets.data.url(:medium)) %>
       <% end %>
-  </div>
-  <script type="text/javascript">
-    $(function() {
-      $('#slides').slidesjs({
-      width:  300,
-      height: 300,
-      navigation:{effect: "fade"},
-      pagination:{effect:"fade"},
-      effect:   {
-        fade: {
-          speed: 400
-        }
-      }
-    });
-    });
-
-  </script>             
+  </div> 
 </div>  
 
   <div class="product-detail">
@@ -39,29 +23,29 @@
       <p class='stock'></p>
 
       <p class='act'>
-        <%= form_tag ({controller:'line_items', action:'create'} ) do %>
+        <%= form_tag '/line_items', :remote => true do %>
           <%= number_field_tag :quantity, 1, size: 2 %>
           <%= hidden_field_tag  :product_id, @product.id %>      
           <%= submit_tag "Добавить", class: 'cta' %>
         <% end %> 
       </p>
-      <p><%= link_to t(:show_quantity), product_path(@product, show_quantity: true), remote: true, class: 'btn' %></p>
+      <% if false %>
+        <p><%= link_to t(:show_quantity), product_path(@product, show_quantity: true), remote: true, class: 'btn' %></p>
+      <% end %>
       <div class="desc">
         <%= @product.description %>
       </div>
 
-    </div>
-
-    
-      
-      
+    </div>             
          
   </div>
 
 <div class='btn-bottom'>
   <%= link_to t(:back), products_path, class: 'btn' %>    
   <%= link_to t(:edit), edit_product_path(@product),  class: 'btn' if can? :update, @product %>
-</div>  
+</div> 
+
+
   
 
     

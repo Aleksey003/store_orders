@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
  
   protect_from_forgery
 
+  def current_ability
+    @current_ability ||= Ability.new(current_or_guest_user)
+  end
+
   def set_i18n_locale_from_params
     if params[:locale]
       if I18n.available_locales.include?(params[:locale].to_sym)

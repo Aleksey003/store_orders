@@ -11,20 +11,16 @@
     </div>
   <% end %>
 
-  <div>
-    <h3><%= t(:title) %></br></h3>
-    <%= f.text_field :title, class:'input-xxlarge' %>
+  <div class="field">
+    <h3><%= t(:title) %>
+    <%= f.text_field  :title %></h3>
   </div>
   <div>
-    <%= f.text_area :body, class:'wysihtml5 input-xxlarge', :cols => "150", :rows => "10" %>
+    <%= f.cktext_area :body %>
   </div>
   <div class="actions">
     <%= f.submit t(:save), class:'btn' %>
   </div>
 <% end %>
 
-<script type="text/javascript">
-  $('.wysihtml5').each(function(i, elem) {
-    $(elem).wysihtml5();
-  });
-</script>
+

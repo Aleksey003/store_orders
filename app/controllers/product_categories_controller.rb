@@ -3,7 +3,7 @@ class ProductCategoriesController < ApplicationController
   # GET /product_categories.json
   load_and_authorize_resource
   def index
-    @product_categories = ProductCategory.scoped
+    @product_categories = ProductCategory.scoped.arrange
 
     respond_to do |format|
       format.html # index.html.erb

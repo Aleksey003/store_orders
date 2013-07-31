@@ -13,11 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-fileupload
-//= require twitter/bootstrap
+
 //= require_tree .
 //= require jquery.ui.datepicker
 //= require jquery.ui.dialog
-//= require bootstrap-wysihtml5
+//= require ckeditor/init
+
 $(function(){
   $("#order_order_date").datepicker();
 });

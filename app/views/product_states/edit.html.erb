@@ -1,6 +1,7 @@
-<h1><%= t(:edit_product_state) %></h1>
+<h2 class="brdr-btm">Редактировать категорию</h2>
 
 <%= render 'form' %>
-
-<%= link_to t(:show), @product_state, class:'btn' %> |
-<%= link_to  t(:back), product_states_path, class:'btn'%>
+<div class="btn-bottom">
+	<%= link_to t(:show), @product_state, class:'btn' %> |
+	<%= link_to  t(:back), product_states_path, class:'btn'%>
+</div>	

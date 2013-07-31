@@ -1,6 +1,10 @@
 StoreOrders::Application.routes.draw do
 
   
+ 
+
+  mount Ckeditor::Engine => '/ckeditor'
+
   root to:  "products#index"
   scope '(:locale)' do
     resources :orders

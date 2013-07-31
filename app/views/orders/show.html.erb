@@ -15,6 +15,28 @@
   <b>Status: <%= @order.status %>
 </p>
 
+<table class='table table-bordered table-hover'>
+  <tr class='info'>
+    <td> Product </td>
+    <td> Quantity </td>
+    <td> Summ </td>
+  </tr>
+  <tbody>
+  <% if !@order.line_items.empty? %>
+   <% total_price = 0 %>
+    <%= render(@order.line_items) %>
+    <% total_price = @order.total_price %>
+  <% elsif (@cart != nil) %>
+    <%= render(@cart.line_items) %>
+    <% total_price = @cart.total_price %>
+  <% end %>
+  <tr>
+    <td colspan='2'>Total:</td>
+    <td><%= total_price %></td>
+  </tr>
+</tbody>
+</table>
+
 
 <%= link_to 'Edit', edit_order_path(@order), class:'btn btn-mini' %> |
 <%= link_to 'Back', orders_path, class:'btn btn-mini' %>

@@ -35,10 +35,11 @@ GEM
       activerecord (>= 2.3.14)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-wysihtml5-rails (0.3.1.20)
-      railties (>= 3.0)
     builder (3.0.4)
     cancan (1.6.9)
+    ckeditor (4.0.4)
+      mime-types
+      orm_adapter
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.1)
@@ -196,8 +197,8 @@ PLATFORMS
 
 DEPENDENCIES
   ancestry
-  bootstrap-wysihtml5-rails
   cancan
+  ckeditor
   coffee-rails (~> 3.2.1)
   debugger
   devise

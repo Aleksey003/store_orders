@@ -16,5 +16,31 @@ i.icon-zoom-in  { background-image: url("zoom_icon&16.png") }
 i.icon-user     { background-image: url("user_icon&16.png") }
 i.icon-on-off   { background-image: url("on-off_icon&16.png") }
 i.icon-plus     { background-image: url("round_plus_icon&16.png") }
+i.icon-minus    { background-image: url("round_minus_icon&16.png") }
+i.icon-next     { background-image: url("br_next_icon&16.png") }
+i.icon-prev     { background-image: url("br_prev_icon&16.png") }
+i.icon-shopping-cart     { background-image: url("shop_cart_icon&16.png") }
 
+.slidesjs-next {
+ 	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-top: 1px;
+	line-height: 14px;
+	vertical-align: text-top;	  
+	background-repeat: no-repeat;font-style: normal;
+ 	background-image: url("br_next_icon&16.png");
+
+ }
+.slidesjs-previous {
+ 	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-top: 1px;
+	line-height: 14px;
+	vertical-align: text-top;	  
+	background-repeat: no-repeat;font-style: normal;
+ 	background-image: url("br_prev_icon&16.png");
+
+ }
 
