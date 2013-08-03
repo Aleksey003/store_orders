@@ -15,4 +15,10 @@ $ ->
       fade:
         speed: 400
 
+  $("#tabs").tabs()      
+
+ 
+
+   
+
 

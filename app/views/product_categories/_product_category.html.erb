@@ -1,11 +1,23 @@
+<% if product_category.errors.any? %>
+    <div id="error_explanation">
+	  <h2><%= pluralize(@product_category.errors.count, "error") %> </h2>
+
+	  <ul>
+	  <% product_category.errors.full_messages.each do |msg| %>
+	    <li><%= msg %></li>
+	  <% end %>
+	  </ul>
+    </div>
+<% end %>
+
 <% if product_category.has_children? %>
 	<a href='#'>
-		<span class="label"><%= product_category.name	%></span></a>  
+		<span class="label"><%= product_category.name %></span></a>  
 <% else %>
-	<%= product_category.name %>
+	<%= product_category.name %>(<%= product_category.product_count %>)
 <% end %>
 <%= link_to "<i class='icon-edit'></i>".html_safe, edit_product_category_path(product_category), class:'btn btn-mini' %>
-<%= link_to "<i class='icon-remove'></i>".html_safe, product_category_path(product_category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini' %>
+<%= link_to "<i class='icon-remove'></i>".html_safe, product_category_path(product_category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %>
 
 
  

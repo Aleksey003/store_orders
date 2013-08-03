@@ -17,6 +17,7 @@
 //= require_tree .
 //= require jquery.ui.datepicker
 //= require jquery.ui.dialog
+//= require jquery.ui.tabs
 //= require ckeditor/init
 
 $(function(){

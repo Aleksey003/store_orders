@@ -33,7 +33,7 @@
         <p><%= link_to t(:show_quantity), product_path(@product, show_quantity: true), remote: true, class: 'btn' %></p>
       <% end %>
       <div class="desc">
-        <%= @product.description %>
+        <%= @product.description.html_safe %>
       </div>
 
     </div>             

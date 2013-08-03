@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 	
-    attr_accessible :description, :product_category, :product_state, :title, :assets, :assets_attributes, :product_state_id, :product_category_id
+    attr_accessible :description, :product_category, :product_state, :title, :price, :assets, :assets_attributes, :product_state_id, :product_category_id
 	belongs_to :product_category
 	belongs_to :product_state
 	has_many :assets, dependent: :destroy
@@ -10,12 +10,16 @@ class Product < ActiveRecord::Base
 
 	validates :product_category, presence: true
 	validates :title, presence: true
-
+	
 	before_destroy :check_references_by_line_items
 	before_save :default_attr
+	after_save :fill_count_to_product_category 
 
 	def default_attr
 		self.price ||= 0
+	end
+	def fill_count_to_product_category
+		ProductCategory.fill_count_product
 	end
 
 	def check_references_by_items

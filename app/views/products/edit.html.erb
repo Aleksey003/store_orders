@@ -1,9 +1,23 @@
 <div class="product-container">
-	<h1>Editing product</h1>
-
-	<%= render 'form' %>
+ 
+ <div id="tabs">
+  <ul>
+    <li><a href="#tabs-1">Редактировать товар</a></li>
+    <li><a href="#tabs-2">Редактировать изображения</a></li>
+   
+  </ul>
+  <div id="tabs-1">
+     <%= render 'form' %>    
+  </div>
+  <div id="tabs-2">
+    <%= render 'fileupload' %>    
+  </div>
+  
+</div>
 	<div class='btn-bottom'>
 		<%= link_to t(:show), @product, class:'btn' %>
 		<%= link_to t(:back), products_path, class:'btn' %>
 	</div>
 </div>
+
+

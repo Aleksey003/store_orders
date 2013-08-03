@@ -83,7 +83,7 @@ input {
 	#header .with-dropdown ul { display: none; }
 
 #header .with-dropdown ul {
- 	width: 100%;
+ 	width: 150px;
 	position: absolute;
 	z-index: 1000; 
 	left: -1px;
@@ -258,6 +258,9 @@ margin-left: 0.5em;
 .external-branding {float: right; width: 35%; text-align: right;}
 /* product
 -------------------------------------------------------------------------------------------*/
+#tabs {
+	font-size: 15px;
+}
 .item {
     width: 306px;
     float: left;
@@ -774,3 +777,10 @@ li {
 	list-style: none;
 	font-size: 16px;
 }
+
+/*-------------TABS------------------------------------*/
+
+
+
+
+

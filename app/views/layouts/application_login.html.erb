@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>StoreOrders</title>
+  <title>Магазин</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,7 +10,7 @@
   <div id='wrapper'>
     <div id='header'>
        <div id='page-title'>
-          <h1><%= link_to 'Shopping cart', root_path %></h1>
+          <h1><%= link_to '<strong>Магазин</strong>'.html_safe, root_path %></h1>
         </div>
         <%= render "./layouts/menu" %> 
     </div>
@@ -24,9 +24,9 @@
       </div>
     </div>           
   </div>
-<%= debug params if Rails.env.development? %>
-<%= debug session[:user_id] if Rails.env.development? %>
-<%= debug current_cart %>
-<%= debug current_user %>
+<% debug params if Rails.env.development? %>
+<% debug session[:user_id] if Rails.env.development? %>
+<% debug current_cart if Rails.env.development? %>
+<% debug current_user if Rails.env.development? %>
 </body>
 </html>
