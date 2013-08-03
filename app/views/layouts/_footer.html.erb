@@ -1,76 +1,52 @@
 <div id="footer" >
 		<div class="contact">
-			<h2>Contact Information</h2>
+			<h2>Контактная информация</h2>
 			<ul>
-				<li>All the Gadgets</li>
-
-				 
+				<li>Магазин</li>				 
 				<li>
-					Phone: <span>888.555.5555</span>
-				</li>
-				 
-		
-				 
+					Телефон: <span>888.555.5555</span>
+				</li>				 
 				<li>
-					Email: <a href="mailto:cog@ify.com">cog@ify.com</a> 
-				</li>
-				 
-				
-				
+					Email: <a href="mailto:shop@shop.com">shop@shop.com</a> 
+				</li>				
 				<li>
-					Twitter: <a href="http://www.twitter.com/happycog">happycog</a>
-				</li>
-				 
-				
-				
+					Twitter: <a href="http://www.twitter.com/happycog">shop</a>
+				</li>  				
 				<li>
-					Facebook: <a href="http://facebook.com/happycog">Happy Cog</a>
-				</li>
-				 
-
-
+					Facebook: <a href="http://facebook.com/happycog">shop</a>
+				</li>  
 			</ul>
-		</div>
-
-	
+		</div>	
 		<div class="payment-methods">
-			<h2>Payment Methods</h2>
+			<h2>Способы оплаты</h2>
 			<ul>
 				<li><img alt="Paypal" src="http://cdn.shopify.com/s/files/1/0108/3832/t/3/assets/icon-paypal.png?0"></li>
-				<li><img alt="Paypal" src="http://cdn.shopify.com/s/files/1/0108/3832/t/3/assets/icon-visa.png?0"></li>
-				<li><img alt="Paypal" src="http://cdn.shopify.com/s/files/1/0108/3832/t/3/assets/icon-amex.png?0"></li>
+				<li><img alt="Paypal" src="http://cdn.shopify.com/s/files/1/0108/3832/t/3/assets/icon-visa.png?0"></li>				
 				<li><img alt="Paypal" src="http://cdn.shopify.com/s/files/1/0108/3832/t/3/assets/icon-mastercard.png?0"></li>
 				<li><img alt="Paypal" src="http://cdn.shopify.com/s/files/1/0108/3832/t/3/assets/icon-discover.png?0"></li>
 			</ul>
 		</div>
-
-
-
 		<div class="useful-links">
-			<h2>Useful Links</h2>
+			<h2>Ссылки</h2>
 			<ul>
-				
-				<li><a href="/search">Search</a></li>
-				
-				<li><a href="/pages/about-us">About Us</a></li>
-				
-				<li><a href="/pages/styles">Styles</a></li>
-				
+			 	<li><%= link_to  "Товары", products_path %></li>
+        		<li><%= link_to  "Статьи", posts_path %></li>
+    			<li><%= link_to  "Заказы", orders_path %></li>				
+				<li><%= link_to  "Корзина", carts_path %></li>
+                <li><%= link_to  "Категория", product_categories_path if can? :update, ProductCategory%></li>
+                <li><%= link_to  "Статусы", product_states_path if can? :update, ProductState%></li>
+                <li><%= link_to  "Пользователи", users_path if can? :update, User%></li>
+                <li><%= link_to  "Заказы", orders_path if can? :update, Order%></li>				
 			</ul>
 		</div>
 
-		
-
 		<div>
-			<h2>Store Description</h2>
-			<p>Morbi malesuada nulla nec purus convallis consequat. Vivamus id mollis quam. Morbi ac.</p>
+			<h2>Описания магазина</h2>
+			<p>Описания магазина</p>
 		</div>
 
-
-		<div class="sub-floor">
-			<p class="copyright">&copy; 2013 All the Gadgets, All Rights Reserved.</p>
-			
-			<p class="external-branding">Powered by <a href="http://www.shopify.com/">Shopify</a>. Designed by <a class="cog" href="http://happycog.com/">Happy Cog</a></p>
-			
-		</div>
+		<!--<div class="sub-floor">
+			<p class="copyright">&copy; 2013 All the Gadgets, All Rights Reserved.</p>			
+			<p class="external-branding">Powered by <a href="http://www.shopify.com/">Shopify</a>. Designed by <a class="cog" href="http://happycog.com/">Happy Cog</a></p>			
+		</div>-->
 	</div>
