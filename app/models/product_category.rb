@@ -8,7 +8,7 @@ class ProductCategory < ActiveRecord::Base
   has_ancestry #gem  ancestry
 
   def default_attr
-		self.product_count ||= 0
+		self.product.count ||= 0
   end
 
   def check_references
