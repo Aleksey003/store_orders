@@ -12,12 +12,15 @@
 				
 				<p class="product-name">				
 				<%= link_to  product do %>
-					<%= image_tag(product.assets.first.data.url(:medium)) unless product.assets.first.nil? %>
-					 <%= truncate(product.title, length: 22) %>
+					<div class='product_image_medium'>
+						<%= image_tag(product.assets.first.data.url(:medium)) unless product.assets.first.nil? %>
+					</div>
+					<p class='product_title_mediun'><%= truncate(product.title, length: 22) %></p>
 				<% end %>
 				</p>		
 								
-				<p>UAN <%= product.price %> PLU: <%= product.id %> </p>
+				<p>UAN <%= product.price %></p>
+				<p>Код: <%= product.id %> </p>
 				
 				<p id=<%="quantity#{product.id}" %>></p>
 				<p class='act'>

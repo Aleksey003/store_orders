@@ -44,3 +44,19 @@ i.icon-shopping-cart     { background-image: url("shop_cart_icon&16.png") }
 
  }
 
+ .posts {
+ 	border-bottom: 1px solid #d6d6d6;
+ 	padding-bottom: 15px;
+ }
+ .posts a {text-decoration: none;}
+
+ .product_image_medium {
+ 	height: 300px;
+ 	width: 300px;
+ 	margin: 0px;
+ 	padding: 0px;
+ }
+ p.product_title_mediun  {
+ 	font-size: 16px;
+ }
+

@@ -1,13 +1,15 @@
 <h2 class="brdr-btm">News</h2>
 
-<div class="blog-meta">
-	<% @posts.each do |post| %>
-		<p class='date'><%= post.created_at.strftime("%m/%d/%Y") %></p>
+
+<% @posts.each do |post| %>
+	<div class='posts'>
+		<p class='date'><%= post.updated_at.strftime("%d/%m/%Y") %></p>
 		<h1><%= link_to post.title.html_safe, post %></h1>
-		<%= truncate(post.body, length: 400).html_safe %>
+		<div><%= truncate(post.body, length: 400).html_safe %></div>
 		<%= link_to "Читать", post %>	
-	<% end %>
-</div>
+	</div>
+<% end %>
+
 
 <div class='btn-bottom'>
 	<%= will_paginate @posts %>

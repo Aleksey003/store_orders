@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   load_and_authorize_resource
   def index
-    @posts = Post.paginate(page: params[:page])
+    @posts = Post.paginate(page: params[:page]).order("updated_at DESC")
 
     respond_to do |format|
       format.html # index.html.erb
