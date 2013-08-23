@@ -1,6 +1,7 @@
 <% if product_category_menu.has_children? %>
 	<a href='#' class ='toggler'>
-		<span class="label_menu label"><%= product_category_menu.name %></span></a>  
+		<%= product_category_menu.name %>
+	</a>  
 <% else %>
-	<%= link_to "#{product_category_menu.name} (#{product_category_menu.product_count})".html_safe, products_path(category_id: product_category_menu)  %> 
+	<%= link_to "<i class='icon-chevron-right'> </i> #{product_category_menu.name} (#{product_category_menu.product_count})".html_safe, products_path(category_id: product_category_menu)  %> 
 <% end %>

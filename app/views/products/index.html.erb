@@ -1,42 +1,41 @@
+<h3><%= t(".Products") %></h3>
+<% if false %>
+<p><%= link_to t(:show_quantity), show_quantity_products_path(products:@products.map(&:id)), class: 'btn btn-primary', remote: true %></br></p>
+<% end %>
+<hr class="soft">
+<div class="tab-content">
+	<div class="tab-pane active" id="blockView">
+		<ul class="thumbnails">
+			<% @products.each do |product| %>
+				<li class='span3'>        		
+					<div class="thumbnail">
+						<%= link_to  product do %>
+							<%= image_tag(product.assets.first.data.url(:medium)) unless product.assets.first.nil? %>
+						<% end %>
+						<div class="caption">
+							<h5><%= truncate(product.title, length: 22) %></h5>
+							<p>Код: <%= product.id %> </p>
+							<!-- <p id=<%="quantity#{product.id}" %>></p> -->		
+							<h4 style="text-align:center">
+								<%= link_to'<i class="icon-zoom-in"></i>'.html_safe,  product, class: 'btn' %>						
+								<%= link_to 'Add to <i class="icon-shopping-cart"></i>'.html_safe, line_items_path(product_id: product), method: :post, remote: true, class: 'btn' %>
+								<a class="btn btn-primary" href="#">&euro;<%= product.price %></a>
+							</h4>
+						</div>	
+					</div>				
+				</li>	                   
+			<% end %>
+		</ul>
+	</div>
+</div>
+<%= will_paginate @products %>
+
+<div class='btn-bottom'>
+	<p><%= link_to t(:NewProduct), new_product_path, class:'btn' if can? :create, Product %></p>    			
+</div>
 
 
 
-    <h2 class="brdr-btm"><%= t(".Products") %></h2>
-    <% if false %>
-    <p><%= link_to t(:show_quantity), show_quantity_products_path(products:@products.map(&:id)), class: 'btn btn-primary', remote: true %></br></p>
-    <% end %>
 
 
-    	<% @products.each do |product| %>
-    		<div class='item'>        		
-				
-				<p class="product-name">				
-				<%= link_to  product do %>
-					<div class='product_image_medium'>
-						<%= image_tag(product.assets.first.data.url(:medium)) unless product.assets.first.nil? %>
-					</div>
-					<p class='product_title_mediun'><%= truncate(product.title, length: 22) %></p>
-				<% end %>
-				</p>		
-								
-				<p>UAN <%= product.price %></p>
-				<p>Код: <%= product.id %> </p>
-				
-				<p id=<%="quantity#{product.id}" %>></p>
-				<p class='act'>
-					<%= link_to t('.Add_to_cart'), line_items_path(product_id: product), method: :post, class: 'cta', remote: true %>
-				</p>				
-			</div>	                   
-    	<% end %>
-
-    	<%= will_paginate @products %>
-    	
-    	<div class='btn-bottom'>
-    		<p><%= link_to t(:NewProduct), new_product_path, class:'btn' if can? :create, Product %></p>    			
-    	</div>
-
-    
-	
-	
-    
 

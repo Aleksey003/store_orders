@@ -1,5 +1,10 @@
 StoreOrders::Application.configure do
   config.logger = Logger.new(STDOUT)
+
+  #fonts
+  config.assets.paths << Rails.root.join('app', 'assets', 'font')
+  config.assets.precompile += %w( .svg .eot .woff .ttf )
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # Code is not reloaded between requests
