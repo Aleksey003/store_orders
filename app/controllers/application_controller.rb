@@ -1,13 +1,11 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :logged_in?
+
+  #helper_method :current_user, :logged_in?
   layout :layout_by_resource
   before_filter :set_i18n_locale_from_params
   before_filter :current_cart
-  
   include ApplicationHelper
 
-
- 
   protect_from_forgery
 
   def current_ability
@@ -25,13 +23,9 @@ class ApplicationController < ActionController::Base
     end
   end 
 
- 
-
   def default_url_options
     {locale: I18n.locale}
   end
-
- 
 
 	rescue_from CanCan::AccessDenied do |exception|
     Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
@@ -45,5 +39,7 @@ class ApplicationController < ActionController::Base
       "application"
     end
   end
+
+  
 
 end

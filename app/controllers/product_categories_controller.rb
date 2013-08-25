@@ -41,17 +41,32 @@ class ProductCategoriesController < ApplicationController
   # POST /product_categories
   # POST /product_categories.json
   def create
-    @product_category = ProductCategory.new(params[:product_category])
-    @product_category.id = params[:id] if params[:id]
-    respond_to do |format|
-      if @product_category.save
-        format.html { redirect_to product_categories_path, notice: 'Product category was successfully created.' }
-        format.json { render json: @product_category, status: :created, location: @product_category }
+    if params[:id]
+      @product_category = ProductCategory.find_by_id(params[:id])
+      if @product_category.nil?
+        @product_category = ProductCategory.new(params[:product_category])
+        @product_category.id = params[:id] if params[:id]
+        @product_category.parent = ProductCategory.find(params[:ancestry]) if params[:ancestry]
       else
-        format.html { render action: "new" }
-        format.json { render json: @product_category.errors, status: :unprocessable_entity }
+        @product_category.assign_attributes(params[:product_category])
+        @product_category.parent = ProductCategory.find(params[:ancestry]) if params[:ancestry]  
       end
-    end
+    else
+      @product_category = ProductCategory.new(params[:product_category])
+      @product_category.id = params[:id] if params[:id]
+      @product_category.parent = ProductCategory.find(params[:ancestry]) if params[:ancestry]
+    end 
+      
+      respond_to do |format|
+        if @product_category.save
+          format.html { redirect_to product_categories_path, notice: 'Product category was successfully created.' }
+          format.json { render json: @product_category, status: :created, location: @product_category }
+        else
+          format.html { render action: "new" }
+          format.json { render json: @product_category.errors, status: :unprocessable_entity }
+        end
+      end
+     
   end
 
   # PUT /product_categories/1

@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: true
 	validates :email,  :name, presence: true
   validates :role, inclusion: ROLES
-  
+
 	has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "50x50>" },
   :storage => :dropbox,
     :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",    
@@ -34,4 +34,6 @@ class User < ActiveRecord::Base
 			super
 		end
 	end
+
+  
 end

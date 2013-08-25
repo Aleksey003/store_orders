@@ -37,7 +37,6 @@ class Ability
             end
 
         elsif user.guest?
-
             can :show_quantity, Product
             can :read, Product
             can :read, Post 
@@ -52,7 +51,7 @@ class Ability
             can :create, Cart
             can :read, Cart, :user_id => user.id
             can :manage, Cart, :user_id => user.id
-            
+
             can :create, LineItem
             can :read, LineItem do |line_item|
                 line_item.user_id = user.id
@@ -60,7 +59,6 @@ class Ability
             can :manege, LineItem do |line_item|
                 line_item.user_id = user.id
             end
-            
         end
             
 	   
