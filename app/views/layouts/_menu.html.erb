@@ -1,26 +1,14 @@
-
-   
-    <ol id='main-nav' >
-        
-        <li><%= link_to t('.products'), products_path %></li>
-        <li><%= link_to t('.posts'), posts_path %></li>
-    	<li><%= link_to t('.orders'), orders_path %></li>
-        
-        <% if current_or_guest_user.admin? or current_or_guest_user.moderator? %> 
-        <li class='with-dropdown'>
-            <a title="" href="#">Catalog</a>
-
-            <ul>                
-                <li><%= link_to "Корзина", carts_path %></li>
-                <li><%= link_to "Категория", product_categories_path if can? :update, ProductCategory%></li>
-                <li><%= link_to "Статусы", product_states_path if can? :update, ProductState%></li>
-                <li><%= link_to "Пользователи", users_path if can? :update, User%></li>
-                <li><%= link_to "Заказы", orders_path if can? :update, Order%></li>
-            </ul>
-        </li>
-        <% end %> 
+<% if current_or_guest_user.admin? or current_or_guest_user.moderator? %> 
+    <%= link_to t('.products'), products_path %>
+    <%= link_to t('.posts'), posts_path %>
+    <%= link_to t('.orders'), orders_path %>
+    <%= link_to "Корзина", carts_path %>
+    <%= link_to "Категория", product_categories_path if can? :update, ProductCategory%>
+    <%= link_to "Статусы", product_states_path if can? :update, ProductState%>
+    <%= link_to "Пользователи", users_path if can? :update, User%>
+    <%= link_to "Заказы", orders_path if can? :update, Order%>
+<% end %> 
      
-    </ol>
 
 
 

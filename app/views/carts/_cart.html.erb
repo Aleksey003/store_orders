@@ -1,24 +1,29 @@
 <h2 class="brdr-btm">Корзиина</h2>
-<table id = 'cartform' class='table-list'>
+<hr class="soft"></hr>
+<table class="table table-bordered">
 	<thead>
 		<tr>
-			<th><%= t(".Product") %></th>
-			<th><%= t(".Quantity") %></th>
-			<th>Цена</th>
-			<th><%= t(".Summ") %></th>
+			<th>Product</th>
+			<th>Description</th>
+			<th>Quantity</th>
+			<th>Price</th>
+			<th>Total</th>
 		</tr>
 	</thead>	
 	<tbody>
 		<%= render(cart.line_items) %>	
 		<tr>		
-			<td><%= t :total %></td>
-			<td><%= cart.total_quantity %></td>
-			<td  colspan="2"><%= cart.total_price %></td>
+			<td colspan="2" style="text-align:right"><strong><%= t :total %></strong></td>
+			<td colspan="2"><%= cart.total_quantity %></td>
+			<td class="label label-important" style="display:block">
+				<strong><%= cart.total_price %></strong>
+			</td>
 		</tr>
-	</tbody>
+	</tbody> 
 </table>
-<div id='checkout'>
-	<p class='act'><%= link_to 'Оформить', new_order_path, class:'cta' %></p>
-	<p class='cta-clear'><%= link_to t(".Empty_сart"), cart, method: :delete, confirm: "Are you sure?", class:"btn-mini" %></p>	
-</div>
+<hr class="soft"></hr>
+<%= link_to 'Continue Shopping', :back, class:'btn btn-large' %>
+<%= link_to t(".Empty_сart"), cart, method: :delete, confirm: "Are you sure?", class:"btn btn-large btn-danger" %>
+<%= link_to 'Оформить', new_order_path, class:'btn btn-large pull-right' %>
+
 

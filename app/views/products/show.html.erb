@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span3">
+  <div class="span4">
     <div id="gallery">
       <div id="slides">  
           <% @product_assets.each do |assets| %>          
@@ -8,44 +8,42 @@
       </div> 
     </div>  
   </div>
-  <div class="span6">
+  <div class="span5">
       <div class="product-detail">
-        <h2><%= @product.title %></h2>
+        <h3><%= @product.title %></h3>
         <!--<p class="sale"> sale</p>-->
-        <p class="brand"><%= @product.product_category.name %></p>    
+        <small><%= @product.product_category.name %></small>
+        <hr class="soft"></hr>
+        <!--<span id='product_quantity' > </span>-->
+        <p>        
+            <%= @product.product_state.name unless @product.product_state.nil? %>
+        </p>
 
-        <div class="product-mid">
-          <p class="price"><span><%= @product.price%></span></p>
-          
-          <p>
-            <b><%= t(:product_state) %>:</b>
-            <%= @product.product_state.name unless @product.product_state.nil? %></br>
-            <p><span id='product_quantity' > </span></p></br>    
-          </p>
-
-          <p class='stock'></p>
-
-          <p class='act'>
-            <%= form_tag '/line_items', :remote => true do %>
-              <%= number_field_tag :quantity, 1, size: 2 %>
-              <%= hidden_field_tag  :product_id, @product.id %>      
-              <%= submit_tag "Добавить", class: 'cta' %>
-            <% end %> 
-          </p>
-          <% if false %>
-            <p><%= link_to t(:show_quantity), product_path(@product, show_quantity: true), remote: true, class: 'btn' %></p>
-          <% end %>
-          <div class="desc">
-            <%= @product.description.html_safe %>
+        <%= form_tag '/line_items', :remote => true, class:"form-horizontal qtyFrm" do %>
+          <div class="control-group">
+            <label class="control-label">
+               <span><%= @product.price%></span> 
+            </label>
+            <div class="controls">
+              <%= number_field_tag :quantity, 1, size: 2, class:"span1" %>
+              <%= hidden_field_tag  :product_id, @product.id %>
+              <%= submit_tag 'Добавить', class: 'btn btn-large btn-primary pull-right' %>  
+            </div>
           </div>
-
-        </div>             
-             
+        <% end %> 
+        <!--
+        <% if false %>
+          <p><%= link_to t(:show_quantity), product_path(@product, show_quantity: true), remote: true, class: 'btn' %></p>
+        <% end %>
+        -->
+        <hr class="soft"></hr>
+        <p><%= @product.description.html_safe %></p>
+        <hr class="soft"></hr>
       </div>
-
-    <div class='btn-bottom'>
-      <%= link_to t(:back), products_path, class: 'btn' %>    
-      <%= link_to t(:edit), edit_product_path(@product),  class: 'btn' if can? :update, @product %>
-    </div> 
-  </div>  
+  </div>
+  <div class='span9'>
+    <%= link_to t(:back), products_path, class: 'btn' %>    
+    <%= link_to t(:edit), edit_product_path(@product),  class: 'btn' if can? :update, @product %>
+  </div>
 </div>
+

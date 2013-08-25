@@ -1,52 +1,35 @@
-<div id="footer" >
-		<div class="contact">
-			<h2>Контактная информация</h2>
-			<ul>
-				<li>Магазин</li>				 
-				<li>
-					Телефон: <span>888.555.5555</span>
-				</li>				 
-				<li>
-					Email: <a href="mailto:shop@shop.com">shop@shop.com</a> 
-				</li>				
-				<li>
-					Twitter: <a href="http://www.twitter.com/happycog">shop</a>
-				</li>  				
-				<li>
-					Facebook: <a href="http://facebook.com/happycog">shop</a>
-				</li>  
-			</ul>
-		</div>	
-		<div class="payment-methods">
-			<h2>Способы оплаты</h2>
-			<ul>
-				<li><img alt="Paypal" src="http://cdn.shopify.com/s/files/1/0108/3832/t/3/assets/icon-paypal.png?0"></li>
-				<li><img alt="Paypal" src="http://cdn.shopify.com/s/files/1/0108/3832/t/3/assets/icon-visa.png?0"></li>				
-				<li><img alt="Paypal" src="http://cdn.shopify.com/s/files/1/0108/3832/t/3/assets/icon-mastercard.png?0"></li>
-				<li><img alt="Paypal" src="http://cdn.shopify.com/s/files/1/0108/3832/t/3/assets/icon-discover.png?0"></li>
-			</ul>
-		</div>
-		<div class="useful-links">
-			<h2>Ссылки</h2>
-			<ul>
-			 	<li><%= link_to  "Товары", products_path %></li>
-        		<li><%= link_to  "Статьи", posts_path %></li>
-    			<li><%= link_to  "Заказы", orders_path %></li>				
-				<li><%= link_to  "Корзина", carts_path %></li>
-                <li><%= link_to  "Категория", product_categories_path if can? :update, ProductCategory%></li>
-                <li><%= link_to  "Статусы", product_states_path if can? :update, ProductState%></li>
-                <li><%= link_to  "Пользователи", users_path if can? :update, User%></li>
-                <li><%= link_to  "Заказы", orders_path if can? :update, Order%></li>				
-			</ul>
-		</div>
-
-		<div>
-			<h2>Описания магазина</h2>
-			<p>Описания магазина</p>
-		</div>
-
-		<!--<div class="sub-floor">
-			<p class="copyright">&copy; 2013 All the Gadgets, All Rights Reserved.</p>			
-			<p class="external-branding">Powered by <a href="http://www.shopify.com/">Shopify</a>. Designed by <a class="cog" href="http://happycog.com/">Happy Cog</a></p>			
-		</div>-->
-	</div>
+<div class="container">
+		<div class="row">
+			<div class="span3">
+				<h5>ACCOUNT</h5>
+				<a href="login.html">YOUR ACCOUNT</a>
+				<a href="login.html">PERSONAL INFORMATION</a> 
+				<a href="login.html">ADDRESSES</a> 
+				<a href="login.html">DISCOUNT</a>  
+				<a href="login.html">ORDER HISTORY</a>
+			 </div>
+			<div class="span3">
+				<h5>INFORMATION</h5>
+				<a href="contact.html">CONTACT</a>  
+				<a href="register.html">REGISTRATION</a>  
+				<a href="legal_notice.html">LEGAL NOTICE</a>  
+				<a href="tac.html">TERMS AND CONDITIONS</a> 
+				<a href="faq.html">FAQ</a>
+			 </div>
+			<div class="span3">
+				<h5>OUR OFFERS</h5>
+				<a href="#">NEW PRODUCTS</a> 
+				<a href="#">TOP SELLERS</a>  
+				<a href="special_offer.html">SPECIAL OFFERS</a>  
+				<a href="#">MANUFACTURERS</a> 
+				<a href="#">SUPPLIERS</a> 
+			 </div>
+			<div id="socialMedia" class="span3 pull-right">
+				<h5>SOCIAL MEDIA </h5>
+				<a href="#"><%= image_tag "facebook.png" %></a>
+				<a href="#"><%= image_tag "twitter.png" %></a>
+				<a href="#"><%= image_tag "youtube.png" %></a>
+			 </div> 
+		 </div>
+	</div><!-- Container End -->
+</div>
