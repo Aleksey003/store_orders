@@ -32,7 +32,23 @@ class AssetsController < ApplicationController
  	end
 
  	def create
- 		@asset = Asset.new(params[:asset])
+ 		if params[:encoded_image]
+ 			decoded_file = Base64.decode64(params[:encoded_image])
+ 			#begin
+ 				file = Tempfile.new([params[:title_image] , ".#{params[:type]}"])
+ 				file.binmode
+ 				file.write decoded_file
+ 				
+ 				@asset = Asset.new
+ 				@asset.product_id = params[:product_id]
+ 				@asset.data = file
+ 				file.close
+ 			#rescue Exception => e
+ 				
+ 			#end
+ 		#else
+ 			#@asset = Asset.new(params[:asset])
+ 		end
  		respond_to do |format|
  			if @asset.save
  				format.html{

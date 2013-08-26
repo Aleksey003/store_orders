@@ -26,7 +26,9 @@ StoreOrders::Application.routes.draw do
       delete "logout" => "devise/sessions#destroy"    
     end
   end
-  devise_for :users, :token_authentication_key => 'authentication_key'
+
+ 
+  devise_for :users, controllers: { sessions: "sessions" }
   resources :assets
 	get 'admin' => 'admin#index' 
 	
