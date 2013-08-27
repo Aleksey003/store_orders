@@ -38,10 +38,10 @@
         -->
         <hr class="soft"></hr>
         <p><%= @product.description.html_safe %></p>
-        <hr class="soft"></hr>
       </div>
   </div>
   <div class='span9'>
+    <hr class="soft"></hr>
     <%= link_to t(:back), products_path, class: 'btn' %>    
     <%= link_to t(:edit), edit_product_path(@product),  class: 'btn' if can? :update, @product %>
   </div>

@@ -14,7 +14,7 @@ class Product < ActiveRecord::Base
 	before_destroy :check_references_by_line_items
 	before_save :default_attr
 	after_save :fill_count_to_product_category 
-
+	after_destroy :fill_count_to_product_category 
 	def default_attr
 		self.price ||= 0
 	end

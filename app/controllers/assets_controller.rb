@@ -46,8 +46,8 @@ class AssetsController < ApplicationController
  			#rescue Exception => e
  				
  			#end
- 		#else
- 			#@asset = Asset.new(params[:asset])
+ 		else
+ 			@asset = Asset.new(params[:asset])
  		end
  		respond_to do |format|
  			if @asset.save
