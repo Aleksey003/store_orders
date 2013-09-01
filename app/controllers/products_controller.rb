@@ -100,7 +100,6 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     @product.destroy
-
     respond_to do |format|
       format.html { redirect_to products_url }
       format.json { head :no_content }
@@ -115,10 +114,7 @@ class ProductsController < ApplicationController
   end
 
   def show_quantity
-      
-      
       if params[:products]
-        
         @product_quantity = Product.get_quantitys(params[:products])
           respond_to do |format|
           format.js 

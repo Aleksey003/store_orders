@@ -46,7 +46,8 @@ class AssetsController < ApplicationController
  				end 
 
 				@asset.product_id = params[:product_id]
-				@asset.caption = params[:caption] 
+				@asset.caption = params[:caption]
+				@asset.head = params[:head] 
  				
  				@asset.data = file
  				file.close

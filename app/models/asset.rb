@@ -1,6 +1,6 @@
 class Asset < ActiveRecord::Base
   belongs_to :product
-  attr_accessible :caption, :data, :product_id
+  attr_accessible :caption, :data, :product_id, :head
   has_attached_file :data, :styles => { 
     :medium => "300x300>",
     :thumb => "50x50>"},

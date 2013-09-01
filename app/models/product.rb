@@ -5,6 +5,7 @@ class Product < ActiveRecord::Base
 	belongs_to :product_state
 	has_many :assets, dependent: :destroy
 	has_many :orders, through: :line_items
+	has_many :line_items
 	accepts_nested_attributes_for :assets, :allow_destroy => true
 	self.per_page = 6
 
@@ -12,6 +13,7 @@ class Product < ActiveRecord::Base
 	validates :title, presence: true
 	
 	before_destroy :check_references_by_line_items
+	
 	before_save :default_attr
 	after_save :fill_count_to_product_category 
 	after_destroy :fill_count_to_product_category 
@@ -28,7 +30,7 @@ class Product < ActiveRecord::Base
 		ProductCategory.fill_count_product
 	end
 
-	def check_references_by_items
+	def check_references_by_line_items
 		if line_items.empty?
 			return true
 		else
@@ -53,6 +55,14 @@ class Product < ActiveRecord::Base
 		indexes :product_category_id, type: 'integer'
 		indexes :title
 		indexes :description
+	end
+
+	def get_head_asset
+		asset = assets.find_by_head(:true)
+		if asset.nil?
+			asset = assets.first
+		end
+		asset
 	end
 
 	def self.search(params)
