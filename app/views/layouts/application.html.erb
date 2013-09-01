@@ -17,12 +17,6 @@
   </div>
   <div class="span6">
   <div class="pull-right">
-    <!--<a href="product_summary.html"><span class="">Fr</span></a>
-    <a href="product_summary.html"><span class="">Es</span></a>
-    <span class="btn btn-mini">En</span>
-    <a href="product_summary.html"><span>&pound;</span></a>-->
-    
-    
     <%= link_to (current_cart) do %>
       <span class="btn btn-mini cart_total_price"><%= @current_cart.total_price if @current_cart %></span>
       <span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i>
@@ -40,18 +34,24 @@
 </a>
   <div class="navbar-inner">
     <%= link_to root_path, class:"brand" do %><%= image_tag "logo.png" %><% end %>
-    <form class="form-inline navbar-search" method="post" action="products.html" >
-    <input id="srchFld" class="srchTxt" type="text" />
-      <select class="srchTxt">
-      <option>All</option>
-      <option>CLOTHES </option>
-      <option>FOOD AND BEVERAGES </option>
-      <option>HEALTH & BEAUTY </option>
-      <option>SPORTS & LEISURE </option>
-      <option>BOOKS & ENTERTAINMENTS </option>
-    </select>
-      <button type="submit" id="submitButton" class="btn btn-primary">Go</button>
-    </form>
+    
+    <%= form_tag products_path, method: :get, class:"form-inline navbar-search" do %>
+      <%= text_field_tag :query, params[:query], class:"srchTxt" %>
+
+      <%= collection_select(:category, :category_id,  ProductCategory.roots, :id, :name, :include_blank=> true )  %>
+      <!-- <select class="srchTxt">
+          <option>All</option>
+          <option>CLOTHES </option>
+          <option>FOOD AND BEVERAGES </option>
+          <option>HEALTH & BEAUTY </option>
+          <option>SPORTS & LEISURE </option>
+          <option>BOOKS & ENTERTAINMENTS </option>
+      </select>-->
+
+      <%= submit_tag "Go", name: nil, class:"btn btn-primary" %>
+    <% end %>
+
+
     <ul id="topMenu" class="nav pull-right">
    <li class=""><a href="special_offer.html">Specials Offer</a></li>
    <li class=""><a href="normal.html">Delivery</a></li>
@@ -67,30 +67,6 @@
         <span class="btn btn-large btn-success">Войти</span>
       <% end %>
     <% end %> 
-
-  <!--<div id="login" class="modal hide fade in" tabindex="-1" role="dialog" aria-labelledby="login" aria-hidden="false" >
-      <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-      <h3>Login Block</h3>
-      </div>
-      <div class="modal-body">
-      <form class="form-horizontal loginFrm">
-        <div class="control-group">
-        <input type="text" id="inputEmail" placeholder="Email">
-        </div>
-        <div class="control-group">
-        <input type="password" id="inputPassword" placeholder="Password">
-        </div>
-        <div class="control-group">
-        <label class="checkbox">
-        <input type="checkbox"> Remember me
-        </label>
-        </div>
-      </form>
-      <button type="submit" class="btn btn-success">Sign in</button>
-      <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-      </div>
-  </div>-->
   </li>
     </ul>
   </div>
@@ -118,8 +94,7 @@
 
 <div id="footerSection">
 </div>
-<% debug params if Rails.env.development? %>
-<% debug session[:user_id] if Rails.env.development? %>
+<%= debug params if Rails.env.development? %>
+<%= debug session[:user_id] if Rails.env.development? %>
 </body>
 </html>
-

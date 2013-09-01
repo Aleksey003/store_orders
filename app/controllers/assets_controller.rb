@@ -38,9 +38,16 @@ class AssetsController < ApplicationController
  				file = Tempfile.new([params[:title_image] , ".#{params[:type]}"])
  				file.binmode
  				file.write decoded_file
+
+ 				@asset = Asset.find_by_caption(params[:caption])
  				
- 				@asset = Asset.new
- 				@asset.product_id = params[:product_id]
+ 				if @asset.nil?
+ 					@asset = Asset.new
+ 				end 
+
+				@asset.product_id = params[:product_id]
+				@asset.caption = params[:caption] 
+ 				
  				@asset.data = file
  				file.close
  			#rescue Exception => e
@@ -56,7 +63,7 @@ class AssetsController < ApplicationController
  					content_type: 'text/html',
  					layout: false
  				}
- 				format.json {render json: {files: [@asset.to_jq_upload]}, status: :created, location: @asset}
+ 				format.json {render json: {status: :created}}
  			else
  				format.html {render action: 'new'}	
  				format.json {render json: @asset.errors, status: :unprocessable_entity}

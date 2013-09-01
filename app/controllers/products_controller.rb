@@ -4,21 +4,19 @@ class ProductsController < ApplicationController
   load_and_authorize_resource
   def index
 
-		if params[:category_id].nil?
-	    @products = Product.paginate(page: params[:page]).includes(:product_state,:product_category)
-		elsif  !params[:all].nil?
-      @products.all
+		if !params[:category_id].nil?
+	   @products = Product.where(product_category_id: params[:category_id]).paginate(page: params[:page]).includes(:product_state)
+		elsif params[:query].present?
+      @products =  Product.search(params)
     else 
-    	@products = Product.where(product_category_id: params[:category_id]).paginate(page: params[:page]).includes(:product_state)
+      @products = Product.paginate(page: params[:page]).includes(:product_state,:product_category)  	
 		end
-    @cart = current_cart
+    #@cart = current_cart
    
     respond_to do |format|
-      format.html # index.html.erb
+      format.html 
       format.json { render json: @products }
-      format.xml  { render xml:  @products }
       format.js
-
     end
   end
 
@@ -58,9 +56,18 @@ class ProductsController < ApplicationController
   # POST /products
   # POST /products.json
   def create
-    @product = Product.new(params[:product])
-    @product.id = params[:id] if params[:id]
-
+    if params[:id]
+      @product = Product.find_by_id(params[:id])
+      if @product.nil?
+        @product = Product.new(params[:product])
+        @product.id = params[:id] if params[:id]
+      else
+        @product.assign_attributes(params[:product])
+      end
+    else
+      @product = Product.new(params[:product])
+      @product.id = params[:id] if params[:id]
+    end
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }

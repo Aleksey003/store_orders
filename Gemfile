@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'tire'
+
 gem "will_paginate", "~> 3.0.4"
 gem "paperclip", "~> 3.0"
 gem "cancan"

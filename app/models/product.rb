@@ -15,6 +15,12 @@ class Product < ActiveRecord::Base
 	before_save :default_attr
 	after_save :fill_count_to_product_category 
 	after_destroy :fill_count_to_product_category 
+
+
+	#Tire gem elasticSearch
+	include Tire::Model::Search
+	include Tire::Model::Callbacks
+	#
 	def default_attr
 		self.price ||= 0
 	end
@@ -42,8 +48,32 @@ class Product < ActiveRecord::Base
 		hash_responce[:return]
 	end
 
+	mapping do
+		indexes :id, type: 'integer'
+		indexes :product_category_id, type: 'integer'
+		indexes :title
+		indexes :description
+	end
+
+	def self.search(params)
+		tire.search(load: true) do
+			query do
+				boolean do
+					must {string params[:query], default_operator: "AND"} if params[:query].present?
+					must {filter :term, product_category_id: params[:category_id]} if params[:category_id].present?
+				end
+			end	
+			facet "product_category" do
+       			terms :product_category_id
+      		end
+		end
+	end
+
+		
+
+	
+
 	def self.get_quantitys(params=[])
-		 #Product.first.get_quantitys({:'sam:Id' =>[115, 187, 14] })
 
 		namespaces = {
  		 "xmlns:Sam" => "http://www.sample-package.org",

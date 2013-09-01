@@ -1,3 +1,24 @@
+####  Elasticsearch ########################
+
+cd ~
+sudo apt-get update
+sudo apt-get install openjdk-7-jre-headless -y
+ 
+### Check http://www.elasticsearch.org/download/ for latest version of ElasticSearch and replace wget link below
+ 
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-0.90.0.deb
+sudo dpkg -i elasticsearch-0.90.0.deb
+sudo service elasticsearch start
+
+##Run the following rake task 
+rake environment tire:import CLASS='Product'
+rake environment tire:import CLASS='Product'  FORCE=true
+
+### End Elasticsearch ######################
+
+
+
+
 sudo apt-get install imagemagick
 sudo apt-get install libmagick9-dev [deprecated]
 sudo gem install rmagick
