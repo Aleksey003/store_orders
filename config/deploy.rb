@@ -9,6 +9,7 @@ set :deploy_via, :remote_cache
 set :repository,  "git@github.com:Aleksey003/store_orders.git"
 
 set :rvm_ruby_string, "1.9.3-p385@bootshop"
+ssh_options[:forward_agent] = true
 
 
 # set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
