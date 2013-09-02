@@ -8,9 +8,9 @@ class SessionsController < Devise::SessionsController
         super
       }
       format.json {
-        build_resource
+       
         user = User.find_for_database_authentication(:email => params[:user][:email])
-        return invalid_login_attempt unless resource
+        return invalid_login_attempt unless user
 
         if user.valid_password?(params[:user][:password])
           render :json => { :auth_token => user.authentication_token }, success: true, status: :created

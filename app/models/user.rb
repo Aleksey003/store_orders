@@ -19,12 +19,14 @@ class User < ActiveRecord::Base
 	validates :email,  :name, presence: true
   validates :role, inclusion: ROLES
   before_save :ensure_authentication_token
-	has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "50x50>" },
-  :storage => :dropbox,
-    :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",    
-    :dropbox_options => {
-      :path => proc { |style| "#{style}/#{id}_#{logo.original_filename}" }
-    }
+
+	has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "50x50>" }
+  #has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "50x50>" },
+  #:storage => :dropbox,
+  #  :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",    
+  #  :dropbox_options => {
+  #    :path => proc { |style| "#{style}/#{id}_#{logo.original_filename}" }
+  #  }
 
   def	method_missing method_name, *arg
 		method_name = method_name.to_s.delete "?"
@@ -34,6 +36,4 @@ class User < ActiveRecord::Base
 			super
 		end
 	end
-
-  
 end
