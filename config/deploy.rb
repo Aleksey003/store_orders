@@ -7,7 +7,7 @@ set :deploy_to, "/home/app/bootshop"
 set :use_sudo, false
 set :deploy_via, :remote_cache
 set :repository,  "git@github.com:Aleksey003/store_orders.git"
-
+set :branch, "bootshop"
 set :rvm_ruby_string, "1.9.3-p385@bootshop"
 ssh_options[:forward_agent] = true
 
