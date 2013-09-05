@@ -2,7 +2,6 @@
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
       <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,11 +10,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <h3><%= t(:title) %>
-    <%= f.text_field  :title %></h3>
+  <div class="controls">
+    Название: </br><%= f.text_field  :title %>    
+  </div>
+
+  <div class="controls">
+    Тип: </br> <%= f.collection_select :role, Post::ROLES, :to_s, :humanize, include_blank: true %>
   </div>
   <div>
+    Текст: </br>
     <%= f.cktext_area :body %>
   </div>
   <div class="actions">

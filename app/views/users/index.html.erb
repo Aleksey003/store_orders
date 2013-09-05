@@ -2,13 +2,13 @@
 <% if notice %>
 <p id="notice"><%= notice %>
 <% end %>
-<table class="table-list">
+<table class="table">
   <thead>
     <tr>
    		<th><%= t(:logo) %></th>
       <th><%= t(:name) %></th>
       <th>Email</th>
-      <th><%= t(:discount) %></th>
+      <th>Создан: </th>
       <th><%= t(:parent) %></th>
       <th><%= t(:actions) %></th>  
     </tr>
@@ -16,10 +16,10 @@
 
 <% @users.each do |user| %>
   <tr>
-    <td></td>
+    <td><%= image_tag(user.logo.url(:thumb)) %></td>
     <td><%= user.name %></td>
     <td><%= user.email %></td>
-    <td><%= user.discount %></td>
+    <td><%= user.created_at.strftime("%F") %></td>
     <td><%= user.parent.name if !user.parent.nil? %></td>
     <td><%= link_to "<i class='icon-zoom-in'></i>".html_safe, user,class:'btn btn-mini' %>
     <%= link_to "<i class='icon-edit'></i>".html_safe,  edit_user_path(user),class:'btn btn-mini' %>
@@ -30,5 +30,6 @@
 </table>
 
 <div class="btn-bottom">
+  <%= will_paginate @users %>
   <%= link_to t('new_user'), new_user_path,:class => 'btn btn-primary' %>
 </div>

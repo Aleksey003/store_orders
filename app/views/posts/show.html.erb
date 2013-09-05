@@ -1,18 +1,14 @@
 
-
-<p>
+<div>
   <h1><%= @post.title %></h1>
-</p>
+</div>
 
-<p>
+<div>
   <%= @post.body.html_safe %>
-</p>
-
-<p>
-  <%= @post.user.name if @post.user %>
-</p>
+</div>
 
 <div class='btn-bottom'>
-	<%= link_to t(:edit), edit_post_path(@post), class:'btn' if can? :update, Post %>
-	<%= link_to t(:back), posts_path, class:'btn'%>
+	<%= link_to "Назад", posts_path, class:'btn'%>
+	<%= link_to "Редактировать", edit_post_path(@post), class:'btn' if can? :update, Post %>
+	<%= link_to "Удалить", posts_path, method: :delete, :confirm => 'Удалить?',  class:'btn btn-danger' if can? :delete, Post %>
 </div>

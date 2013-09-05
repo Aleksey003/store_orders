@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
       redirect_to :back, notice: "Your cart is empty"
       return
     else
-      @order = Order.new(email: current_user.email, order_date: Time.now )      
+      @order = Order.new(email: current_or_guest_user.email, order_date: Time.now)      
       respond_to do |format|
         format.html # new.html.erb
         format.json { render json: @order }
@@ -46,7 +46,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.json
   def create
-    @user = current_user
+    @user  = current_or_guest_user
     @order = @user.orders.build(params[:order])
     @order.add_line_items_from_cart(current_cart)
     @order.status = 'new'   

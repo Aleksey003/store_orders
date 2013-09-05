@@ -1,17 +1,21 @@
-<h2 class="brdr-btm">News</h2>
+<h3>News</h3>
+<hr class="soft">
 
 
 <% @posts.each do |post| %>
 	<div class='posts'>
-		<p class='date'><%= post.updated_at.strftime("%d/%m/%Y") %></p>
 		<h1><%= link_to post.title.html_safe, post %></h1>
 		<div><%= truncate(post.body, length: 400).html_safe %></div>
-		<%= link_to "Читать", post %>	
+		<div>
+			<p class='date'><%= post.updated_at.strftime("%d/%m/%Y") %></p>
+			<%= link_to "Читать", post %>
+		</div>
 	</div>
 <% end %>
 
 
 <div class='btn-bottom'>
 	<%= will_paginate @posts %>
-	<%= link_to t(:new), new_post_path, class:'btn btn-success' if can? :create, Post %>
+	<%= link_to "Новый", new_post_path, class:'btn btn-success' if can? :create, Post %>
+	
 </div>

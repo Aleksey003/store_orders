@@ -53,9 +53,9 @@
 
 
     <ul id="topMenu" class="nav pull-right">
-   <li class=""><a href="special_offer.html">Specials Offer</a></li>
-   <li class=""><a href="normal.html">Delivery</a></li>
-   <li class=""><a href="contact.html">Contact</a></li>
+   <li class=""><%= link_to "Акция", products_path %></li>
+   <li class=""><%= link_to "Новости", posts_path %></li>
+   <li class=""><%= link_to "Контакты", Post.get_post_by_role("contact") %></li>
    <li class="">
 
     <% if user_signed_in? %>
@@ -93,8 +93,9 @@
 </div>
 
 <div id="footerSection">
+  <%= render "./layouts/footer" %>
 </div>
-<%= debug params if Rails.env.development? %>
-<%= debug session[:user_id] if Rails.env.development? %>
+<% debug params if Rails.env.development? %>
+<% debug session[:user_id] if Rails.env.development? %>
 </body>
 </html>

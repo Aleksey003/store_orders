@@ -1,6 +1,7 @@
-<h2 class="brdr-btm">Список корзин</h2>
+<h3>Список корзин</h2>
+<hr class="soft">
 
-<table class='table-list'>
+<table class='table'>
   <thead>
     <tr>
       <th>Номер</th>
@@ -16,8 +17,8 @@
     <% @carts.each do |cart| %>      
       <tr>
         <td><%= cart.id %></td>
-        <td><%= cart.created_at.strftime("%B %d, %Y, %H:%M") %></td>
-        <td><%= cart.updated_at.strftime("%B %d, %Y, %H:%M") %></td>
+        <td><%= cart.created_at.strftime("%d/%m/%Y") %></td>
+        <td><%= cart.updated_at.strftime("%d/%m/%Y") %></td>
         <td><%= cart.user.name %></td>
         <td><%= cart.total_price %></td>
         <td><%= link_to "<i class='icon-zoom-in'></i>".html_safe, cart,class:'btn btn-mini' %>
@@ -28,4 +29,6 @@
     <% end %>
   </tbody> 
 </table>
-<div class="btn-bottom"></div>
+
+  <%= will_paginate @carts %>
+

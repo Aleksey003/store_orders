@@ -8,7 +8,7 @@ set :use_sudo, false
 set :deploy_via, :remote_cache
 set :repository,  "git@github.com:Aleksey003/store_orders.git"
 set :branch, "bootshop"
-set :rvm_ruby_string, "ruby-1.9.3-p448@bootshop"
+set :rvm_ruby_string, "ruby-1.9.3-p448"
 ssh_options[:forward_agent] = true
 
 

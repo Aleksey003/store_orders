@@ -11,43 +11,48 @@
       </ul>
     </div>
   <% end %>
-   <div class="actions">
-    <%= f.submit t(:create), class:'btn btn-success' %>
-  </div>
+ 
   <div class="field">
     <%= t(:order_date) %>
     <%= f.text_field :order_date %></br>
     Email
     <%= f.text_field :email %>
   </div>
-   <div class="field">
+  <div class="field">
     <%= t(:comments)  %><br />
     <%= f.text_field :comment, class: "span9" %>
   </div>
- 
+
+  <table class='table table-bordered table-hover'>
+    <tr class='info'>
+      <td> Product </td>
+      <td> Quantity </td>
+      <td> Summ </td>
+    </tr>
+    <tbody>
+    <% if !@order.line_items.empty? %>
+     <% total_price = 0 %>
+      <%= render(@order.line_items) %>
+      <% total_price = @order.total_price %>
+    <% elsif (@cart != nil) %>
+      <%= render(@cart.line_items) %>
+      <% total_price = @cart.total_price %>
+    <% end %>
+    <tr>
+      <td colspan='2'>Total:</td>
+      <td><%= total_price %></td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="actions">
+    <%= f.submit "Отправить", class:'btn btn-success' %>
+    <%= link_to "Назад", orders_path, class:'btn' %>
+  </div>
+
 <% end %>
 
 
-<table class='table table-bordered table-hover'>
-  <tr class='info'>
-    <td> Product </td>
-    <td> Quantity </td>
-    <td> Summ </td>
-  </tr>
-  <tbody>
-  <% if !@order.line_items.empty? %>
-   <% total_price = 0 %>
-    <%= render(@order.line_items) %>
-    <% total_price = @order.total_price %>
-  <% elsif (@cart != nil) %>
-    <%= render(@cart.line_items) %>
-    <% total_price = @cart.total_price %>
-  <% end %>
-  <tr>
-    <td colspan='2'>Total:</td>
-    <td><%= total_price %></td>
-  </tr>
-</tbody>
-</table>
+
 
 

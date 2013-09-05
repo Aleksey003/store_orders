@@ -17,7 +17,7 @@
 	<%= product_category.name %>(<%= product_category.product_count %>)
 <% end %>
 <%= link_to "<i class='icon-edit'></i>".html_safe, edit_product_category_path(product_category), class:'btn btn-mini' %>
-<%= link_to "<i class='icon-remove'></i>".html_safe, product_category_path(product_category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn' %>
+<%= link_to "<i class='icon-remove'></i>".html_safe, product_category_path(product_category), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini' %>
 
 
  

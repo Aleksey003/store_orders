@@ -1,4 +1,4 @@
-####  Elasticsearch ########################
+#######################  Elasticsearch ########################
 
 cd ~
 sudo apt-get update
@@ -14,34 +14,34 @@ sudo service elasticsearch start
 rake environment tire:import CLASS='Product'
 rake environment tire:import CLASS='Product'  FORCE=true
 rake environment tire:import CLASS='Product' FORCE=true RAILS_ENV=production
-### End Elasticsearch ######################
-
-
-
+### ############################################################
 
 sudo apt-get install imagemagick
 sudo apt-get install libmagick9-dev [deprecated]
 sudo gem install rmagick
 sudo apt-get install postgresql postgresql-client postgresql-server-dev-all libpq-dev
 
-#################### reset id pg #########################
+#################### reset id pg ###############################
+
 ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
 
-##############################################################
-therubyracer
+
+####################therubyracer################################
 sudo apt-get install g++
 
-Just to be sure, I also recommend:
+#Just to be sure, I also recommend:
 
 sudo apt-get install build-essential
 #################################################################
 
+############### rvm #############################################
 
-#source /home/app/.rvm/scripts/rvm
-#bundle exec rails c production    #console
+source /home/app/.rvm/scripts/rvm
+bundle exec rails c production    #console
 
+############## pg   #############################################
 
 # remote acsess pg_admin
 # /etc/postgresql/8.4/main/postgresql.conf:
@@ -51,4 +51,6 @@ listen_addresses = '*'
 host all all 0.0.0.0/0 md5
 
 sudo /etc/init.d/postgresql start
-/etc/nginx/logs
+
+############### ngnix ############################################
+/etc/nginx/logs    
