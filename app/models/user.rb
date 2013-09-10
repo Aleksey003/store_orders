@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
 	has_attached_file :logo, 
                     :styles => { :medium => "300x300>", :thumb => "50x50>" }, 
-                    :default_url => "default_user.jpg"
+                    :default_url => "default_user_:style.jpg"
   #has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "50x50>" },
   #:storage => :dropbox,
   #  :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",    

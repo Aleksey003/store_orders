@@ -10,17 +10,17 @@
 <div id="header">
 <div class="container">
 <div id="welcomeLine" class="row">
-  <div class="span6">Welcome!
-    <strong>
+  <div class="span7">
+    
     <%= render "layouts/menu" %>
-    </strong>
+    
   </div>
-  <div class="span6">
+  <div class="span5">
   <div class="pull-right">
     <%= link_to (current_cart) do %>
       <span class="btn btn-mini cart_total_price"><%= @current_cart.total_price if @current_cart %></span>
       <span class="btn btn-mini btn-primary"><i class="icon-shopping-cart icon-white"></i>
-      [<span class="cart_total_quantity"> <%= @current_cart.total_quantity if @current_cart %> </span>] Itemes in your cart</span>
+      [<span class="cart_total_quantity"> <%= @current_cart.total_quantity if @current_cart %> </span>] Товаров в корзине</span>
     <% end %>
   </div>
   </div>

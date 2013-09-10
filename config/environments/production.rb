@@ -1,6 +1,18 @@
 StoreOrders::Application.configure do
   config.logger = Logger.new(STDOUT)
 
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.asset_host = "http://192.81.220.119"
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.gmail.com",
+    port:                 587,
+    authentication:       "plain",
+    user_name:            "mailshoptest123@gmail.com",
+    password:             "Shop1234",
+    enable_starttls_auto: true
+
+  }
+
   #fonts
   config.assets.paths << Rails.root.join('app', 'assets', 'font')
   config.assets.precompile += %w( .svg .eot .woff .ttf )

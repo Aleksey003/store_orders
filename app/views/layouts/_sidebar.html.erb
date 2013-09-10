@@ -1,20 +1,16 @@
-
 <div class="well well-small">
 	<%= link_to (current_cart), id: 'myCart' do %>
 		<%= image_tag "ico-cart.png" %>
 		<span class="cart_total_quantity">
 			<%= @current_cart.total_quantity if @current_cart %>  
-		</span>Items in your cart
+		</span> Товаров в корзине
 		<span class="badge badge-warning pull-right cart_total_price">
 			<%= @current_cart.total_price if @current_cart %>
 		</span>
 	<% end %>
 </div>
 <%= render "./layouts/product_catalog" %>
-
 <br/>
-
-
 <!--<div class="thumbnail">
 <img src="themes/images/products/panasonic.jpg" alt="Bootshop panasonoc New camera"/>
 <div class="caption">
@@ -22,7 +18,6 @@
 	<h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
 </div>
 </div><br/>
-
 <div class="thumbnail">
 	<img src="themes/images/products/kindle.png" title="Bootshop New Kindel" alt="Bootshop Kindel">
 	<div class="caption">
@@ -30,10 +25,9 @@
 	    <h4 style="text-align:center"><a class="btn" href="product_details.html"> <i class="icon-zoom-in"></i></a> <a class="btn" href="#">Add to <i class="icon-shopping-cart"></i></a> <a class="btn btn-primary" href="#">$222.00</a></h4>
 	</div>
 </div><br/> -->
-
 <div class="thumbnail">
 	<%= image_tag "payment_methods.png" %>
 	<div class="caption">
-	  <h5>Payment Methods</h5>
+	  <h5>Методы оплаты</h5>
 	</div>
 </div>

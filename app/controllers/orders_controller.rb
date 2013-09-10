@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
     
     respond_to do |format|
       if @order.save
-        #OrderMail.received(@order).deliver
+        OrderMail.received(@order).deliver
         Cart.destroy(session[:cart_id])
         format.html { redirect_to @order, notice: 'Order was successfully created.' }
         format.json { render json: @order, status: :created, location: @order }

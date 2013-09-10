@@ -25,9 +25,10 @@
 
   <table class='table table-bordered table-hover'>
     <tr class='info'>
-      <td> Product </td>
-      <td> Quantity </td>
-      <td> Summ </td>
+      <td colspan='2'>Товар</td>
+      <td>Количество</td>
+      <td>Цена</td>
+      <td>Сумма</td>
     </tr>
     <tbody>
     <% if !@order.line_items.empty? %>
@@ -39,7 +40,7 @@
       <% total_price = @cart.total_price %>
     <% end %>
     <tr>
-      <td colspan='2'>Total:</td>
+      <td colspan='4'>Total:</td>
       <td><%= total_price %></td>
     </tr>
     </tbody>

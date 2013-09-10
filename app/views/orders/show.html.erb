@@ -1,25 +1,25 @@
 <p>
-  <b>Date:</b>
+  <b>Дата:</b>
   <%= @order.order_date.strftime("%B %d, %Y") %>
-  <b>User:</b>
+  <b>Пользователь:</b>
   <%= @order.user.name %>
 </p>
 <p>
-  <b>Comments:</b>
-  <%= @order.comment %>
-</p>
-
-<p>
   <b>Email:</b>
   <%= @order.email %>
-  <b>Status: <%= @order.status %>
+  <b>Статус: <%= @order.status %>
+</p>
+<p>
+  <b>Коментарий:</b>
+  <%= @order.comment %>
 </p>
 
 <table class='table table-bordered table-hover'>
   <tr class='info'>
-    <td> Product </td>
-    <td> Quantity </td>
-    <td> Summ </td>
+    <td colspan='2'> Товар </td>
+    <td> Количество </td>
+    <td> Цена </td>
+    <td> Сумма </td>
   </tr>
   <tbody>
   <% if !@order.line_items.empty? %>
@@ -31,12 +31,10 @@
     <% total_price = @cart.total_price %>
   <% end %>
   <tr>
-    <td colspan='2'>Total:</td>
+    <td colspan='4'>Итог:</td>
     <td><%= total_price %></td>
   </tr>
 </tbody>
 </table>
 
-
-<%= link_to 'Edit', edit_order_path(@order), class:'btn btn-mini' %> |
-<%= link_to 'Back', orders_path, class:'btn btn-mini' %>
+<%= link_to 'Назад', orders_path, class:'btn btn-mini' %>

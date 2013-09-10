@@ -3,7 +3,6 @@
   <% if @product.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
       <ul>
       <% @product.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -13,27 +12,26 @@
   <% end %>
 
   <div class="field">
-    Названия</br>
-    <%= f.text_field :title, class: 'field' %>
+    Названия:</br>
+    <%= f.text_field :title, class: 'input-xxlarge' %>
   </div>
   <div class="field">
-    Описания
-    <%= f.cktext_area :description, rows:10 , class: 'field' %>
-  </div>
-  <div class="field">
-    
+    Статус:</br>    
     <%= f.select :product_state_id, ProductState.all.collect{|s| [s.name, s.id]}, {:prompt=>true} %>
   </div>
-  
   <div class="field">
+    Категория:</br>
     <%= f.select  :product_category_id,  ProductCategory.all.collect{|s| [s.get_name_for_tree_category, s.id]}, {:prompt=>true}  %>
   </div>
   <div class="field">
-   Цена: <%= f.number_field :price %>
+    Цена:</br>
+    <%= f.number_field :price %>
   </div>
-
-  <div class="actions">
-
+  <div class="field">
+    Описания:
+    <%= f.cktext_area :description, rows:10 , class: 'field' %>
+  </div>
+  <div class="field">
     <%= f.submit t(:save), class:'btn' %>
   </div>
 <% end %>

@@ -1,4 +1,4 @@
-<div id="customer">
+<div class="span5 offset2">
 	<div class="template_header">
 	<h2 class="title"><%= t(".sign_in") %></h2>
 	</div>
@@ -14,16 +14,21 @@
 			<%= f.label :password, class:'login' %>
 			<%= f.password_field :password, class: 'large' %>
 		
+		
+
 		<div id="forgot_password">
+		 	<% if false %>
+				<% if devise_mapping.rememberable? -%>
+			   		<%= f.check_box :remember_me %><%=t(".remember_me") %><br />
+			  	<% end %>
+			<% end %>
 			<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-	  			<%= link_to t(".Forgot_your_password?"), new_password_path(resource_name) %><br />
+	  			<%= link_to "Забыли пароль?", new_password_path(resource_name) %>
 			<% end -%>
 		</div>
 		</div>
 
-	  <% if devise_mapping.rememberable? -%>
-	    <%= f.check_box :remember_me %><%=t(".remember_me") %>
-	  <% end -%>
+	  
 
 		<div class="action_bottom">
 	  		<%= f.submit t(".sign_in") , class:'btn' %>

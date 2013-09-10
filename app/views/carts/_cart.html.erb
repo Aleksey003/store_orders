@@ -3,11 +3,10 @@
 <table class="table table-bordered">
 	<thead>
 		<tr>
-			<th>Product</th>
-			<th>Description</th>
-			<th>Quantity</th>
-			<th>Price</th>
-			<th>Total</th>
+			<th colspan="2">Товар</th>
+			<th>Количество</th>
+			<th>Цена</th>
+			<th>Сумма</th>
 		</tr>
 	</thead>	
 	<tbody>
@@ -22,7 +21,7 @@
 	</tbody> 
 </table>
 <hr class="soft"></hr>
-<%= link_to 'Continue Shopping', :back, class:'btn btn-large' %>
+<%= link_to 'Продолжить', :back, class:'btn btn-large' %>
 <%= link_to t(".Empty_сart"), cart, method: :delete, confirm: "Are you sure?", class:"btn btn-large btn-danger" %>
 <%= link_to 'Оформить', new_order_path, class:'btn btn-large pull-right' %>
 

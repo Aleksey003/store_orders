@@ -1,14 +1,10 @@
 <p>
-
-  <%= image_tag @user.logo.url(:download => true) %>
-
+  <%= image_tag @user.logo.url(:medium) %>
 </p>
 <p>
   <b><%= t(:name) %></b>
   <%= @user.name %>
 </p>
-
-
 <p>
   <b>Email:</b>
   <%= @user.email %>
@@ -17,12 +13,9 @@
 	<b><%= t(:parent) %></b>
 	<%= @user.parent.name unless @user.parent.nil? %>
 </p>
-
 <p>
   <b><%= t(:discount) %></b>
   <%= @user.discount %>
-
 </p>
-
 <%= link_to t(:edit), edit_user_path(@user), class:'btn' %> |
 <%= link_to t(:back), users_path, class:'btn' %>

@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
-
+if RUBY_VERSION =~ /1.9/ # assuming you're running Ruby ~1.9
+  Encoding.default_external = Encoding::UTF_8
+  Encoding.default_internal = Encoding::UTF_8
+end
 gem 'tire'
 gem "will_paginate", "~> 3.0.4"
 gem "paperclip", "~> 3.0"
@@ -14,6 +17,8 @@ gem 'paperclip-dropbox'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :development do
 	gem 'pg'
+  #gem 'better_errors'
+  #gem 'binding_of_caller'
 end
 
 #gem 'bcrypt-ruby'

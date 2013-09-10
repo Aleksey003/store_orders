@@ -1,0 +1,13 @@
+<h3><%= @greeting %></h3>
+
+<p>Ваш заказ зарегистрирован:</p>
+
+<table>
+	<tr>
+		<th colspan="2">Описание</th>
+		<th>Количество</th>
+		<th>Цена</th>
+		<th>Сумма</th>
+	</tr>
+<%= render @order.line_items %>
+</table>

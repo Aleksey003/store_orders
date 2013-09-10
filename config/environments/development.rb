@@ -1,6 +1,16 @@
 StoreOrders::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.asset_host = "http://localhost:3000"
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.gmail.com",
+    port:                 587,
+    authentication:       "plain",
+    user_name:            "mailshoptest123@gmail.com",
+    password:             "Shop1234",
+    enable_starttls_auto: true
+
+  }
 
   
   #fonts

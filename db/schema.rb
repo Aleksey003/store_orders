@@ -105,9 +105,9 @@ ActiveRecord::Schema.define(:version => 20130903211000) do
     t.text     "description"
     t.integer  "product_state_id"
     t.integer  "product_category_id"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-    t.float    "price"
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
+    t.float    "price",               :default => 0.0
   end
 
   create_table "user_state", :force => true do |t|

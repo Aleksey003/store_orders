@@ -26,14 +26,13 @@ class Order < ActiveRecord::Base
   	line_items.to_a.sum { |item| item.quantity * item.price}
   end
 
-
   private
   
   def check_and_post_order
     
     if status == 'new'
       responce = post_order
-      if responce
+      if !responce
         status = 'check'
       end
     end

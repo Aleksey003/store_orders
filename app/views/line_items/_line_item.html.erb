@@ -5,12 +5,12 @@
 <% end %>
 
 	<td>
-		<%= link_to  product_path(line_item.product) do %>
-			<%= image_tag(line_item.product.assets.first.data.url(:thumb)) unless line_item.product.assets.first.nil? %>
+		<%= link_to  product_url(line_item.product.id, locale:"ru") do %>
+			<%= image_tag( line_item.product.get_head_asset.data.url(:thumb)) unless line_item.product.get_head_asset.nil? %>
 		<% end %>
 	</td>
 	<td>
-		<%= link_to  product_path(line_item.product) do %>
+		<%= link_to  product_url(line_item.product.id, locale:"ru") do %>
 			<%= line_item.product.title %>
 		<% end %>
 	</td>
