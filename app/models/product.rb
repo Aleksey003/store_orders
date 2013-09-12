@@ -50,12 +50,7 @@ class Product < ActiveRecord::Base
 		hash_responce[:return]
 	end
 
-	mapping do
-		indexes :id, type: 'integer'
-		indexes :product_category_id, type: 'integer'
-		indexes :title
-		indexes :description
-	end
+	
 
 	def get_head_asset
 		asset = assets.find_by_head(:true)
@@ -79,6 +74,19 @@ class Product < ActiveRecord::Base
 		end
 	end
 
+	mapping do
+		indexes :id, type: 'integer'
+		indexes :title
+		indexes :description
+		indexes :product_category_id, type: 'integer'
+		indexes :product_category_name
+	end
+	def to_indexed_json
+    to_json(methods: [:product_category_name])
+  end
+	def product_category_name
+		product_category.name
+	end
 		
 
 	

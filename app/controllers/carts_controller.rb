@@ -3,11 +3,11 @@ class CartsController < ApplicationController
   # GET /carts.json
   load_and_authorize_resource
   def index
-    @carts = Cart.accessible_by(current_ability).paginate(page: params[:page])
-
+    #@carts = Cart.accessible_by(current_ability).paginate(page: params[:page])
+    @carts = Cart.accessible_by(current_ability)
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @carts }
+      format.json { render json: CartsDatatable.new(view_context) }
     end
   end
 

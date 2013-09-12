@@ -19,6 +19,7 @@
 //= require jquery.ui.dialog
 //= require jquery.ui.tabs
 //= require ckeditor/init
+//= require dataTables/jquery.dataTables
 
 $(function(){
   $("#order_order_date").datepicker();
