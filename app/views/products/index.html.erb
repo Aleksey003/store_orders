@@ -1,34 +1,57 @@
-<h3><%= t(".Products") %></h3>
+<div class="row">
+	<div class="span6">
+		<h3><%= t(".Products") %></h3>
+	</div>	
+
+	<div id="myTab" class="pull-right" >
+		<%= link_to products_path product_list: 1 do %>
+			<span class="btn btn-large"><i class="icon-list"></i></span>
+		<% end %>
+		<%= link_to products_path product_list: 2 do %>
+			<span class="btn btn-large"><i class="icon-th-large"></i></span>
+		<% end %>
+	</div>
+</div>
+<!--
 <% if false %>
 <p><%= link_to t(:show_quantity), show_quantity_products_path(products:@products.map(&:id)), class: 'btn btn-primary', remote: true %></br></p>
 <% end %>
+-->
 <hr class="soft">
 <div class="tab-content">
-	<div class="tab-pane active" id="blockView">
-		<ul class="thumbnails">
+	
+	<div  id="listView" class="tab-pane active">
+
 			<% @products.each do |product| %>
-				<li class='span3'>        		
-					<div class="thumbnail">
-						<%= link_to  product do %>
-						<div class="h300">
-							<%= image_tag(product.get_head_asset.data.url(:medium)) unless product.get_head_asset.nil? %>
+				<div class='row'>        		
+						
+						<div class="span2">
+							<p>Код: <%= product.id %></p>
+							<%= link_to  product do %>
+								<%= image_tag(product.get_head_asset.data.url(:thumb)) unless product.get_head_asset.nil? %>
+
+							<% end %>
+
 						</div>
-						<% end %>
-						<div class="caption">
+
+						<div class="span4">
 							<h5><%= truncate(product.title, length: 22) %></h5>
-							<p> <%= "Код:#{product.id}" %> </p>
+								<a class="btn btn-primary" href="#">&euro;<%= product.price %></a>
 							<!-- <p id=<%="quantity#{product.id}" %>></p> -->		
-							<h4 style="text-align:center">
+						</div>
+
+						<div class="span3 alignR">
 								<%= link_to'<i class="icon-zoom-in"></i>'.html_safe,  product, class: 'btn' %>						
 								<%= link_to 'Купить<i class="icon-shopping-cart"></i>'.html_safe, line_items_path(product_id: product), method: :post, remote: true, class: 'btn' %>
-								<a class="btn btn-primary" href="#">&euro;<%= product.price %></a>
-							</h4>
+								
 						</div>	
-					</div>				
-				</li>	                   
+				</div>
+				<hr class="soft"></hr>	                   
+
 			<% end %>
-		</ul>
 	</div>
+
+
 </div>
 <%= will_paginate @products %>
 

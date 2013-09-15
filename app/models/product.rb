@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
 	has_many :orders, through: :line_items
 	has_many :line_items
 	accepts_nested_attributes_for :assets, :allow_destroy => true
-	self.per_page = 6
+	self.per_page = 10
 
 	validates :product_category, presence: true
 	validates :title, presence: true
@@ -50,8 +50,6 @@ class Product < ActiveRecord::Base
 		hash_responce[:return]
 	end
 
-	
-
 	def get_head_asset
 		asset = assets.find_by_head(:true)
 		if asset.nil?
@@ -65,7 +63,12 @@ class Product < ActiveRecord::Base
 			query do
 				boolean do
 					must {string params[:query], default_operator: "AND"} if params[:query].present?
-					must {filter :term, product_category_id: params[:category_id]} if params[:category_id].present?
+					if params[:cat]
+						must {terms  :product_category_id, ProductCategory.find(params [:cat][:category_id]).children.map{|x| x.id}
+ } if params [:cat][:category_id].present?
+					end
+					#must {filter :term, product_category_id: params[:cat][:category_id]} if params[:cat].present?
+					#must {term, :product_category_id, "34" } if params[:cat].present?
 				end
 			end	
 			facet "product_category" do
@@ -81,15 +84,14 @@ class Product < ActiveRecord::Base
 		indexes :product_category_id, type: 'integer'
 		indexes :product_category_name
 	end
+
 	def to_indexed_json
-    to_json(methods: [:product_category_name])
-  end
+    	to_json(methods: [:product_category_name])
+  	end
+
 	def product_category_name
 		product_category.name
 	end
-		
-
-	
 
 	def self.get_quantitys(params=[])
 

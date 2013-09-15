@@ -11,10 +11,22 @@ class ProductsController < ApplicationController
     else 
       @products = Product.paginate(page: params[:page]).includes(:product_state,:product_category)  	
 		end
+
+    if params[:product_list] == "1"
+      session[:product_list] = "1"
+    elsif params[:product_list] == "2"
+      session[:product_list] = nil
+    end
+    
     #@cart = current_cart
    
     respond_to do |format|
-      format.html 
+      format.html { 
+        if  session[:product_list] == "1"
+          render 'index' 
+        else
+          render 'index2'
+        end} 
       format.json { render json: @products }
       format.js
     end

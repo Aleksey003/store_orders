@@ -38,7 +38,7 @@
     <%= form_tag products_path, method: :get, class:"form-inline navbar-search" do %>
       <%= text_field_tag :query, params[:query], class:"srchTxt" %>
 
-      <%= collection_select(:category, :category_id,  ProductCategory.roots, :id, :name, :include_blank=> true )  %>
+      <%= collection_select(:cat, :category_id,  ProductCategory.roots, :id, :name, :include_blank=> true )  %>
       <!-- <select class="srchTxt">
           <option>All</option>
           <option>CLOTHES </option>
@@ -96,6 +96,7 @@
   <%= render "./layouts/footer" %>
 </div>
 <%= debug params if Rails.env.development? %>
-<%= debug session[:user_id] if Rails.env.development? %>
+<% debug session[:user_id] if Rails.env.development? %>
+<%= debug session[:product_list] == "1" if Rails.env.development? %>
 </body>
 </html>
