@@ -1,18 +1,18 @@
 module ApplicationHelper
 
 	def current_or_guest_user
-    	if current_user
-      		if session[:guest_user_id]
-        		#logging_in login user and destroy guest
-            replace_user_cart
-        		guest_user.destroy
-        		session[:guest_user_id]=nil  
-
-      		end
+    	#if current_user
+      #		if session[:guest_user_id]
+      #  		#logging_in login user and destroy guest
+      #      replace_user_cart
+      #  		guest_user.destroy
+      #  		session[:guest_user_id]=nil  
+      #
+      #		end
       		current_user
-    	else
-    	 	guest_user
-   	    end
+    	#else
+    	# 	guest_user
+   	  #  end
   	end
 
   def guest_user

@@ -1,7 +1,7 @@
 class SessionsController < Devise::SessionsController
   #before_filter :authenticate_user!, :except => [:create, :destroy]
   #respond_to :json
-
+  layout "application_login"
   def create
     respond_to do |format|
       format.html {

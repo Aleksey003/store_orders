@@ -6,23 +6,9 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-  <div id='wrapper'>
-    <div id='header'>
-       <div id='page-title'>
-          <h1><%= link_to '<strong>Магазин</strong>'.html_safe, root_path %></h1>
-        </div>
-        <%= render "./layouts/menu" %> 
-    </div>
-
-    <div id='middle'>
-      <div id='container'>
-        <div id='content'>      
-        <p id="notice"><%= notice %></p>
-        <%= yield %>
-        </div>
-      </div>
-    </div>           
+<body class="login_body">
+  <div class="container">
+    <%= yield %>
   </div>
 <% debug params if Rails.env.development? %>
 <% debug session[:user_id] if Rails.env.development? %>

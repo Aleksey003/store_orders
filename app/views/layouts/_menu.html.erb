@@ -1,4 +1,4 @@
-<% if current_or_guest_user.admin? or current_or_guest_user.moderator? %>
+<% if current_or_guest_user.nil?  %>
 <ul class="nav nav-pills">	
     <li><%= link_to t('.products'), products_path %></li>
     <li><%= link_to t('.posts'), posts_path %></li>
