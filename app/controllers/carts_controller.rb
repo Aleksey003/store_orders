@@ -4,10 +4,15 @@ class CartsController < ApplicationController
   load_and_authorize_resource
   def index
     #@carts = Cart.accessible_by(current_ability).paginate(page: params[:page])
-    @carts = Cart.accessible_by(current_ability)
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: CartsDatatable.new(view_context) }
+    #@carts = Cart.accessible_by(current_ability)
+    @carts_grid = initialize_grid(Cart,
+      :name => 'carts_grid',
+      :order => 'carts.id', :order_direction => 'desc', :include => [:user],
+      :enable_export_to_csv => true,
+      :csv_field_separator => ';',
+      :csv_file_name => 'projects' )
+
+    export_grid_if_requested('carts_grid' => 'carts_grid') do 
     end
   end
 

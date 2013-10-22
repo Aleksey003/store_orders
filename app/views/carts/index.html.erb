@@ -1,22 +1,8 @@
 <h3>Список корзин</h2>
 <hr class="soft">
+<%= render partial:  'carts_grid' %>
 
-<table  id="carts_table" class="table table-bordered display" data-source="<%= carts_url(format: "json") %>">
-  <thead>
-    <tr>
-      <th>Номер</th>
-      <th>Создан</th>
-      <th>Последние обновления</th>
-      <th>Пользователь</th>
-      <th> Сумма %></th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-   
-  </tbody> 
-</table>
 
  
 

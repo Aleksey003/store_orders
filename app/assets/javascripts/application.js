@@ -18,8 +18,8 @@
 //= require jquery.ui.datepicker
 //= require jquery.ui.dialog
 //= require jquery.ui.tabs
+//= require wice_grid
 //= require ckeditor/init
-//= require dataTables/jquery.dataTables
 
 $(function(){
   $("#order_order_date").datepicker();

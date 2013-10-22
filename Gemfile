@@ -27,7 +27,7 @@ gem "ckeditor"
 gem 'libv8', :platforms => :ruby
 gem "less-rails"
 gem 'execjs'
-
+gem "wice_grid", '3.2.1'
 group :test, :development do
 	gem 'rspec-rails'
 	gem 'debugger'
@@ -47,7 +47,7 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
   gem 'therubyracer', '~> 0.11.1'
-  gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
+  #gem 'jquery-datatables-rails', git: 'git://github.com/rweng/jquery-datatables-rails.git'
 end
 
 gem 'jquery-rails'

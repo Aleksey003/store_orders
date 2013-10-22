@@ -1,15 +1,14 @@
-<% if current_or_guest_user.nil?  %>
-<ul class="nav nav-pills">	
-    <li><%= link_to t('.products'), products_path %></li>
-    <li><%= link_to t('.posts'), posts_path %></li>
-    <li><%= link_to t('.orders'), orders_path %></li>
-    <li><%= link_to "Корзина", carts_path %></li>
-    <li><%= link_to "Категория", product_categories_path if can? :update, ProductCategory%></li>
-    <li><%= link_to "Статусы", product_states_path if can? :update, ProductState%></li>
-    <li><%= link_to "Пользователи", users_path if can? :update, User%></li>
-    <li><%= link_to "Заказы", orders_path if can? :update, Order%></li>
+
+<ul class="nav_menu">	
+    <li><i class="icon-barcode"></i><%= link_to t('.products'), products_path %></li>
+    <li><i class="icon-book"></i><%= link_to t('.posts'), posts_path %></li>
+    <li><i class="icon-briefcase"></i><%= link_to t('.orders'), orders_path %></li>
+    <li><i class="icon-shopping-cart"></i><%= link_to "Корзина", carts_path %></li>
+    <li><i class="icon-list-alt"></i><%= link_to "Категория", product_categories_path if can? :update, ProductCategory%></li>
+    <li><i class="icon-star"></i><%= link_to "Статусы", product_states_path if can? :update, ProductState%></li>
+    <li><i class="icon-user"></i><%= link_to "Пользователи", users_path if can? :update, User%></li>
 </ul>
-<% end %> 
+
      
 
 

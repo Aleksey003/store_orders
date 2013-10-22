@@ -1,10 +1,4 @@
-jQuery ->
-  $('#carts_table').dataTable
-    sPaginationType: "full_numbers"
-    bJQueryUI: true
-    bProcessing: true
-    bServerSide: true
-    sAjaxSource: $('#carts_table').data('source')
+
         
 	   
 

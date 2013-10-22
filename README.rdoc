@@ -13,6 +13,7 @@ sudo service elasticsearch start
 ##Run the following rake task 
 rake environment tire:import CLASS='Product'
 rake environment tire:import CLASS='Product'  FORCE=true
+rake environment tire:import CLASS='Cart'  FORCE=true
 rake environment tire:import CLASS='Product' FORCE=true RAILS_ENV=production
 ### ############################################################
 

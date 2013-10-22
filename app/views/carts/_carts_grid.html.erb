@@ -1,0 +1,30 @@
+<%= grid(@carts_grid, :show_filters => :always, hide_submit_button: true, hide_reset_button: true) do |g|
+
+  g.column name: 'Номер', attribute: 'id', auto_reload: true do |cart|
+    cart.id
+  end
+
+  g.column name: 'Создан', attribute: 'created_at', auto_reload: true do |cart|
+    cart.created_at.to_s(:short)
+  end
+
+  g.column name: 'Изминен', attribute: 'updated_at', auto_reload: true do |cart|
+    cart.updated_at.to_s(:short)
+  end
+
+  g.column name: 'User', attribute: 'name', model: User, auto_reload: true do |cart|
+    cart.user.name if cart.user
+  end
+
+  g.column name: 'Сумма' do |cart|
+    cart.total_price
+  end
+
+  g.column in_csv: false do |cart|
+    link_to "show", cart
+  end
+  g.column in_csv: false do |cart|
+    link_to "edit", edit_cart_path(cart)
+  end
+
+end %>

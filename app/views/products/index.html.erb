@@ -23,18 +23,17 @@
 	<div  id="listView" class="tab-pane active">
 
 			<% @products.each do |product| %>
-				<div class='row'>        		
-						
+				<div class='row'>
+
 						<div class="span2">
-							
-							<%= link_to  product do %>
-								<!--<%= image_tag(product.get_head_asset.data.url(:thumb)) unless product.get_head_asset.nil? %>-->
-							<h5><%= product.id %></h5> &euro;<%= product.price %>
-							<% end %>
-
+							<%= product.plu_number %>
 						</div>
-
-						<div class="span4">
+						<div class="span1">
+							<%= link_to  product do %>
+							 &euro;<%= product.price %>
+							<% end %>
+						</div>
+						<div class="span3">
 							<h5><%= "#{truncate(product.title, length: 44)}" %> </h5>
 							
 							<!-- <p id=<%="quantity#{product.id}" %>></p> -->		

@@ -1,6 +1,6 @@
 class Product < ActiveRecord::Base
 	
-    attr_accessible :description, :product_category, :product_state, :title, :price, :assets, :assets_attributes, :product_state_id, :product_category_id
+    attr_accessible :description, :product_category, :product_state, :title, :price, :assets, :assets_attributes, :product_state_id, :product_category_id, :plu_number
 	belongs_to :product_category
 	belongs_to :product_state
 	has_many :assets, dependent: :destroy

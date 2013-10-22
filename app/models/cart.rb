@@ -3,6 +3,7 @@ class Cart < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
   belongs_to :user
   self.per_page = 100
+
   def add_product(product_id, quantity=1)
     quantity = quantity.to_f
   	current_line = line_items.find_by_product_id(product_id)
@@ -22,4 +23,5 @@ class Cart < ActiveRecord::Base
   def total_quantity
     line_items.to_a.sum {|item| item.quantity}
   end
+  
 end

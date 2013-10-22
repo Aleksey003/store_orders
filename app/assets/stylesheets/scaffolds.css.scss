@@ -1,4 +1,10 @@
 
+.nav_menu {
+    list-style-type:none;
+}
+.nav_menu li {
+ display: inline; 
+}
 
 
 pre {
@@ -6,10 +12,6 @@ pre {
   padding: 10px;
   font-size: 11px;
 }
-
-
-
-
 
 #notice {
   color: green;

@@ -24,6 +24,10 @@
     <%= f.select  :product_category_id,  ProductCategory.all.collect{|s| [s.get_name_for_tree_category, s.id]}, {:prompt=>true}  %>
   </div>
   <div class="field">
+   Артикул:</br>
+   <%= f.text_field :plu_number %>
+  </div>
+  <div class="field">
     Цена:</br>
     <%= f.number_field :price %>
   </div>
